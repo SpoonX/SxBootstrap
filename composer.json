@@ -1,0 +1,24 @@
+{
+    "name": "rwoverdijk/sxbootstrap",
+    "description": "A bootstrap wrapper based on rwoverdijk/assetmanager",
+    "keywords": [
+        "twitter",
+        "bootstrap",
+        "assetmanager",
+        "zf2",
+        "zend framework"
+    ],
+    "homepage": "https://github.com/RWOverdijk/SxBootstrap",
+    "require": {
+        "php": ">=5.3.3",
+        "rwoverdijk/assetmanager": "1.*"
+    },
+    "autoload" : {
+        "psr-0": {
+            "SxBootstrap": "src/"
+        },
+        "classmap": [
+            "./"
+        ]
+    }
+}

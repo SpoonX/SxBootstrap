@@ -1,0 +1,23 @@
+<div class="tabbable tabs-left">
+
+    <?php
+    $t = array();
+    $c = array();
+    foreach($this->tabs as $id => $tab) {
+        $t[] = '
+        <li'.($tab['active'] ? ' class="active"' : '').'>
+            <a href="#'.$id.'" data-toggle="tab">'.$tab['label'].'</a>
+        </li>';
+
+        $c[] = '<div class="tab-pane'.($tab['active'] ? ' active' : '').'" id="'.$id.'">'.$tab['content'].'</div>';
+    }
+    ?>
+
+    <ul class="nav nav-tabs">
+        <?php echo implode(PHP_EOL, $t); ?>
+    </ul>
+    <div class="tab-content">
+        <?php echo implode(PHP_EOL, $c); ?>
+    </div>
+
+</div>
