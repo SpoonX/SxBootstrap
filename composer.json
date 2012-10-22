@@ -1,6 +1,7 @@
 {
     "name": "rwoverdijk/sxbootstrap",
-    "description": "A bootstrap wrapper based on rwoverdijk/assetmanager",
+    "description": "A twitter bootstrap module for ZF2 (zend framework 2) based on rwoverdijk/assetmanager"A twitter bootstrap module for ZF2 (zend framework 2),
+    "license": "BSD-2-Clause",
     "keywords": [
         "twitter",
         "bootstrap",
