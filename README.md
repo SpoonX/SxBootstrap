@@ -1,14 +1,7 @@
-# SxBootstrap 0.1.2
+# SxBootstrap 1.0.0
 This module is intended for usage with a default directory structure of a
 [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication/) and depends on the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
 It includes Twitter Bootstrap and allows you to build custom versions by overriding the configuration, and supplies some useful view helpers.
-
-## Dependencies
-This module depends on a couple of things. I've listed them here, with links to installation instructions.
-
-* **Composer**. [Instructions](http://getcomposer.org/download/)
-* **NPM/NodeJS**. [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
-* **less**. Installing through npm is simple. `npm install less`
 
 ## Installation
 
@@ -16,28 +9,36 @@ This module depends on a couple of things. I've listed them here, with links to 
     * ... Adding it through the command line,
 
         ```bash
-        ./composer.phar require twitter/bootstrap rwoverdijk/sxbootstrap
-        # When asked for a version, type:
-        #   "dev-2.1.2-wip" for twitter/bootstrap (depending on the version you decided to use)
-        #   "0.*" for rwoverdijk/sxbootstrap.
+        ./composer.phar require rwoverdijk/sxbootstrap
+        # When asked for a version, type: "1.*"
         ```
-    * or, adding them manually to your composer.json file and **then running `./composer.phar install`** to install the dependencies
+    * or, adding it manually to your composer.json file and **then running `./composer.phar install`** to install the dependencies
 
         ```json
         {
             "require": {
-                "twitter/bootstrap": "dev-2.1.2-wip",
-                "rwoverdijk/sxbootstrap": "0.*"
+                "rwoverdijk/sxbootstrap": "1.*"
             }
         }
         ```
 
 2. Enable `AssetManager` and `SxBootstrap` in your `application.config.php` file.
 
-3. Configure the filter to get it working. (This only applies to you if your node.js binary is not in `/usr/bin/node`,
-or your node paths are not the default.)
+3. Install NPM/NodeJS. If you've already done this, continue to step 4.
+    [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) can be found here.
 
-4. Take a look at the [wiki](https://github.com/RWOverdijk/SxBootstrap/wiki) for examples and other information to get started.
+4. Install less.
+    Open up your command line, and navigate to your project (`cd /path/to/my/project`).
+    Once you get there, run the following command: `npm install less .` (including the dot).
+    This will install less in a new directory named node_modules, enabling us to find it.
+    If you're stubborn, and wish to install less somewhere else... Well, too bad.
+    Okay okay... There's a way for you to point us in the right direction, too.
+    Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/RWOverdijk/SxBootstrap/wiki/Configuration-options)"
+
+5. Configure the filter to get it working. (This only applies to you if your node.js binary is not in `/usr/bin/node`,
+or your node paths are not the default, so you've ignored my advice in step 4.)
+
+6. Take a look at the [wiki](https://github.com/RWOverdijk/SxBootstrap/wiki) for examples and other information to get started.
 Specifically the part on [how to configure the filter to get it working (bottom of the page)](https://github.com/RWOverdijk/SxBootstrap/wiki/Configuration-options)
 
 ## Usage
@@ -51,7 +52,7 @@ things are working you can simply call the view helper in your layout (before ou
 ```
 
 Refresh the page and see if it downloaded the required files. Please **realize** that this module
-will take up to 2 seconds (depending on your server's performance) to load **every time**,
+will take up to a second (depending on your server's performance) to load **every time**,
 so please enable caching of some sort [(read about it here, the FilePath cache is recommended)](https://github.com/RWOverdijk/AssetManager/wiki/Caching).
 
 ## Todo

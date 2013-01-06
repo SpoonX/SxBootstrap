@@ -1,4 +1,16 @@
 <?php
+$data = json_decode(file_get_contents('vendor/composer/installed.json'), true);
+$bootstrapPath = 'vendor/twitter/bootstrap';
+foreach ($data as $installed) {
+    if ('twitter/bootstrap' === $installed['name']) {
+        $bootstrapPath = 'vendor/' . $installed['name'];
+        if (!empty($installed['target-dir'])) {
+            $bootstrapPath .= '/' . $installed['target-dir'];
+        }
+        break;
+    }
+}
+
 return array(
     'view_manager' => array(
         'template_path_stack' => array(
@@ -26,12 +38,12 @@ return array(
                 'img/alpha.png'                         => __DIR__ . '/../public/img/alpha.png',
                 'img/hue.png'                           => __DIR__ . '/../public/img/hue.png',
                 'img/saturation.png'                    => __DIR__ . '/../public/img/saturation.png',
-                'img/glyphicons-halflings.png'          => 'vendor/twitter/bootstrap/img/glyphicons-halflings.png',
-                'img/glyphicons-halflings-white.png'    => 'vendor/twitter/bootstrap/img/glyphicons-halflings-white.png',
-                'css/bootstrap.css'                     => 'vendor/twitter/bootstrap/less/bootstrap.less',
+                'img/glyphicons-halflings.png'          => $bootstrapPath . '/img/glyphicons-halflings.png',
+                'img/glyphicons-halflings-white.png'    => $bootstrapPath . '/img/glyphicons-halflings-white.png',
+                'css/bootstrap.css'                     => $bootstrapPath . '/less/bootstrap.less',
             ),
             'paths' => array(
-                'vendor/twitter/bootstrap',
+                $bootstrapPath,
             ),
         ),
         'filters' => array(
@@ -61,10 +73,10 @@ return array(
         ),
     ),
     'twitter_bootstrap' => array(
-        'makefile'      => 'vendor/twitter/bootstrap/Makefile',
+        'makefile'      => $bootstrapPath . '/Makefile',
         'filter'        => array(
             'node_bin'      => '/usr/bin/node',
-            'node_paths'    => array(),
+            'node_paths'    => array('node_modules'),
         ),
         'variables'     => array(),
         'plugin_alias'  => 'js/bootstrap.js',
