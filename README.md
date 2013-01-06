@@ -56,7 +56,7 @@ things are working you can simply call the view helper in your layout (before ou
 
 Refresh the page and see if it downloaded the required files. Please **realize** that this module
 will take up to a second (depending on your server's performance) to load **every time**,
-so please enable caching of some sort [(read about it here, the FilePath cache is recommended)](https://github.com/RWOverdijk/AssetManager/wiki/Caching).
+so please enable caching of some sort [(read about it here, the FilePath cache is recommended)](https://github.com/RWOverdijk/AssetManager/wiki/Caching#wiki-filepath).
 
 ## Todo
 There's still a lot of work to be done on this module.
