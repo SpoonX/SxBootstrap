@@ -12,31 +12,7 @@ This module depends on a couple of things. I've listed them here, with links to 
 
 ## Installation
 
-1. **Preparation is required.** Because twitter bootstrap is not available through composer, and composer doesn't allow recursive repositories to be added,
-you'll have to add the following repository to your composer.json file:
-
-    ```json
-    {
-        "repositories": [
-            {
-                "type": "package",
-                "package": {
-                    "version": "dev-2.1.2-wip",
-                    "name": "twitter/bootstrap",
-                    "source": {
-                        "url": "https://github.com/twitter/bootstrap.git",
-                        "type": "git",
-                        "reference": "2.1.2-wip"
-                    }
-                }
-            }
-        ]
-    }
-    ```
-
-    _Note: This works with other versions as well. This module should be compatible with all 2.* versions._
-
-2. Next **add the requirement to your composer.json file** by either...
+1. **add the requirement to your composer.json file** by either...
     * ... Adding it through the command line,
 
         ```bash
@@ -56,12 +32,12 @@ you'll have to add the following repository to your composer.json file:
         }
         ```
 
-3. Enable `AssetManager` and `SxBootstrap` in your `application.config.php` file.
+2. Enable `AssetManager` and `SxBootstrap` in your `application.config.php` file.
 
-4. Configure the filter to get it working. (This only applies to you if your node.js binary is not in `/usr/bin/node`,
+3. Configure the filter to get it working. (This only applies to you if your node.js binary is not in `/usr/bin/node`,
 or your node paths are not the default.)
 
-5. Take a look at the [wiki](https://github.com/RWOverdijk/SxBootstrap/wiki) for examples and other information to get started.
+4. Take a look at the [wiki](https://github.com/RWOverdijk/SxBootstrap/wiki) for examples and other information to get started.
 Specifically the part on [how to configure the filter to get it working (bottom of the page)](https://github.com/RWOverdijk/SxBootstrap/wiki/Configuration-options)
 
 ## Usage
