@@ -78,7 +78,7 @@ return array(
             'node_bin'   => '/usr/bin/node',
             'node_paths' => array('node_modules'),
         ),
-        'variables' => array(),
+        'variables'    => array(),
         'plugin_alias' => 'js/bootstrap.js',
     ),
 );
