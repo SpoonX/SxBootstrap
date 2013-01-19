@@ -21,7 +21,7 @@ return array(
                     'messageOpenFormat'      => '<span%s>',
                     'messageSeparatorString' => '<br />',
                     'attributes'             => array(
-                        'class'        => 'help-inline',
+                        'class' => 'help-inline',
                     ),
                 ),
             ),
@@ -45,11 +45,11 @@ return array(
             'sxBootstrap'        => 'SxBootstrap\View\Helper\Bootstrap\Bootstrap',
         ),
     ),
-    'asset_manager'      => array(
+    'asset_manager' => array(
         'resolvers' => array(
             'SxBootstrap\Service\BootstrapResolver' => 1200,
         ),
-        'resolver_configs'                      => array(
+        'resolver_configs' => array(
             'map' => array(
                 'css/colorpicker.css'                => __DIR__ . '/../public/css/colorpicker.css',
                 'js/bootstrap-colorpicker.js'        => __DIR__ . '/../public/js/bootstrap-colorpicker.js',
@@ -60,34 +60,16 @@ return array(
                 'img/glyphicons-halflings-white.png' => $bootstrapPath . '/img/glyphicons-halflings-white.png',
                 'css/bootstrap.css'                  => $bootstrapPath . '/less/bootstrap.less',
             ),
-            'paths'                              => array(
+            'paths' => array(
                 $bootstrapPath,
             ),
         ),
         'filters' => array(
             'css/bootstrap.css' => array(
                 array(
-                    'service'         => 'SxBootstrap\Service\BootstrapFilter',
+                    'service' => 'SxBootstrap\Service\BootstrapFilter',
                 ),
             ),
-        ),
-    ),
-    'service_manager' => array(
-        'factories' => array(
-            'SxBootstrap\Service\BootstrapFilter' => function($serviceManager) {
-                $config          = $serviceManager->get('Config');
-                $bootstrapConfig = $config['twitter_bootstrap'];
-                $BootstrapFilter = new SxBootstrap\Service\BootstrapFilter($bootstrapConfig);
-
-                return $BootstrapFilter;
-            },
-            'SxBootstrap\Service\BootstrapResolver' => function($serviceManager) {
-                $config             = $serviceManager->get('Config');
-                $bootstrapConfig    = $config['twitter_bootstrap'];
-                $assetFilterManager = new SxBootstrap\Service\BootstrapResolver($bootstrapConfig);
-
-                return $assetFilterManager;
-            },
         ),
     ),
     'twitter_bootstrap' => array(
@@ -96,7 +78,7 @@ return array(
             'node_bin'   => '/usr/bin/node',
             'node_paths' => array('node_modules'),
         ),
-        'variables'     => array(),
-        'plugin_alias'  => 'js/bootstrap.js',
+        'variables' => array(),
+        'plugin_alias' => 'js/bootstrap.js',
     ),
 );
