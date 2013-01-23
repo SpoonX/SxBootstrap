@@ -13,26 +13,24 @@ foreach ($data as $installed) {
 }
 
 return array(
-    'di' => array(
-        'instance' => array(
-            'Zend\Form\View\Helper\FormElementErrors' => array(
-                'parameters' => array(
-                    'messageCloseString'     => '</span>',
-                    'messageOpenFormat'      => '<span%s>',
-                    'messageSeparatorString' => '<br />',
-                    'attributes'             => array(
-                        'class' => 'help-inline',
-                    ),
-                ),
-            ),
-        ),
-    ),
     'view_manager' => array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
         ),
     ),
     'view_helpers' => array(
+        'factories' => array(
+            'formElementErrors' => function ($sm) {
+                $fee = new \Zend\Form\View\Helper\FormElementErrors();
+                $fee->setMessageCloseString('</li></ul>');
+                $fee->setMessageOpenFormat('<ul%s><li>');
+                $fee->setMessageSeparatorString('</li><li>');
+                $fee->setAttributes(array(
+                    'class' => 'help-inline',
+                ));
+                return $fee;
+            },  
+        ),
         'invokables' => array(
             'sxbForm'            => 'SxBootstrap\View\Helper\Bootstrap\Form',
             'sxbFormElement'     => 'SxBootstrap\View\Helper\Bootstrap\FormElement',
