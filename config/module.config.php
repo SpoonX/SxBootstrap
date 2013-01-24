@@ -13,20 +13,6 @@ foreach ($data as $installed) {
 }
 
 return array(
-    'di' => array(
-        'instance' => array(
-            'Zend\Form\View\Helper\FormElementErrors' => array(
-                'parameters' => array(
-                    'messageCloseString'     => '</span>',
-                    'messageOpenFormat'      => '<span%s>',
-                    'messageSeparatorString' => '<br />',
-                    'attributes'             => array(
-                        'class' => 'help-inline',
-                    ),
-                ),
-            ),
-        ),
-    ),
     'view_manager' => array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
