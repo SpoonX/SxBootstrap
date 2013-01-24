@@ -45,6 +45,16 @@ class Module implements AutoloaderProviderInterface
 
                     return $assetFilterManager;
                 },
+                'formElementErrors' => function ($serviceManager) {
+                    $fee = new \Zend\Form\View\Helper\FormElementErrors();
+                    $fee->setMessageCloseString('</li></ul>');
+                    $fee->setMessageOpenFormat('<ul%s><li>');
+                    $fee->setMessageSeparatorString('</li><li>');
+                    $fee->setAttributes(array(
+                        'class' => 'help-inline',
+                    ));
+                    return $fee;
+                }
             ),
         );
     }
