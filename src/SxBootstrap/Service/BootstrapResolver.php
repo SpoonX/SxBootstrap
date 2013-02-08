@@ -122,7 +122,11 @@ class BootstrapResolver implements
     protected function getPluginNames($makefile)
     {
         $mkdata = file_get_contents($makefile);
-        preg_match('/bootstrap\:\s?\n(\n|.)*?((cat\s)(?P<files>.*?))\s>/i', $mkdata, $matches);
+
+        preg_match(
+            '/bootstrap(\:|\/js\/\*\.js: js\/\*\.js)\s?\n(\n|.)*?((cat\s)(?P<files>.*?))\s>/i',
+            $mkdata, $matches
+        );
 
         return array_map(function($value) {
             return preg_replace('/(js\/bootstrap-([\w_-]+)\.js)/', '\2', $value);
