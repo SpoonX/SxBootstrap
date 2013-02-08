@@ -18,15 +18,17 @@ class Bootstrap extends AbstractHelper
 
     protected function prependJs()
     {
-        $this->getView()->headScript()->prependFile(
-            $this->getView()->basePath() . '/js/bootstrap.js'
-        );
+        $scriptHelper = $this->view->plugin('head_script');
+        $baseHelper   = $this->view->plugin('base_path');
+
+        $scriptHelper->prependFile($baseHelper('/js/bootstrap.js'));
     }
 
     protected function prependCss()
     {
-        $this->getView()->headLink()->prependStylesheet(
-            $this->getView()->basePath() . '/css/bootstrap.css'
-        );
+        $linkHelper = $this->view->plugin('head_link');
+        $baseHelper = $this->view->plugin('base_path');
+
+        $linkHelper->prependStylesheet($baseHelper('/css/bootstrap.css'));
     }
 }
