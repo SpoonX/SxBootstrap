@@ -39,22 +39,19 @@ class BootstrapFilter extends LessFilter
      */
     public function filterLoad(AssetInterface $asset)
     {
-        $root      = $asset->getSourceRoot();
-        $path      = $asset->getSourcePath();
-        $importDir = dirname($root.'/'.$path);
+        $assetRoot      = $asset->getSourceRoot();
+        $assetPath      = $asset->getSourcePath();
+        $assetImportDir = dirname($assetRoot.'/'.$assetPath);
+        $importDir      = $this->config['bootstrap_path'] . '/less';
+
+        // Make sure we _always_ have the bootstrap import dir.
+        if ($importDir !== $assetImportDir) {
+            $this->addLoadPath($importDir);
+        }
 
         $variables = array_merge(
             $this->extractVariables($importDir.'/variables.less'),
             $this->config['variables']
-        );
-
-        $imports   = $this->filterImportFiles(
-            array_unique(
-                array_merge(
-                    $this->extractImports($importDir.'/bootstrap.less'),
-                    $this->extractImports($importDir.'/responsive.less')
-                )
-            )
         );
 
         $variablesString = '';
@@ -63,8 +60,18 @@ class BootstrapFilter extends LessFilter
             $variablesString .= "@$key:$value;".PHP_EOL;
         }
 
-        $assetContent = $variablesString . $imports;
-        $asset->setContent($assetContent);
+        if ('bootstrap.less' === $assetPath) {
+            $imports   = $this->filterImportFiles(array_unique(array_merge(
+                $this->extractImports($importDir.'/bootstrap.less'),
+                $this->extractImports($importDir.'/responsive.less')
+            )));
+
+            $assetContent = $variablesString . $imports;
+
+            $asset->setContent($assetContent);
+        } else {
+            $asset->setContent($variablesString.$asset->getContent());
+        }
 
         parent::filterLoad($asset);
     }
