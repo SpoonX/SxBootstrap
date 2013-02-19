@@ -1,10 +1,15 @@
-# SxBootstrap 1.1.2
+# SxBootstrap 1.2.2
 This module is intended for usage with a default directory structure of a
 [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication/) and depends on the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
 It includes Twitter Bootstrap and allows you to build custom versions by overriding the configuration, and supplies some useful view helpers.
 
-## BC-Breaks
-All view helpers have been renamed. The new format is `sxbHelper`.
+## Features
+* Fast
+* Customizable (variables, components, plugins)
+* Works with AssetManager
+* Plenty of ViewHelpers
+* Extendible (run your own less files from bootstrap context to share mixins and variables)
+* Compatible, and tested with twitter bootstrap 2.1, 2.2 and 2.3+
 
 ## Installation
 
@@ -34,9 +39,7 @@ All view helpers have been renamed. The new format is `sxbHelper`.
     Open up your command line, and navigate to your project (`cd /path/to/my/project`).
     Once you get there, run the following command: `npm install less .` (including the dot).
     This will install less in a new directory named node_modules, enabling us to find it.
-    If you're stubborn, and wish to install less somewhere else... Well, too bad.
-    Okay okay... There's a way for you to point us in the right direction, too.
-    Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/RWOverdijk/SxBootstrap/wiki/Configuration-options)"
+    If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/RWOverdijk/SxBootstrap/wiki/Configuration-options)"
 
 5. Configure the filter to get it working. (This only applies to you if your node.js binary is not in `/usr/bin/node`,
 or your node paths are not the default, so you've ignored my advice in step 4.)
@@ -57,6 +60,13 @@ things are working you can simply call the view helper in your layout (before ou
 Refresh the page and see if it downloaded the required files. Please **realize** that this module
 will take up to a second (depending on your server's performance) to load **every time**,
 so please enable caching of some sort [(read about it here, the FilePath cache is recommended)](https://github.com/RWOverdijk/AssetManager/wiki/Caching#wiki-filepath).
+
+## Questions / support
+If you're having trouble with the module there are a couple of resources that might be of help.
+* The [wiki page](https://github.com/RWOverdijk/SxBootstrap/wiki), where you'll perhaps find your answer.
+* [RWOverdijk at irc.freenode.net #zftalk.dev](http://webchat.freenode.net?channels=zftalk.dev%2Czftalk&uio=MTE9MTAz8d)
+* [Issue tracker](https://github.com/RWOverdijk/SxBootstrap/issues). (Please try to not submit unrelated issues).
+* By [mail](mailto:r.w.overdijk@gmail.com?Subject=SxBootstrap%20help)
 
 ## Todo
 There's still a lot of work to be done on this module.
