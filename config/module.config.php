@@ -59,6 +59,7 @@ return array(
         ),
     ),
     'twitter_bootstrap' => array(
+        'bootstrap_path' => $bootstrapPath,
         'makefile' => $bootstrapPath . '/Makefile',
         'filter'   => array(
             'node_bin'   => '/usr/bin/node',
