@@ -13,6 +13,7 @@ use Traversable;
 use Zend\Form\ElementInterface;
 use Zend\Form\Form as ZendForm;
 use Zend\Form\Fieldset;
+use Zend\Form\Element\Collection;
 use Zend\Form\View\Helper\Form as FormHelper;
 use Zend\View\Helper\AbstractHelper;
 
@@ -113,7 +114,11 @@ class Form extends AbstractHelper
         $form = '';
         $elementHelper = $this->getElementHelper();
         foreach ($fieldset as $element) {
-            if ($element instanceof Fieldset) {
+            if ($element instanceof Collection) {
+                $helper = $this->getView()->plugin('form_collection');
+                $helper->setElementHelper($elementHelper);
+                $form .= $helper($element);
+            } elseif ($element instanceof Fieldset) {
                 $form .= $this->renderFieldset($element);
             } elseif ($element instanceof ElementInterface) {
                 $form .= $elementHelper->render($element);
