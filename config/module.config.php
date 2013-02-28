@@ -13,6 +13,11 @@ foreach ($data as $installed) {
 }
 
 return array(
+    'controller_plugins' => array(
+        'invokables' => array(
+            'sxbFlashMessenger' => 'SxBootstrap\Controller\Plugin\FlashMessenger'
+        )
+    ),
     'view_manager' => array(
         'template_path_stack' => array(
             __DIR__ . '/../view',
@@ -29,6 +34,7 @@ return array(
             'sxbLabel'           => 'SxBootstrap\View\Helper\Bootstrap\Label',
             'sxbFormColorpicker' => 'SxBootstrap\View\Helper\Bootstrap\FormColorPicker',
             'sxBootstrap'        => 'SxBootstrap\View\Helper\Bootstrap\Bootstrap',
+            'sxbFlashMessenger'  => 'SxBootstrap\View\Helper\Bootstrap\FlashMessenger',
         ),
     ),
     'asset_manager' => array(
