@@ -24,7 +24,7 @@ class Badge extends AbstractHelper
     /**
      * @var string
      */
-     protected $format = '<span class="badge %s">%s</span>';
+     protected $format = '<span class="badge%s">%s</span>';
 
     /**
      * Display an Informational Badge
@@ -107,8 +107,12 @@ class Badge extends AbstractHelper
                 gettype($class)
             ));
         }
+        
+        if (!empty($class)) {
+            $class = ' ' . trim($class, ' ');
+        }
 
-        return sprintf($this->format, trim($class, ' '), $badge);
+        return sprintf($this->format, $class, $badge);
     }
 
     /**
