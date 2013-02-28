@@ -373,22 +373,6 @@ class HtmlElement
     }
 
     /**
-     * Render data
-     *
-     * @return string
-     */
-    protected function renderData()
-    {
-        $data = '';
-
-        foreach ($this->data as $value) {
-            $data .= " data=\"$value\""; // iets hier..
-        }
-
-        return $data;
-    }
-
-    /**
      * Render children
      *
      * @return string
