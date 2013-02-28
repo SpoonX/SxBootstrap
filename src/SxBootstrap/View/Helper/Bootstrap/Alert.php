@@ -24,7 +24,7 @@ class Alert extends AbstractHelper
     /**
      * @var string The format of the alert
      */
-     protected $format = '<div class="alert %s">%s%s</div>';
+     protected $format = '<div class="alert%s">%s%s</div>';
 
      /**
       * @var string The markup of the dismiss button
@@ -112,10 +112,14 @@ class Alert extends AbstractHelper
         if (true === $isBlock) {
             $class .= ' alert-block';
         }
+        
+        if (!empty($class)) {
+            $class = ' ' . trim($class, ' ');
+        }
 
         return sprintf(
             $this->format,
-            trim($class, ' '),
+            $class,
             $this->dismissHtml,
             $alert
         );

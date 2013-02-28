@@ -24,7 +24,7 @@ class Label extends AbstractHelper
     /**
      * @var string
      */
-     protected $format = '<span class="label %s">%s</span>';
+     protected $format = '<span class="label%s">%s</span>';
 
     /**
      * Display an Informational Label
@@ -110,8 +110,12 @@ class Label extends AbstractHelper
                 gettype($class)
             ));
         }
+        
+        if (!empty($class)) {
+            $class = ' ' . trim($class, ' ');
+        }
 
-        return sprintf($this->format, trim($class, ' '), $label);
+        return sprintf($this->format, $class, $label);
     }
 
     /**

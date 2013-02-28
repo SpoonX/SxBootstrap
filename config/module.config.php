@@ -26,6 +26,7 @@ return array(
             'sxbTabs'            => 'SxBootstrap\View\Helper\Bootstrap\Tabs',
             'sxbAlert'           => 'SxBootstrap\View\Helper\Bootstrap\Alert',
             'sxbBadge'           => 'SxBootstrap\View\Helper\Bootstrap\Badge',
+            'sxbButton'          => 'SxBootstrap\View\Helper\Bootstrap\Button',
             'sxbLabel'           => 'SxBootstrap\View\Helper\Bootstrap\Label',
             'sxbFormColorpicker' => 'SxBootstrap\View\Helper\Bootstrap\FormColorPicker',
             'sxBootstrap'        => 'SxBootstrap\View\Helper\Bootstrap\Bootstrap',
