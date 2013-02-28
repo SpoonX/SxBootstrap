@@ -6,7 +6,6 @@
  * @category   SxBootstrap
  * @package    SxBootstrap_Html
  */
-
 namespace SxBootstrap\Html;
 
 class HtmlElement

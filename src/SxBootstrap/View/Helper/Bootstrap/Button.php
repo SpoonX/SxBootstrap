@@ -4,8 +4,6 @@ namespace SxBootstrap\View\Helper\Bootstrap;
 
 use Zend\Form\View\Helper\AbstractHelper;
 use SxBootstrap\Exception;
-use Zend\Form\View\Helper\FormButton;
-use Zend\Form\Element;
 use Zend\Form\Element\Button as ButtonElement;
 use Zend\Form\ElementInterface;
 
@@ -93,7 +91,7 @@ class Button extends AbstractHelper
             $this->element->setName($name);
         }
 
-        $this->label($name)->element->setAttribute('class', 'btn');
+        $this->setLabel($name)->element->setAttribute('class', 'btn');
 
         return $this;
     }
@@ -115,7 +113,7 @@ class Button extends AbstractHelper
      *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Button
      */
-    public function label($label)
+    public function setLabel($label)
     {
         if ($this->element->getAttribute('type') === 'submit') {
             $this->element->setValue($label);
@@ -133,7 +131,7 @@ class Button extends AbstractHelper
      *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Button
      */
-    public function primary($text)
+    public function primary()
     {
         return $this->addClass('btn-primary');
     }
