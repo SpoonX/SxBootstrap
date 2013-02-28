@@ -28,7 +28,7 @@ class FlashMessenger extends AbstractHelper
      * @param bool $isBlock
      * @return string
      */
-    public function render($namespace = null, $isBlock = false)
+    public function __invoke($namespace = null, $isBlock = false)
     {
         if($namespace) {
             $messagesToPrint = $this->view->flashMessenger()->render($namespace);
