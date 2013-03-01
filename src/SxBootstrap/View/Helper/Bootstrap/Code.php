@@ -7,7 +7,7 @@ use SxBootstrap\Html\HtmlElement;
 /**
  * The ViewHelper that creates a block to represent Code.
  */
-class Code extends AbstractHelper
+class Code extends AbstractElementHelper
 {
 
     /**
@@ -26,7 +26,7 @@ class Code extends AbstractHelper
         $this->setElement(new HtmlElement($isMultiLine ? 'pre' : 'code'));
 
         // Convert the content to valid (escaped) code
-        $this->getElement()->setContent(nl2br(htmlentities($content)));
+        $this->getElement()->setContent(htmlentities($content));
 
         return $this;
     }
