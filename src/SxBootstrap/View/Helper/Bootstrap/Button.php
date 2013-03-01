@@ -61,39 +61,40 @@ class Button extends AbstractHelper
      */
     public function __invoke()
     {
-        $args = func_get_args();
+        $this->element = null;
 
-        if (count($args) > 1) {
+        $arguments = func_get_args();
+
+        if (count($arguments) > 1) {
             throw new Exception\InvalidArgumentException(
-                'Expected exactly 1 argument. Got ' . count($args) . '.'
+                'Expected exactly 1 argument. Got ' . count($arguments) . '.'
             );
         }
 
-        if (count($args) === 0) {
+        if (count($arguments) === 0) {
             $this->element = new ButtonElement;
-        } elseif (!empty($args[0]) && $args[0] instanceof ElementInterface) {
-            $this->element = $args[0];
-        } elseif(is_string($args[0])) {
+        } elseif (!empty($arguments[0]) && $arguments[0] instanceof ElementInterface) {
+            $this->element = $arguments[0];
+        } elseif(is_string($arguments[0])) {
             $this->element = new ButtonElement;
-            $this->element->setName($args[0]);
-        } elseif(is_array($args[0])) {
+            $this->element->setName($arguments[0]);
+        } elseif(is_array($arguments[0])) {
             $this->element = new ButtonElement;
-            $this->element->setAttributes($args[0]);
+            $this->element->setAttributes($arguments[0]);
         } else {
             throw new Exception\InvalidArgumentException(
-                'Expected either array or "Zend\Form\ElementInterface", got ' . gettype($args[0])
+                'Expected either array or "Zend\Form\ElementInterface", got ' . gettype($arguments[0])
             );
         }
 
         $name = $this->element->getName();
+
         if (empty($name)) {
             $name = 'sxbButton';
             $this->element->setName($name);
         }
 
-        $this->setLabel($name)->element->setAttribute('class', 'btn');
-
-        return $this;
+        return clone $this->setLabel($name)->addClass('btn');
     }
 
     /**
