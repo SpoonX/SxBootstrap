@@ -25,6 +25,7 @@ return array(
     ),
     'view_helpers' => array(
         'invokables' => array(
+            'sxbCode'            => 'SxBootstrap\View\Helper\Bootstrap\Code',
             'sxbForm'            => 'SxBootstrap\View\Helper\Bootstrap\Form',
             'sxbFormElement'     => 'SxBootstrap\View\Helper\Bootstrap\FormElement',
             'sxbFormDescription' => 'SxBootstrap\View\Helper\Bootstrap\FormDescription',

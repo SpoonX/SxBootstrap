@@ -1,4 +1,5 @@
 <?php
+
 /**
  * SxBootstrap
  *
@@ -8,6 +9,7 @@
  *
  * @method \SxBootstrap\Controller\Plugin\FlashMessenger getPluginFlashMessenger()
  */
+
 namespace SxBootstrap\View\Helper\Bootstrap;
 
 use SxBootstrap\Controller\Plugin\FlashMessenger as PluginFlashMessenger;
@@ -15,7 +17,11 @@ use Zend\View\Helper\AbstractHelper;
 
 class FlashMessenger extends AbstractHelper
 {
-    protected $classMessages = array(
+
+    /**
+     * @var array Array of classes used for namespaces
+     */
+    protected $namespaceClasses = array(
         PluginFlashMessenger::NAMESPACE_INFO    => 'alert alert-info',
         PluginFlashMessenger::NAMESPACE_DEFAULT => 'alert alert-info',
         PluginFlashMessenger::NAMESPACE_SUCCESS => 'alert alert-success',
@@ -24,38 +30,40 @@ class FlashMessenger extends AbstractHelper
     );
 
     /**
-     * @param null $namespace
-     * @param bool $isBlock
+     * @param   string|null $namespace
+     * @param   boolean     $isBlock
      *
-     * @return string
+     * @return  string
      */
     public function __invoke($namespace = null, $isBlock = false)
     {
         if (!empty($namespace)) {
-            $messagesToPrint = $this->view->flashMessenger()->render($namespace);
+            $messagesToPrint = $this->getView()->plugin('flash_messenger')->render($namespace);
 
             if (empty($messagesToPrint)) {
                 return '';
             }
+
             $class = '';
 
-            if (isset($this->classMessages[$namespace])) {
-                $class = $this->classMessages[$namespace];
+            if (isset($this->namespaceClasses[$namespace])) {
+                $class = $this->namespaceClasses[$namespace];
             }
 
             return $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint, $isBlock, $class);
         }
 
         $message = '';
-        foreach ($this->classMessages as $namespace => $class) {
-            $messagesToPrint = $this->view->flashMessenger()->render($namespace);
+
+        foreach ($this->namespaceClasses as $namespace => $class) {
+            $messagesToPrint = $this->getView()->plugin('flash_messenger')->render($namespace);
 
             if (empty($messagesToPrint)) {
                 continue;
             }
 
-            if (isset($this->classMessages[$namespace])) {
-                $class = $this->classMessages[$namespace];
+            if (isset($this->namespaceClasses[$namespace])) {
+                $class = $this->namespaceClasses[$namespace];
             }
 
             $message .= $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint, $isBlock, $class);
@@ -63,4 +71,5 @@ class FlashMessenger extends AbstractHelper
 
         return $message;
     }
+
 }
