@@ -2,19 +2,11 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use Zend\Form\View\Helper\AbstractHelper;
-use SxBootstrap\Exception;
 use SxBootstrap\Html\HtmlElement as HtmlElement;
 use SxBootstrap\View\Helper\Bootstrap\Button as SxButton;
-use Zend\Form\Element\Button as ButtonElement;
-use Zend\Form\ElementInterface;
 
-class ButtonGroup extends AbstractHelper
+class ButtonGroup extends AbstractElementHelper
 {
-    /**
-     * @var SxBootstrap\Html\HtmlElement
-     */
-    protected $group;
 
     /**
      * Contains all buttons in array or Zend\Form\Element\Button
@@ -30,11 +22,11 @@ class ButtonGroup extends AbstractHelper
      */
     public function render()
     {
-        foreach($this->buttons as $button) {
-            $this->group->appendContent($this->renderButton($button));
+        foreach ($this->buttons as $button) {
+            $this->getElement()->appendContent($this->renderButton($button));
         }
 
-        return $this->group->render();
+        return $this->getElement()->render();
     }
 
     /**
@@ -48,7 +40,7 @@ class ButtonGroup extends AbstractHelper
             return $button->render();
         }
 
-        return $this->getView()->plugin('sxb_button')->__invoke($button);
+        return $this->getView()->plugin('sxb_button')->__invoke($button)->render();
     }
 
     /**
@@ -62,20 +54,6 @@ class ButtonGroup extends AbstractHelper
     }
 
     /**
-     * Add class
-     *
-     * @param  string $class
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\ButtonGroup
-     */
-    public function addClass($class)
-    {
-        $this->group->addClass($class);
-
-        return $this;
-    }
-
-    /**
      *  Make button group element and add buttons
      *
      * @param  array $buttons
@@ -84,8 +62,9 @@ class ButtonGroup extends AbstractHelper
      */
     public function __invoke(array $buttons = array())
     {
-        $this->group    = new HtmlElement();
-        $this->buttons  = array();
+        $this->setElement(new HtmlElement);
+
+        $this->buttons = array();
 
         $this->addClass('btn-group');
 
@@ -97,19 +76,11 @@ class ButtonGroup extends AbstractHelper
     }
 
     /**
-     * Render button group to string
-     */
-    public function __toString()
-    {
-        return $this->render();
-    }
-
-    /**
      * Add checkbox data to group
      */
     public function checkbox()
     {
-        $this->group->addAttribute('data-toggle', 'buttons-checkbox');
+        $this->getElement()->addAttribute('data-toggle', 'buttons-checkbox');
 
         return $this;
     }
@@ -119,17 +90,17 @@ class ButtonGroup extends AbstractHelper
      */
     public function radio()
     {
-        $this->group->addAttribute('data-toggle', 'buttons-radio');
+        $this->getElement()->addAttribute('data-toggle', 'buttons-radio');
 
         return $this;
     }
 
-     /**
+    /**
      * Add vertical class to group
      */
     public function vertical()
     {
-        $this->group->addClass('btn-group-vertical');
+        $this->getElement()->addClass('btn-group-vertical');
 
         return $this;
     }
