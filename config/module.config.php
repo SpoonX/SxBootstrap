@@ -36,6 +36,7 @@ return array(
             'sxbBadge'           => 'SxBootstrap\View\Helper\Bootstrap\Badge',
             'sxbButton'          => 'SxBootstrap\View\Helper\Bootstrap\Button',
             'sxbLabel'           => 'SxBootstrap\View\Helper\Bootstrap\Label',
+            'sxbWell'            => 'SxBootstrap\View\Helper\Bootstrap\Well',
             'sxbFormColorpicker' => 'SxBootstrap\View\Helper\Bootstrap\FormColorPicker',
             'sxBootstrap'        => 'SxBootstrap\View\Helper\Bootstrap\Bootstrap',
             'sxbFlashMessenger'  => 'SxBootstrap\View\Helper\Bootstrap\FlashMessenger',
