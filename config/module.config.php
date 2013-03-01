@@ -15,7 +15,7 @@ foreach ($data as $installed) {
 return array(
     'controller_plugins' => array(
         'invokables' => array(
-            'sxbFlashMessenger' => 'SxBootstrap\Controller\Plugin\FlashMessenger'
+            'sxbFlashMessenger' => 'SxBootstrap\Controller\Plugin\FlashMessenger',
         )
     ),
     'view_manager' => array(
