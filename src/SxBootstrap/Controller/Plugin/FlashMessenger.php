@@ -9,7 +9,8 @@ class FlashMessenger extends PluginFlashMessenger
 
     /**
      * Whether "warning" namespace has messages
-     * @return bool
+     *
+     * @return boolean
      */
     public function hasWarningMessages()
     {
@@ -25,6 +26,7 @@ class FlashMessenger extends PluginFlashMessenger
      * Add a message with "warning" type
      *
      * @param  string $message
+     *
      * @return FlashMessenger
      */
     public function addWarningMessage($message)
