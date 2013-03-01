@@ -43,11 +43,30 @@ class Button extends AbstractHelper
      *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Button
      */
-    protected function addClass($class)
+    public function addClass($class)
     {
-        $class = $this->element->getAttribute('class') . " $class";
+        $currClasses = $this->element->getAttribute('class');
+
+        if (!empty($currClasses)) {
+            $class = $currClasses . " $class";
+        }
 
         $this->element->setAttribute('class', $class);
+
+        return $this;
+    }
+
+    /**
+     * Add attribute on button element
+     *
+     * @param   string  $key
+     * @param   string  $value
+     *
+     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     */
+    public function addAttribute($key, $value)
+    {
+        $this->element->setAttribute($key, $value);
 
         return $this;
     }
@@ -266,13 +285,23 @@ class Button extends AbstractHelper
     }
 
     /**
-     * Display disabled button
+     * Set button disabled
      *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function disabled()
     {
         return $this->addClass('disabled');
+    }
+
+    /**
+     * Set button active
+     *
+     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     */
+    public function active()
+    {
+        return $this->addClass('active');
     }
 
 }
