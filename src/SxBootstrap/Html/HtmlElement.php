@@ -49,7 +49,7 @@ class HtmlElement
     /**
      * Contruct tag
      *
-     * @var     string  Tagname (Allowed tags are html tags, div, span, a etc)
+     * @param   string  $tag    Tagname (Allowed tags are html tags, div, span, a etc)
      */
     public function __construct($tag = 'div')
     {
@@ -83,7 +83,7 @@ class HtmlElement
     /**
      * Set tag attributes
      *
-     * @var     array
+     * @param   array   $attributes
      *
      * @return  \SxBootstrap\Html\HtmlElement
      */
@@ -97,7 +97,7 @@ class HtmlElement
     /**
      * Add tag attributes
      *
-     * @var     array
+     * @param   array   $attributes
      *
      * @return  \SxBootstrap\Html\HtmlElement
      */
@@ -133,7 +133,7 @@ class HtmlElement
     /**
      * Remove tag attributes
      *
-     * @var     string  $key
+     * @param   string  $key
      *
      * @return  \SxBootstrap\Html\HtmlElement
      */
@@ -159,7 +159,7 @@ class HtmlElement
     /**
      * Add class to tag
      *
-     * @var     string  $class
+     * @param   string  $class
      *
      * @return  string
      */
@@ -175,7 +175,7 @@ class HtmlElement
     /**
      * Set tag content
      *
-     * @var     string  $content
+     * @param   string  $content
      *
      * @return  \SxBootstrap\Html\HtmlElement
      */
@@ -189,7 +189,7 @@ class HtmlElement
     /**
      * Append content before other content
      *
-     * @var     string  $content
+     * @param   string  $content
      *
      * @return  \SxBootstrap\Html\HtmlElement
      */
@@ -203,7 +203,7 @@ class HtmlElement
     /**
      * Prepend content after other content
      *
-     * @var     string  $content
+     * @param   string  $content
      *
      * @return  \SxBootstrap\Html\HtmlElement
      */
@@ -243,7 +243,7 @@ class HtmlElement
     /**
      * Spawn child
      *
-     * @var     string  $tag
+     * @param   string  $tag
      *
      * @return  \SxBootstrap\Html\HtmlElement
      */
@@ -255,7 +255,7 @@ class HtmlElement
     /**
      * Add child to tag
      *
-     * @var     \SxBootstrap\Html\HtmlElement
+     * @param   \SxBootstrap\Html\HtmlElement   $child
      *
      * @return  \SxBootstrap\Html\HtmlElement
      */
@@ -269,9 +269,9 @@ class HtmlElement
     /**
      * Add children to tag
      *
-     * @var     array
+     * @param   array   $children
      *
-     * @return  \SxBootstrap\Html
+     * @return  \SxBootstrap\Html\HtmlElement
      */
     public function addChildren(array $children)
     {
@@ -285,7 +285,7 @@ class HtmlElement
     /**
      * Remove childeren
      *
-     * @return  \SxBootstrap\Html
+     * @return  \SxBootstrap\Html\HtmlElement
      */
     public function removeChildren()
     {
@@ -297,9 +297,9 @@ class HtmlElement
     /**
      * Set childrden
      *
-     * @var     array
+     * @param   array   $children
      *
-     * @return  \SxBootstrap\Html
+     * @return  \SxBootstrap\Html\HtmlElement
      */
     public function setChildren(array $children)
     {
@@ -343,7 +343,7 @@ class HtmlElement
     /**
      * Render tag
      *
-     * @var     string  $content
+     * @param   string  $content
      *
      * @return  string
      */
@@ -352,14 +352,17 @@ class HtmlElement
         $attributes = $this->renderAttributes();
 
         return sprintf(
-                '<%1$s%2$s>%3$s</%1$s>', $this->tag, $attributes, $content
+            '<%1$s%2$s>%3$s</%1$s>',
+            $this->tag,
+            $attributes,
+            $content
         );
     }
 
     /**
      * Render tag attributes
      *
-     * @return      string
+     * @return  string
      */
     protected function renderAttributes()
     {
