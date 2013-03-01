@@ -29,6 +29,8 @@ return array(
             'sxbForm'            => 'SxBootstrap\View\Helper\Bootstrap\Form',
             'sxbFormElement'     => 'SxBootstrap\View\Helper\Bootstrap\FormElement',
             'sxbFormDescription' => 'SxBootstrap\View\Helper\Bootstrap\FormDescription',
+            'sxbButtonGroup'     => 'SxBootstrap\View\Helper\Bootstrap\ButtonGroup',
+            'sxbButtonToolbar'   => 'SxBootstrap\View\Helper\Bootstrap\ButtonToolbar',
             'sxbTabs'            => 'SxBootstrap\View\Helper\Bootstrap\Tabs',
             'sxbAlert'           => 'SxBootstrap\View\Helper\Bootstrap\Alert',
             'sxbBadge'           => 'SxBootstrap\View\Helper\Bootstrap\Badge',
