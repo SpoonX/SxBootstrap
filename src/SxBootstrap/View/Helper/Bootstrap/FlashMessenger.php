@@ -43,7 +43,7 @@ class FlashMessenger extends AbstractHelper
                 $class = $this->classMessages[$namespace];
             }
 
-            return $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint, $isBlock, $class)->render();
+            return $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint, $isBlock, $class);
         }
 
         $message = '';
@@ -58,7 +58,7 @@ class FlashMessenger extends AbstractHelper
                 $class = $this->classMessages[$namespace];
             }
 
-            $message .= $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint, $isBlock, $class)->render();
+            $message .= $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint, $isBlock, $class);
         }
 
         return $message;
