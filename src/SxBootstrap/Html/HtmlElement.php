@@ -173,7 +173,7 @@ class HtmlElement
     }
 
     /**
-     * Set tag content
+     * Set the content. (Overwrites old content)
      *
      * @param   string  $content
      *
