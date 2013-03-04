@@ -13,14 +13,20 @@
 namespace SxBootstrap\View\Helper\Bootstrap;
 
 use SxBootstrap\Controller\Plugin\FlashMessenger as PluginFlashMessenger;
-use Zend\View\Helper\AbstractHelper;
 
-class FlashMessenger extends AbstractHelper
+class FlashMessenger extends AbstractElementHelper
 {
     /**
      * @var boolean $block displaymode
      */
     protected $isBlock = true;
+
+    /**
+     * The namespace messages to display
+     *
+     * @var string|null $namespaces
+     */
+    protected $namespaces = null;
 
     /**
      * @var array Array of classes used for namespaces
@@ -80,24 +86,33 @@ class FlashMessenger extends AbstractHelper
     }
 
     /**
-     * @param   string|array|null   $namespace
-     * @param   boolean             $isBlock
+     * Set the namespace that should be displayed
      *
-     * @return  string
+     * @param string|array
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\FlashMessenger
      */
-    public function __invoke($namespace = null, $isBlock = true)
+    public function setNamespaces($namespaces)
+    {
+        if (is_string($namespaces)) {
+            $this->namespaces = array($namespaces);
+        } elseif (is_array($namespaces)) {
+            $this->namespaces = $namespaces;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Return the HTML string of this HTML element
+     *
+     * @return string
+     */
+    public function render()
     {
         $alerts = array();
 
-        $this->block($isBlock);
-
-        if (is_string($namespace)) {
-            $namespaces = array($namespace);
-        } elseif (is_array($namespace)) {
-            $namespaces = $namespace;
-        } else {
-            $namespaces = array_keys($this->namespaceClasses);
-        }
+        $namespaces = !is_null($this->namespaces) ? $this->namespaces : array_keys($this->namespaceClasses);
 
         foreach ($namespaces as $namespace) {
             if (is_object($alert = $this->getAlert($namespace))) {
@@ -106,6 +121,19 @@ class FlashMessenger extends AbstractHelper
         }
 
         return implode(' ', $alerts);
+    }
+
+    /**
+     * @param   string|array|null   $namespace
+     * @param   boolean             $isBlock
+     *
+     * @return  string
+     */
+    public function __invoke($namespace = null, $isBlock = true)
+    {
+        $this->block($isBlock);
+
+        return clone $this;
     }
 
 }

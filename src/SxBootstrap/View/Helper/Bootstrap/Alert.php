@@ -102,11 +102,9 @@ class Alert extends AbstractElementHelper
         if ($this->closable) {
             $this->createDismissButton();
         }
-        
+
         return $this->getElement()->render();
     }
-
-    /**
 
     /**
      * Get the dismissal button
