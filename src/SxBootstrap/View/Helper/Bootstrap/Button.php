@@ -74,35 +74,27 @@ class Button extends AbstractHelper
     /**
      * Get arguments and make button element
      *
-     * @param   mixed  args
+     * @param   mixed  $argument
      *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Button
      */
-    public function __invoke()
+    public function __invoke($argument = null)
     {
         $this->element = null;
 
-        $arguments = func_get_args();
-
-        if (count($arguments) > 1) {
-            throw new Exception\InvalidArgumentException(
-                'Expected exactly 1 argument. Got ' . count($arguments) . '.'
-            );
-        }
-
-        if (count($arguments) === 0) {
+        if (null === $argument) {
             $this->element = new ButtonElement;
-        } elseif (!empty($arguments[0]) && $arguments[0] instanceof ElementInterface) {
-            $this->element = $arguments[0];
-        } elseif(is_string($arguments[0])) {
+        } elseif ($argument instanceof ElementInterface) {
+            $this->element = $argument;
+        } elseif(is_string($argument)) {
             $this->element = new ButtonElement;
-            $this->element->setName($arguments[0]);
-        } elseif(is_array($arguments[0])) {
+            $this->element->setName($argument);
+        } elseif(is_array($argument)) {
             $this->element = new ButtonElement;
-            $this->element->setAttributes($arguments[0]);
+            $this->element->setAttributes($argument);
         } else {
             throw new Exception\InvalidArgumentException(
-                'Expected either array or "Zend\Form\ElementInterface", got ' . gettype($arguments[0])
+                'Expected either array or "Zend\Form\ElementInterface", got ' . gettype($argument)
             );
         }
 
