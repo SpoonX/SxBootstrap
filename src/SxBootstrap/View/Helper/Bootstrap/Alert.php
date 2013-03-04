@@ -22,7 +22,7 @@ class Alert extends AbstractElementHelper
      /**
       * @var boolean Enable/Disable the dismiss button
       */
-     protected $closable = false;
+     protected $closable = true;
 
     /**
      * Display an Informational Alert
@@ -81,13 +81,9 @@ class Alert extends AbstractElementHelper
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Alert
      */
-    public function closable($enabled=null)
+    public function closable($enabled)
     {
-        if (is_null($enabled)) {
-            $enabled = !$this->closable;
-        }
-
-        $this->closable = $enabled;
+        $this->closable = (bool)$enabled;
 
         return $this;
     }
@@ -117,8 +113,8 @@ class Alert extends AbstractElementHelper
             ->spawnChild('button')
             ->setContent('&times;')
             ->setAttributes(array(
-                'data-dismiss' => 'alert',
-                'type' => 'button'
+                'data-dismiss'  => 'alert',
+                'type'          => 'button'
             ))
             ->addClass('close');
     }
