@@ -17,59 +17,95 @@ use Zend\View\Helper\AbstractHelper;
 
 class FlashMessenger extends AbstractHelper
 {
+    /**
+     * @var boolean $block displaymode
+     */
+    protected $isBlock = true;
 
     /**
      * @var array Array of classes used for namespaces
      */
     protected $namespaceClasses = array(
-        PluginFlashMessenger::NAMESPACE_INFO    => 'alert alert-info',
-        PluginFlashMessenger::NAMESPACE_DEFAULT => 'alert alert-info',
-        PluginFlashMessenger::NAMESPACE_SUCCESS => 'alert alert-success',
-        PluginFlashMessenger::NAMESPACE_WARNING => 'alert alert-warning',
-        PluginFlashMessenger::NAMESPACE_ERROR   => 'alert alert-error',
+        PluginFlashMessenger::NAMESPACE_INFO    => 'info',
+        PluginFlashMessenger::NAMESPACE_DEFAULT => 'info',
+        PluginFlashMessenger::NAMESPACE_SUCCESS => 'success',
+        PluginFlashMessenger::NAMESPACE_WARNING => 'warning',
+        PluginFlashMessenger::NAMESPACE_ERROR   => 'error',
     );
 
     /**
-     * @param   string|null $namespace
-     * @param   boolean     $isBlock
+     * Get the Alert objects containing the messages that are registered on the flash messenger.
+     *
+     * @param string $namespace the messages by namespace
+     *
+     * @return Alert
+     */
+    public function getAlert($namespace)
+    {
+        $messagesToPrint = $this->getView()->plugin('flash_messenger')->render($namespace);
+
+        if (empty($messagesToPrint)) {
+            return null;
+        }
+
+        $alert = $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint);
+
+        if (isset($this->namespaceClasses[$namespace])) {
+            $alert->{$this->namespaceClasses[$namespace]}();
+        }
+
+        if ($this->isBlock) {
+            $alert->block();
+        }
+
+        return $alert;
+    }
+
+    /**
+     * Toggle the display mode for each alert to block.
+     *
+     * @param boolean $enabled
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\FlashMessenger
+     */
+    public function block($enabled = null)
+    {
+        if (is_null($enabled)) {
+            $enabled = !$this->isBlock;
+        }
+
+        $this->isBlock = $enabled;
+
+        return $this;
+    }
+
+    /**
+     * @param   string|array|null   $namespace
+     * @param   boolean             $isBlock
      *
      * @return  string
      */
-    public function __invoke($namespace = null, $isBlock = false)
+    public function __invoke($namespace = null, $isBlock = true)
     {
-        if (!empty($namespace)) {
-            $messagesToPrint = $this->getView()->plugin('flash_messenger')->render($namespace);
+        $alerts = array();
 
-            if (empty($messagesToPrint)) {
-                return '';
-            }
+        $this->block($isBlock);
 
-            $class = '';
-
-            if (isset($this->namespaceClasses[$namespace])) {
-                $class = $this->namespaceClasses[$namespace];
-            }
-
-            return $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint, $isBlock, $class);
+        if (is_string($namespace)) {
+            $namespaces = array($namespace);
+        } elseif (is_array($namespace)) {
+            $namespaces = $namespace;
+        } else {
+            $namespaces = array_keys($this->namespaceClasses);
         }
 
-        $message = '';
-
-        foreach ($this->namespaceClasses as $namespace => $class) {
-            $messagesToPrint = $this->getView()->plugin('flash_messenger')->render($namespace);
-
-            if (empty($messagesToPrint)) {
-                continue;
+        foreach ($namespaces as $namespace) {
+            if (is_object($alert = $this->getAlert($namespace))) {
+                $alerts[] = $alert;
             }
-
-            if (isset($this->namespaceClasses[$namespace])) {
-                $class = $this->namespaceClasses[$namespace];
-            }
-
-            $message .= $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint, $isBlock, $class);
         }
 
-        return $message;
+        return implode(' ', $alerts);
     }
 
 }
