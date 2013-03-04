@@ -18,6 +18,13 @@
     "replace": {
         "rwoverdijk/sxbootstrap": "*"
     },
+    "authors": [
+        {
+            "name": "Wesley Overdijk",
+            "email": "r.w.overdijk@gmail.com",
+            "homepage": "http://blog.spoonx.nl/"
+        }
+    ],
     "autoload" : {
         "psr-0": {
             "SxBootstrap": "src/"
