@@ -8,8 +8,7 @@
  */
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use Zend\View\Helper\AbstractHelper;
-use SxBootstrap\Exception;
+use SxBootstrap\Html\HtmlElement;
 
 /**
  * Alert
@@ -18,128 +17,136 @@ use SxBootstrap\Exception;
  * @package    SxBootstrap_View
  * @subpackage Helper
  */
-class Alert extends AbstractHelper
+class Alert extends AbstractElementHelper
 {
-
-    /**
-     * @var string The format of the alert
-     */
-     protected $format = '<div class="alert%s">%s%s</div>';
-
      /**
-      * @var string The markup of the dismiss button
+      * @var boolean Enable/Disable the dismiss button
       */
-     protected $dismissHtml = '<button type="button" class="close" data-dismiss="alert">&times;</button>';
+     protected $closable = false;
 
     /**
      * Display an Informational Alert
      *
-     * @param   string  $alert
-     * @param   boolean $isBlock
-     *
-     * @return  string
+     * @return  \SxBootstrap\View\Helper\Bootstrap\Alert
      */
-    public function info($alert, $isBlock = false)
+    public function info()
     {
-        return $this->render($alert, $isBlock, 'alert-info');
+        return $this->addClass('alert-info');
     }
 
     /**
      * Display an Error Alert
      *
-     * @param   string  $alert
-     * @param   boolean $isBlock
-     *
-     * @return  string
+     * @return  \SxBootstrap\View\Helper\Bootstrap\Alert
      */
-    public function error($alert, $isBlock = false)
+    public function error()
     {
-        return $this->render($alert, $isBlock, 'alert-error');
+        return $this->addClass('alert-error');
     }
 
     /**
      * Display a Success Alert
      *
-     * @param   string  $alert
-     * @param   boolean $isBlock
-     *
-     * @return string
+     * @return \SxBootstrap\View\Helper\Bootstrap\Alert
      */
-    public function success($alert, $isBlock = false)
+    public function success()
     {
-        return $this->render($alert, $isBlock, 'alert-success');
+        return $this->addClass('alert-success');
     }
 
     /**
      * Display a Warning Alert
      *
-     * @param   string  $alert
-     * @param   boolean $isBlock
-     *
-     * @return string
+     * @return \SxBootstrap\View\Helper\Bootstrap\Alert
      */
-    public function warning($alert, $isBlock = false)
+    public function warning()
     {
-        return $this->render($alert, $isBlock);
+        return $this->addClass('alert-warning');
+    }
+
+    /**
+     * Change the Alerts display type to block
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\Alert
+     */
+    public function block()
+    {
+        return $this->addClass('alert-block');
+    }
+
+    /**
+     * Toggle the dismissbutton which makes it closable for the user.
+     *
+     * @param boolean $enabled
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\Alert
+     */
+    public function closable($enabled=null)
+    {
+        if (is_null($enabled)) {
+            $enabled = !$this->closable;
+        }
+
+        $this->closable = $enabled;
+
+        return $this;
     }
 
     /**
      * Render an Alert
      *
-     * @param   string  $alert
-     * @param   boolean $isBlock
-     * @param   string  $class
-     *
      * @return  string
-     * @throws  Exception\InvalidArgumentException
      */
-    public function render($alert, $isBlock = false, $class = '')
+    public function render()
     {
-        if (!is_string($alert)) {
-            throw new Exception\InvalidArgumentException(sprintf(
-                'Alert must be of type string, got "%s".',
-                gettype($alert)
-            ));
-        }
-
-        if (!is_string($class)) {
-            throw new Exception\InvalidArgumentException(sprintf(
-                'Provided class must be of type string, got "%s".',
-                gettype($class)
-            ));
-        }
-
-        if (true === $isBlock) {
-            $class .= ' alert-block';
+        if ($this->closable) {
+            $this->createDismissButton();
         }
         
-        if (!empty($class)) {
-            $class = ' ' . trim($class, ' ');
-        }
+        return $this->getElement()->render();
+    }
 
-        return sprintf(
-            $this->format,
-            $class,
-            $this->dismissHtml,
-            $alert
-        );
+    /**
+
+    /**
+     * Get the dismissal button
+     *
+     * @return \SxBootstrap\Html\HtmlElement
+     */
+    protected function createDismissButton()
+    {
+        return $this->getElement()
+            ->spawnChild('button')
+            ->setContent('&times;')
+            ->setAttributes(array(
+                'data-dismiss' => 'alert',
+                'type' => 'button'
+            ))
+            ->addClass('close');
     }
 
     /**
      * Invoke Alert
+     * The isBlock parameter is used to convert the display type of the element to block.
      *
      * @param   string  $alert
      * @param   boolean $isBlock
-     * @param   string  $class
      *
-     * @return  string|Alert
+     * @return  \SxBootstrap\View\Helper\Bootstrap\Alert
      */
-    public function __invoke($alert = null, $isBlock = false, $class = '')
+    public function __invoke($alert = null, $isBlock = false)
     {
-        if (null !== $alert) {
-            return $this->render($alert, $isBlock, $class);
+        $this->setElement(new HtmlElement);
+        $this->addClass('alert');
+
+        if ($isBlock) {
+            $this->block();
         }
 
-        return $this;
+        if (!is_null($alert)) {
+            $this->setContent($alert);
+        }
+
+        return clone $this;
     }
 }
