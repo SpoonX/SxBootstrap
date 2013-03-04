@@ -1,9 +1,9 @@
-# SxBootstrap 1.3.0
+# SxBootstrap 1.3.1
 This module is intended for usage with a default directory structure of a
 [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication/) and depends on the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
 It includes Twitter Bootstrap and allows you to build custom versions by overriding the configuration, and supplies some useful view helpers.
 
-## New in this release
+## New in 1.3
 * Added view helpers
 * Added controller plugin (sxFlashMessenger)
 
