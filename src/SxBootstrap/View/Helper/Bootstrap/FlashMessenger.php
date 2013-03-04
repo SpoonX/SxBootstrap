@@ -44,7 +44,7 @@ class FlashMessenger extends AbstractElementHelper
      *
      * @param string $namespace the messages by namespace
      *
-     * @return Alert
+     * @return \SxBootstrap\View\Helper\Bootstrap\Alert
      */
     public function getAlert($namespace)
     {
@@ -120,17 +120,18 @@ class FlashMessenger extends AbstractElementHelper
             }
         }
 
-        return implode(' ', $alerts);
+        return implode($alerts);
     }
 
     /**
      * @param   string|array|null   $namespace
      * @param   boolean             $isBlock
      *
-     * @return  string
+     * @return  \SxBootstrap\View\Helper\Bootstrap\FlashMessenger
      */
     public function __invoke($namespace = null, $isBlock = true)
     {
+        $this->setNamespaces($namespace);
         $this->block($isBlock);
 
         return clone $this;
