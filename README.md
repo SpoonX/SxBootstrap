@@ -24,7 +24,7 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
     * ... Adding it through the command line,
 
         ```bash
-        ./composer.phar require rwoverdijk/sxbootstrap
+        ./composer.phar require spoonx/sxbootstrap
         # When asked for a version, type: "1.*"
         ```
     * or, adding it manually to your composer.json file and **then running `./composer.phar install`** to install the dependencies
@@ -32,7 +32,7 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
         ```json
         {
             "require": {
-                "rwoverdijk/sxbootstrap": "1.*"
+                "spoonx/sxbootstrap": "1.*"
             }
         }
         ```
@@ -46,16 +46,16 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
     Open up your command line, and navigate to your project (`cd /path/to/my/project`).
     Once you get there, run the following command: `npm install less .` (including the dot).
     This will install less in a new directory named node_modules, enabling us to find it.
-    If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/RWOverdijk/SxBootstrap/wiki/Configuration-options)"
+    If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)"
 
 5. Configure the filter to get it working. (This only applies to you if your node.js binary is not in `/usr/bin/node`,
 or your node paths are not the default, so you've ignored my advice in step 4.)
 
-6. Take a look at the [wiki](https://github.com/RWOverdijk/SxBootstrap/wiki) for examples and other information to get started.
-Specifically the part on [how to configure the filter to get it working (bottom of the page)](https://github.com/RWOverdijk/SxBootstrap/wiki/Configuration-options)
+6. Take a look at the [wiki](https://github.com/SpoonX/SxBootstrap/wiki) for examples and other information to get started.
+Specifically the part on [how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)
 
 ## Usage
-I'm not going into detail here, as you can find all of the information in the [wiki](https://github.com/RWOverdijk/SxBootstrap/wiki). But to test if
+I'm not going into detail here, as you can find all of the information in the [wiki](https://github.com/SpoonX/SxBootstrap/wiki). But to test if
 things are working you can simply call the view helper in your layout (before outputting headscript/headlink!):
 
 ```php
@@ -70,9 +70,9 @@ so please enable caching of some sort [(read about it here, the FilePath cache i
 
 ## Questions / support
 If you're having trouble with the module there are a couple of resources that might be of help.
-* The [wiki page](https://github.com/RWOverdijk/SxBootstrap/wiki), where you'll perhaps find your answer.
+* The [wiki page](https://github.com/SpoonX/SxBootstrap/wiki), where you'll perhaps find your answer.
 * [RWOverdijk at irc.freenode.net #zftalk.dev](http://webchat.freenode.net?channels=zftalk.dev%2Czftalk&uio=MTE9MTAz8d)
-* [Issue tracker](https://github.com/RWOverdijk/SxBootstrap/issues). (Please try to not submit unrelated issues).
+* [Issue tracker](https://github.com/SpoonX/SxBootstrap/issues). (Please try to not submit unrelated issues).
 * By [mail](mailto:r.w.overdijk@gmail.com?Subject=SxBootstrap%20help)
 
 ## Todo
