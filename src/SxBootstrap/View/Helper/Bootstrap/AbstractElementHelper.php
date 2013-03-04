@@ -33,6 +33,35 @@ abstract class AbstractElementHelper extends AbstractHelper
     }
 
     /**
+     * Add attribute on element
+     *
+     * @param   string  $key
+     * @param   string  $value
+     *
+     * @return  \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     */
+    public function addAttribute($key, $value)
+    {
+        $this->element->addAttribute($key, $value);
+
+        return $this;
+    }
+
+    /**
+     * Set the content of the element
+     *
+     * @param   string $content
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     */
+    public function setContent($content)
+    {
+        $this->element->setContent($content);
+
+        return $this;
+    }
+
+    /**
      * Return the HTML string of this HTML element
      *
      * @return string

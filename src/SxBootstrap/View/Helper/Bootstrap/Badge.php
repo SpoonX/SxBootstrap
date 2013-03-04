@@ -8,8 +8,8 @@
  */
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use Zend\Form\View\Helper\AbstractHelper;
 use SxBootstrap\Exception;
+use SxBootstrap\Html\HtmlElement;
 
 /**
  * Badge
@@ -18,81 +18,78 @@ use SxBootstrap\Exception;
  * @package    SxBootstrap_View
  * @subpackage Helper
  */
-class Badge extends AbstractHelper
+class Badge extends AbstractElementHelper
 {
-
-    /**
-     * @var string
-     */
-     protected $format = '<span class="badge%s">%s</span>';
-
     /**
      * Display an Informational Badge
      *
-     * @param   string  $badge
-     * @return  string
+     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
      */
-    public function info($badge)
+    public function info()
     {
-        return $this->render($badge, 'badge-info');
+        return $this->addClass('badge-info');
     }
 
     /**
      * Display an Important Badge
      *
-     * @param   string  $badge
-     * @return  string
+     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
      */
-    public function important($badge)
+    public function important()
     {
-        return $this->render($badge, 'badge-important');
+        return $this->addClass('badge-important');
     }
 
     /**
      * Display an Inverse Badge
      *
      * @param   string  $badge
-     * @return  string
+     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
      */
-    public function inverse($badge)
+    public function inverse()
     {
-        return $this->render($badge, 'badge-inverse');
+        return $this->addClass('badge-inverse');
     }
 
     /**
      * Display a Sucess Badge
      *
-     * @param   string  $badge
-     *
-     * @return  string
+     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
      */
-    public function success($badge)
+    public function success()
     {
-        return $this->render($badge, 'badge-success');
+        return $this->addClass('badge-success');
     }
 
     /**
      * Display a Warning Badge
      *
-     * @param   string  $badge
-     *
-     * @return  string
+     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
      */
-    public function warning($badge)
+    public function warning()
     {
-        return $this->render($badge, 'badge-warning');
+        return $this->addClass('badge-warning');
     }
 
     /**
      * Render an Badge
      *
-     * @param   string  $badge
-     * @param   string  $class
-     *
      * @return  string
+     */
+    public function render()
+    {
+        return $this->getElement()->render();
+    }
+
+    /**
+     * Invoke Badge
+     *
+     * @param   string  $badge
+     *
+     * @return  Badge
      * @throws  Exception\InvalidArgumentException
      */
-    public function render($badge, $class = '')
+    public function __invoke($badge)
     {
         if (!is_string($badge)) {
             throw new Exception\InvalidArgumentException(sprintf(
@@ -101,33 +98,8 @@ class Badge extends AbstractHelper
             ));
         }
 
-        if (!is_string($class)) {
-            throw new Exception\InvalidArgumentException(sprintf(
-                'Provided class must be of type string, got "%s".',
-                gettype($class)
-            ));
-        }
-        
-        if (!empty($class)) {
-            $class = ' ' . trim($class, ' ');
-        }
+        $this->setElement(new HtmlElement('span'))->addClass('badge');
 
-        return sprintf($this->format, $class, $badge);
-    }
-
-    /**
-     * Invoke Badge
-     *
-     * @param   string  $badge
-     * @param   string  $class
-     *
-     * @return  string|Badge
-     */
-    public function __invoke($badge = null, $class = '')
-    {
-        if ($badge) {
-            return $this->render($badge, $class);
-        }
-        return $this;
+        return clone $this->setContent($badge);
     }
 }
