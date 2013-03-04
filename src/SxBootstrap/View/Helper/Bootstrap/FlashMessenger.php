@@ -13,6 +13,7 @@
 namespace SxBootstrap\View\Helper\Bootstrap;
 
 use SxBootstrap\Controller\Plugin\FlashMessenger as PluginFlashMessenger;
+use SxBootstrap\Exception;
 
 class FlashMessenger extends AbstractElementHelper
 {
@@ -31,12 +32,12 @@ class FlashMessenger extends AbstractElementHelper
     /**
      * @var array Array of classes used for namespaces
      */
-    protected $namespaceClasses = array(
-        PluginFlashMessenger::NAMESPACE_INFO    => 'info',
-        PluginFlashMessenger::NAMESPACE_DEFAULT => 'info',
-        PluginFlashMessenger::NAMESPACE_SUCCESS => 'success',
-        PluginFlashMessenger::NAMESPACE_WARNING => 'warning',
-        PluginFlashMessenger::NAMESPACE_ERROR   => 'error',
+    protected $availableNamespaces = array(
+        PluginFlashMessenger::NAMESPACE_INFO,
+        PluginFlashMessenger::NAMESPACE_DEFAULT,
+        PluginFlashMessenger::NAMESPACE_SUCCESS,
+        PluginFlashMessenger::NAMESPACE_WARNING,
+        PluginFlashMessenger::NAMESPACE_ERROR,
     );
 
     /**
@@ -48,6 +49,7 @@ class FlashMessenger extends AbstractElementHelper
      */
     public function getAlert($namespace)
     {
+
         $messagesToPrint = $this->getView()->plugin('flash_messenger')->render($namespace);
 
         if (empty($messagesToPrint)) {
@@ -56,8 +58,8 @@ class FlashMessenger extends AbstractElementHelper
 
         $alert = $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint);
 
-        if (isset($this->namespaceClasses[$namespace])) {
-            $alert->{$this->namespaceClasses[$namespace]}();
+        if (in_array($namespace, $this->availableNamespaces)) {
+            $alert->$namespace();
         }
 
         if ($this->isBlock) {
@@ -98,6 +100,10 @@ class FlashMessenger extends AbstractElementHelper
             $this->namespaces = array($namespaces);
         } elseif (is_array($namespaces)) {
             $this->namespaces = $namespaces;
+        } else {
+            throw new Exception\InvalidArgumentException(
+                "Invalid argument, expected a string or array. Got ".gettype($namespaces)."."
+            );
         }
 
         return $this;
@@ -110,12 +116,13 @@ class FlashMessenger extends AbstractElementHelper
      */
     public function render()
     {
-        $alerts = array();
-
-        $namespaces = !is_null($this->namespaces) ? $this->namespaces : array_keys($this->namespaceClasses);
+        $alerts     = array();
+        $namespaces = !is_null($this->namespaces) ? $this->namespaces : $this->availableNamespaces;
 
         foreach ($namespaces as $namespace) {
-            if (is_object($alert = $this->getAlert($namespace))) {
+            $alert = $this->getAlert($namespace);
+
+            if (is_object($alert)) {
                 $alerts[] = $alert;
             }
         }
@@ -131,7 +138,12 @@ class FlashMessenger extends AbstractElementHelper
      */
     public function __invoke($namespace = null, $isBlock = true)
     {
-        $this->setNamespaces($namespace);
+        $this->namespaces = null;
+
+        if (!is_null($namespace)) {
+            $this->setNamespaces($namespace);
+        }
+
         $this->block($isBlock);
 
         return clone $this;

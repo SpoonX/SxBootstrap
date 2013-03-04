@@ -99,6 +99,8 @@ class Alert extends AbstractElementHelper
             $this->createDismissButton();
         }
 
+        $this->getElement()->setAppendContent();
+
         return $this->getElement()->render();
     }
 
