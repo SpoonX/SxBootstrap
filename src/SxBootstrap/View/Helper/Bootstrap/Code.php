@@ -15,7 +15,7 @@ class Code extends AbstractElementHelper
      *
      * @param 	string  $content    The contents of the element
      *
-     * @return  SxBootstrap\View\Helper\Bootstrap\Code  Fluent interface
+     * @return  \SxBootstrap\View\Helper\Bootstrap\Code  Fluent interface
      */
     public function __invoke($content = '')
     {
