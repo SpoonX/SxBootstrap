@@ -1,4 +1,4 @@
-# SxBootstrap 1.3.2
+# SxBootstrap 1.4.3
 This module is intended for usage with a default directory structure of a
 [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication/) and depends on the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
 It includes Twitter Bootstrap and allows you to build custom versions by overriding the configuration, and supplies some useful view helpers.
@@ -6,16 +6,12 @@ It includes Twitter Bootstrap and allows you to build custom versions by overrid
 ## Warning!
 Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
 
-## New in 1.3
-* Added view helpers
-* Added controller plugin (sxFlashMessenger)
-
 ## Features
 * Fast
 * Customizable (variables, components, plugins)
 * Works with AssetManager
 * Plenty of ViewHelpers
-* Extendible (run your own less files from bootstrap context to share mixins and variables)
+* Extendable (run your own less files from bootstrap context to share mixins and variables)
 * Compatible, and tested with twitter bootstrap 2.1, 2.2 and 2.3+
 
 ## Installation
@@ -77,7 +73,7 @@ If you're having trouble with the module there are a couple of resources that mi
 
 ## Todo
 There's still a lot of work to be done on this module.
-For now it provides basic functionality and it's already useful.
+For now it provides really useful functionalities and it's already useful.
 
 * Include other components as view helpers
 * Add unit tests
