@@ -8,6 +8,8 @@
  */
 namespace SxBootstrap\Html;
 
+use SxBootstrap\Exception;
+
 class HtmlElement
 {
 
@@ -115,7 +117,7 @@ class HtmlElement
      *
      * @return  \SxBootstrap\Html\HtmlElement
      *
-     * @throws  \SxBootstrapException\InvalidArgumentException
+     * @throws  \SxBootstrap\Exception\InvalidArgumentException
      */
     public function addAttribute($key, $value)
     {
@@ -376,7 +378,7 @@ class HtmlElement
     }
 
     /**
-     * Render children
+     * @param array $children
      *
      * @return string
      */

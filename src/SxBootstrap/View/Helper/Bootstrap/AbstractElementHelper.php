@@ -22,7 +22,7 @@ abstract class AbstractElementHelper extends AbstractHelper
      *
      * @param   string  $class  name of the class
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\AbstractHelper
+     * @return  \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
      */
     public final function addClass($class)
     {
@@ -69,7 +69,7 @@ abstract class AbstractElementHelper extends AbstractHelper
     public abstract function render();
 
     /**
-     * Return the string representive of the Code block
+     * Return the markup string of the Code block
      *
      * @return string
      */
@@ -79,9 +79,7 @@ abstract class AbstractElementHelper extends AbstractHelper
     }
 
     /**
-     * Get the element
-     *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\SxBootstrap\Html\HtmlElement
+     * @return \SxBootstrap\Html\HtmlElement
      */
     public function getElement()
     {
@@ -89,11 +87,9 @@ abstract class AbstractElementHelper extends AbstractHelper
     }
 
     /**
-     * Set the element we'll be using.
+     * @param \SxBootstrap\Html\HtmlElement $element
      *
-     * @param   \SxBootstrap\View\Helper\Bootstrap\SxBootstrap\Html\HtmlElement $element
-     *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\AbstractHelper
+     * @return AbstractElementHelper
      */
     public function setElement(HtmlElement $element)
     {
