@@ -8,6 +8,8 @@
  */
 namespace SxBootstrap\Html;
 
+use SxBootstrap\Exception;
+
 class HtmlElement
 {
 
@@ -115,13 +117,13 @@ class HtmlElement
      *
      * @return  \SxBootstrap\Html\HtmlElement
      *
-     * @throws  \SxBootstrapException\InvalidArgumentException
+     * @throws  \SxBootstrap\Exception\InvalidArgumentException
      */
     public function addAttribute($key, $value)
     {
         if (!is_string($key) || (!is_string($value)) && !is_numeric($value)) {
             throw new Exception\InvalidArgumentException(
-            'Invalid key or value type supplied. Expected string.'
+                'Invalid key or value type supplied. Expected string.'
             );
         }
 
@@ -131,11 +133,9 @@ class HtmlElement
     }
 
     /**
-     * Remove tag attributes
+     * @param string $key
      *
-     * @param   string  $key
-     *
-     * @return  \SxBootstrap\Html\HtmlElement
+     * @return HtmlElement
      */
     public function removeAttribute($key)
     {
@@ -283,7 +283,7 @@ class HtmlElement
     }
 
     /**
-     * Remove childeren
+     * Remove children
      *
      * @return  \SxBootstrap\Html\HtmlElement
      */
@@ -295,7 +295,7 @@ class HtmlElement
     }
 
     /**
-     * Set childrden
+     * Set children
      *
      * @param   array   $children
      *
@@ -376,7 +376,7 @@ class HtmlElement
     }
 
     /**
-     * Render children
+     * @param array|HtmlElement[] $children
      *
      * @return string
      */

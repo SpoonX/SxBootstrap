@@ -37,6 +37,7 @@ return array(
             'sxbButton'          => 'SxBootstrap\View\Helper\Bootstrap\Button',
             'sxbLabel'           => 'SxBootstrap\View\Helper\Bootstrap\Label',
             'sxbWell'            => 'SxBootstrap\View\Helper\Bootstrap\Well',
+            'sxbPagination'      => 'SxBootstrap\View\Helper\Bootstrap\Pagination',
             'sxbFormColorpicker' => 'SxBootstrap\View\Helper\Bootstrap\FormColorPicker',
             'sxBootstrap'        => 'SxBootstrap\View\Helper\Bootstrap\Bootstrap',
             'sxbFlashMessenger'  => 'SxBootstrap\View\Helper\Bootstrap\FlashMessenger',
