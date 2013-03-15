@@ -32,6 +32,16 @@ class Pager extends AbstractElementHelper
     protected $nextLabel = 'Next &rarr;';
 
     /**
+     * @var array
+     */
+    protected $routeParams = array();
+
+    /**
+     * @var string|null
+     */
+    protected $route = null;
+
+    /**
      * @param \Zend\Paginator\Paginator $paginator
      *
      * @return Pagination
@@ -64,13 +74,25 @@ class Pager extends AbstractElementHelper
         if (empty($paginationData->previous)) {
             $previous->addClass('disabled');
         } else {
-            $previousAnchor->addAttribute('href', $urlHelper(null, array('page' => $paginationData->previous)));
+            $previousAnchor->addAttribute('href', $urlHelper(
+                $this->getRoute(),
+                array_merge(
+                    array('page' => $paginationData->previous),
+                    $this->getRouteParams()
+                )
+            ));
         }
 
         if (empty($paginationData->next)) {
             $next->addClass('disabled');
         } else {
-            $nextAnchor->addAttribute('href', $urlHelper(null, array('page' => $paginationData->next)));
+            $nextAnchor->addAttribute('href', $urlHelper(
+                $this->getRoute(),
+                array_merge(
+                    array('page' => $paginationData->next),
+                    $this->getRouteParams()
+                )
+            ));
         }
 
         if ($this->align) {
@@ -79,6 +101,46 @@ class Pager extends AbstractElementHelper
         }
 
         return $this->getElement()->render();
+    }
+
+    /**
+     * @param $route
+     *
+     * @return Pager
+     */
+    public function setRoute($route)
+    {
+        $this->route = (string)$route;
+
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     * @param array $routeParams
+     *
+     * @return Pager
+     */
+    public function setRouteParams(array $routeParams)
+    {
+        $this->routeParams = $routeParams;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRouteParams()
+    {
+        return $this->routeParams;
     }
 
     /**

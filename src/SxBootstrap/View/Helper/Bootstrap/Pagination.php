@@ -44,6 +44,16 @@ class Pagination extends AbstractElementHelper
     protected $paginator;
 
     /**
+     * @var array
+     */
+    protected $routeParams = array();
+
+    /**
+     * @var string|null
+     */
+    protected $route = null;
+
+    /**
      * @param \Zend\Paginator\Paginator $paginator
      *
      * @return Pagination
@@ -75,12 +85,24 @@ class Pagination extends AbstractElementHelper
         if (empty($paginationData->previous)) {
             $previous->addClass('disabled');
         } else {
-            $previousAnchor->addAttribute('href', $urlHelper(null, array('page' => $paginationData->previous)));
+            $previousAnchor->addAttribute('href', $urlHelper(
+                $this->getRoute(),
+                array_merge(
+                    array('page' => $paginationData->previous),
+                    $this->getRouteParams()
+                )
+            ));
         }
 
         foreach ($paginationData->pagesInRange as $page) {
             $pageNumberElement = $unorderedList->spawnChild('li');
-            $pageHref          = $urlHelper(null, array('page' => $page));
+            $pageHref          = $urlHelper(
+                $this->getRoute(),
+                array_merge(
+                    array('page' => $page),
+                    $this->getRouteParams()
+                )
+            );
 
             if ($page === $paginationData->current) {
                 $pageNumberElement->addClass('active');
@@ -95,10 +117,56 @@ class Pagination extends AbstractElementHelper
         if (empty($paginationData->next)) {
             $next->addClass('disabled');
         } else {
-            $nextAnchor->addAttribute('href', $urlHelper(null, array('page' => $paginationData->next)));
+            $nextAnchor->addAttribute('href', $urlHelper(
+                $this->getRoute(),
+                array_merge(
+                    array('page' => $paginationData->next),
+                    $this->getRouteParams()
+                )
+            ));
         }
 
         return $this->getElement()->render();
+    }
+
+    /**
+     * @param $route
+     *
+     * @return Pagination
+     */
+    public function setRoute($route)
+    {
+        $this->route = (string)$route;
+
+        return $this;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     * @param array $routeParams
+     *
+     * @return Pagination
+     */
+    public function setRouteParams(array $routeParams)
+    {
+        $this->routeParams = $routeParams;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getRouteParams()
+    {
+        return $this->routeParams;
     }
 
     /**
