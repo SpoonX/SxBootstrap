@@ -35,19 +35,19 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
 
 2. Enable `AssetManager` and `SxBootstrap` in your `application.config.php` file.
 
-3. Install NPM/NodeJS. If you've already done this, continue to step 4.
-    [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) can be found here.
+3. Install Less.
+    Option 1 - Install using NPM/NodeJS. [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) can be found here.
+               Open up your command line, and navigate to your project (`cd /path/to/my/project`).
+               Once you get there, run the following command: `npm install less .` (including the dot).
+               This will install less in a new directory named node_modules, enabling us to find it.
+               If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)"
+               
+    Option 2 - Use lessphp. [Instructions](http://leafo.net/lessphp/#composer) can be found here.
 
-4. Install less.
-    Open up your command line, and navigate to your project (`cd /path/to/my/project`).
-    Once you get there, run the following command: `npm install less .` (including the dot).
-    This will install less in a new directory named node_modules, enabling us to find it.
-    If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)"
+4. Configure the filter to get it working. (This only applies to you if you're using node.js and your binary is not in `/usr/bin/node`,
+or your node paths are not the default, so you've ignored my advice in step 3.1.)
 
-5. Configure the filter to get it working. (This only applies to you if your node.js binary is not in `/usr/bin/node`,
-or your node paths are not the default, so you've ignored my advice in step 4.)
-
-6. Take a look at the [wiki](https://github.com/SpoonX/SxBootstrap/wiki) for examples and other information to get started.
+5. Take a look at the [wiki](https://github.com/SpoonX/SxBootstrap/wiki) for examples and other information to get started.
 Specifically the part on [how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)
 
 ## Usage

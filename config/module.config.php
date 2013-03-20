@@ -80,5 +80,6 @@ return array(
         ),
         'variables'    => array(),
         'plugin_alias' => 'js/bootstrap.js',
+        'use_lessphp'  => false,
     ),
 );

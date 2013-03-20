@@ -5,10 +5,11 @@ use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
-use SxBootstrap\Service\BootstrapFilter;
+use SxBootstrap\Service\BootstrapLessFilter;
+use SxBootstrap\Service\BootstrapLessphpFilter;
 use SxBootstrap\Service\BootstrapResolver;
 
-class Module implements AutoloaderProviderInterface
+class Module implements AutoloaderProviderInterface, ServiceProviderInterface
 {
     /**
      * {@inheritDoc}
@@ -34,8 +35,11 @@ class Module implements AutoloaderProviderInterface
                 'SxBootstrap\Service\BootstrapFilter' => function($serviceManager) {
                     $config          = $serviceManager->get('Config');
                     $bootstrapConfig = $config['twitter_bootstrap'];
-                    $BootstrapFilter = new BootstrapFilter($bootstrapConfig);
-
+                    if ($bootstrapConfig['use_lessphp'] === true) {
+                        $BootstrapFilter = new BootstrapLessphpFilter($bootstrapConfig);
+                    } else {
+                        $BootstrapFilter = new BootstrapLessFilter($bootstrapConfig);
+                    }
                     return $BootstrapFilter;
                 },
                 'SxBootstrap\Service\BootstrapResolver' => function($serviceManager) {
