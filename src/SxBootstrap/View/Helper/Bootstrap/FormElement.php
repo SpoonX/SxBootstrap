@@ -258,7 +258,7 @@ class FormElement extends ZendFormElement
         $html = "";
 
         $label = $element->getLabel();
-        if (!$label) {
+        if (null === $label) {
             $label = $element->getOption('label') ? : $element->getAttribute('label');
         }
         if ($label) {
