@@ -3,10 +3,10 @@
 namespace SxBootstrap\Service;
 
 use Assetic\Asset\AssetInterface;
-use Assetic\Filter\LessFilter;
+use Assetic\Filter\LessphpFilter;
 use SxBootstrap\Exception;
 
-class BootstrapFilter extends LessphpFilter
+class BootstrapLessphpFilter extends LessphpFilter
 {
     /**
      * @var ServiceLocatorInterface

@@ -6,7 +6,7 @@ use Assetic\Asset\AssetInterface;
 use Assetic\Filter\LessFilter;
 use SxBootstrap\Exception;
 
-class BootstrapFilter extends LessFilter
+class BootstrapLessFilter extends LessFilter
 {
     /**
      * @var ServiceLocatorInterface
