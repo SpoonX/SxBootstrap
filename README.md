@@ -43,6 +43,12 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
                If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)"
                
     Option 2 - Use lessphp. [Instructions](http://leafo.net/lessphp/#composer) can be found here.
+               In your module.config.php file add the following config variable:
+               ```php
+               'twitter-bootstrap' => array(
+                   'use_lessphp' => true,
+               ),
+               ```
 
 4. Configure the filter to get it working. (This only applies to you if you're using node.js and your binary is not in `/usr/bin/node`,
 or your node paths are not the default, so you've ignored my advice in step 3.1.)
