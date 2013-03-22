@@ -3,10 +3,10 @@
 namespace SxBootstrap\Service;
 
 use Assetic\Asset\AssetInterface;
-use Assetic\Filter\LessFilter;
+use Assetic\Filter\LessphpFilter;
 use SxBootstrap\Exception;
 
-class BootstrapFilter extends LessFilter
+class BootstrapLessphpFilter extends LessphpFilter
 {
     /**
      * @var ServiceLocatorInterface
@@ -25,11 +25,6 @@ class BootstrapFilter extends LessFilter
     public function __construct(array $config)
     {
         $this->config = $config;
-
-        parent::__construct(
-            $this->config['filter']['node_bin'],
-            $this->config['filter']['node_paths']
-        );
     }
 
     /**
