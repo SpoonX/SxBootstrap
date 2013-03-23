@@ -57,7 +57,7 @@ class BootstrapFilter implements FilterInterface
 
         // Make sure we _always_ have the bootstrap import dir.
         if ($importDir !== $assetImportDir) {
-            $this->addLoadPath($importDir);
+            $this->lessFilter->addLoadPath($importDir);
         }
 
         $variables = array_merge(
