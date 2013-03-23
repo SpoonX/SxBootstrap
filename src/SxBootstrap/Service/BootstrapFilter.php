@@ -3,11 +3,18 @@
 namespace SxBootstrap\Service;
 
 use Assetic\Asset\AssetInterface;
+use Assetic\Filter\FilterInterface;
 use Assetic\Filter\LessFilter;
+use Assetic\Filter\LessphpFilter;
 use SxBootstrap\Exception;
 
-class BootstrapFilter extends LessFilter
+class BootstrapFilter implements FilterInterface
 {
+    /**
+     * @var FilterInterface
+     */
+    protected $lessFilter;
+    
     /**
      * @var ServiceLocatorInterface
      */
@@ -25,11 +32,15 @@ class BootstrapFilter extends LessFilter
     public function __construct(array $config)
     {
         $this->config = $config;
-
-        parent::__construct(
-            $this->config['filter']['node_bin'],
-            $this->config['filter']['node_paths']
-        );
+        
+        if ($this->config['use_lessphp']) {
+            $this->lessFilter = new LessphpFilter();
+        } else {
+            $this->lessFilter = new LessFilter(
+                    $this->config['filter']['node_bin'],
+                    $this->config['filter']['node_paths']
+            );
+        }
     }
 
     /**
@@ -73,7 +84,7 @@ class BootstrapFilter extends LessFilter
             $asset->setContent($variablesString.$asset->getContent());
         }
 
-        parent::filterLoad($asset);
+        $this->lessFilter->filterLoad($asset);
     }
 
     /**
