@@ -38,7 +38,7 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
 
 3. Install less...
 
-    a) Via NPM/Node.js (recommended method):
+    a) Via NPM/Node.js **(recommended method)**:
 
        Install npm/node.js. [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) can be found here.
        
