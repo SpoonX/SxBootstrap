@@ -16,14 +16,9 @@ class BootstrapFilter implements FilterInterface
     protected $lessFilter;
     
     /**
-     * @var ServiceLocatorInterface
+     * @var array
      */
-    protected $serviceLocator;
-
-    /**
-     * @var AssetInterface
-     */
-    protected $asset;
+    protected $config;
 
     /**
      * Constructs the service right before
