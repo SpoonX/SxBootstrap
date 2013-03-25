@@ -60,7 +60,7 @@ class FlashMessenger extends AbstractElementHelper
 
         if (in_array($namespace, $this->availableNamespaces)) {
 
-            if ($namespace == PluginFlashMessenger::NAMESPACE_DEFAULT) {
+            if (PluginFlashMessenger::NAMESPACE_DEFAULT === $namespace) {
                 $namespace = PluginFlashMessenger::NAMESPACE_INFO;
             }
 
