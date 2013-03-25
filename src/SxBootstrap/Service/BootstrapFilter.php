@@ -11,7 +11,7 @@ use SxBootstrap\Exception;
 class BootstrapFilter implements FilterInterface
 {
     /**
-     * @var FilterInterface
+     * @var \Assetic\Filter\FilterInterface
      */
     protected $lessFilter;
     
