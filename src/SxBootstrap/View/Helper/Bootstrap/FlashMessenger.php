@@ -59,6 +59,11 @@ class FlashMessenger extends AbstractElementHelper
         $alert = $this->getView()->plugin('sxb_alert')->__invoke($messagesToPrint);
 
         if (in_array($namespace, $this->availableNamespaces)) {
+
+            if ($namespace == PluginFlashMessenger::NAMESPACE_DEFAULT) {
+                $namespace = PluginFlashMessenger::NAMESPACE_INFO;
+            }
+
             $alert->$namespace();
         }
 
