@@ -42,6 +42,81 @@ class Pager extends AbstractElementHelper
     protected $route = null;
 
     /**
+     * @var array
+     */
+    protected $listAttributes = array();
+
+    /**
+     * @var array
+     */
+    protected $previousAttributes = array();
+
+    /**
+     * @var array
+     */
+    protected $nextAttributes = array();
+
+    /**
+     * @param array $listAttributes
+     *
+     * @return $this Pager
+     */
+    public function setListAttributes($listAttributes)
+    {
+        $this->listAttributes = $listAttributes;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getListAttributes()
+    {
+        return $this->listAttributes;
+    }
+
+    /**
+     * @param array $previousAttributes
+     *
+     * @return $this Pager
+     */
+    public function setPreviousAttributes($previousAttributes)
+    {
+        $this->previousAttributes = $previousAttributes;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPreviousAttributes()
+    {
+        return $this->previousAttributes;
+    }
+
+    /**
+     * @param array $nextAttributes
+     *
+     * @return $this Pager
+     */
+    public function setNextAttributes($nextAttributes)
+    {
+        $this->nextAttributes = $nextAttributes;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getNextAttributes()
+    {
+        return $this->nextAttributes;
+    }
+
+    /**
      * @param \Zend\Paginator\Paginator $paginator
      *
      * @return Pagination
@@ -64,17 +139,22 @@ class Pager extends AbstractElementHelper
      */
     public function render()
     {
-        $urlHelper      = $this->getView()->plugin('url');
         $paginationData = $this->paginator->getPages();
         $previous       = $this->getElement()->spawnChild('li');
         $next           = $this->getElement()->spawnChild('li');
         $previousAnchor = $previous->spawnChild('a')->setContent($this->getPrevLabel());
         $nextAnchor     = $next->spawnChild('a')->setContent($this->getNextLabel());
 
+        $this->getElement()->addAttributes($this->getListAttributes());
+
+        $previousAnchor->setAttributes($this->getPreviousAttributes());
+        $nextAnchor->setAttributes($this->getNextAttributes());
+
         if (empty($paginationData->previous)) {
             $previous->addClass('disabled');
         } else {
-            $previousAnchor->addAttribute('href', $urlHelper(
+            $previousAnchor->addAttribute('data-page', $paginationData->previous);
+            $previousAnchor->addAttribute('href', $this->getUrl(
                 $this->getRoute(),
                 array_merge(
                     array('page' => $paginationData->previous),
@@ -86,7 +166,8 @@ class Pager extends AbstractElementHelper
         if (empty($paginationData->next)) {
             $next->addClass('disabled');
         } else {
-            $nextAnchor->addAttribute('href', $urlHelper(
+            $nextAnchor->addAttribute('data-page', $paginationData->next);
+            $nextAnchor->addAttribute('href', $this->getUrl(
                 $this->getRoute(),
                 array_merge(
                     array('page' => $paginationData->next),
@@ -104,7 +185,7 @@ class Pager extends AbstractElementHelper
     }
 
     /**
-     * @param $route
+     * @param string $route
      *
      * @return Pager
      */
@@ -121,6 +202,23 @@ class Pager extends AbstractElementHelper
     public function getRoute()
     {
         return $this->route;
+    }
+
+    /**
+     * @param string $route
+     * @param array  $params
+     *
+     * @return string
+     */
+    protected function getUrl($route, $params = array())
+    {
+        $urlHelper = $this->getView()->plugin('url');
+
+        if ('#' === $route[0]) {
+            return $route;
+        }
+
+        return $urlHelper($route, $params);
     }
 
     /**
