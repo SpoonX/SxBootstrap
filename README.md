@@ -1,4 +1,4 @@
-# SxBootstrap 1.6.6
+# SxBootstrap 1.7.0
 This module is intended for usage with a default directory structure of a
 [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication/) and depends on the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
 It includes Twitter Bootstrap and allows you to build custom versions by overriding the configuration, and supplies some useful view helpers.
@@ -41,16 +41,16 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
     a) Via NPM/Node.js **(recommended method)**:
 
        Install npm/node.js. [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) can be found here.
-       
+
        To Install lessc, open up your command line, and navigate to your project (`cd /path/to/my/project`).
        Once you get there, run the following command: `npm install less .` (including the dot).
        This will install less in a new directory named node_modules, enabling us to find it.
        If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)"
-       
+
     b) Via lessphp (please only use if absolutely necessary as lessphp is not yet complete):
-    
-       **Add the requirement to your composer.json file** 
-       
+
+       **Add the requirement to your composer.json file**
+
        ```json
        {
            "require": {
@@ -58,9 +58,9 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
            }
        }
        ```
-           
+
        Then add the following config to your application's module.config.php:
-       
+
        ```php
        'twitter_bootstrap' => array(
            'use_lessphp' => true,
