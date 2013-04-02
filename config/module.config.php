@@ -1,6 +1,19 @@
 <?php
 
-$data          = json_decode(file_get_contents('vendor/composer/installed.json'), true);
+$currentDir = __DIR__;
+
+while (!is_dir($currentDir . '/vendor')) {
+    $parentDir = dirname($currentDir);
+
+    // `dirname` returns the same value once the top level is reached
+    if ($currentDir === $parentDir) {
+        throw new RuntimeException('Unable to locate the vendor directory');
+    }
+
+    $currentDir = $parentDir;
+}
+
+$data          = json_decode(file_get_contents($currentDir . '/vendor/composer/installed.json'), true);
 $bootstrapPath = 'vendor/twitter/bootstrap';
 foreach ($data as $installed) {
     if ('twitter/bootstrap' === $installed['name']) {
