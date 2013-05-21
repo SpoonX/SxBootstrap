@@ -59,7 +59,7 @@ class NavigationMenu extends AbstractHtmlElement
             $a->appendChild($caret);
         }
 
-        return $uls->getDocument()->saveHTML();
+        return preg_replace('~<(?:!DOCTYPE|/?(?:html|body))[^>]*>\s*~i', '', $uls->getDocument()->saveHTML());
     }
 
     /**
