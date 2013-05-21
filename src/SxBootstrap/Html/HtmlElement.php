@@ -161,7 +161,7 @@ class HtmlElement
      *
      * @param   string  $class
      *
-     * @return  string
+     * @return  \SxBootstrap\Html\HtmlElement
      */
     public function addClass($class)
     {

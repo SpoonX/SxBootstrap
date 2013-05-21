@@ -3,20 +3,22 @@
 namespace SxBootstrap\Service;
 
 use Assetic\Asset\AssetInterface;
+use Assetic\Filter\FilterInterface;
 use Assetic\Filter\LessFilter;
+use Assetic\Filter\LessphpFilter;
 use SxBootstrap\Exception;
 
-class BootstrapFilter extends LessFilter
+class BootstrapFilter implements FilterInterface
 {
     /**
-     * @var ServiceLocatorInterface
+     * @var \Assetic\Filter\FilterInterface
      */
-    protected $serviceLocator;
-
+    protected $lessFilter;
+    
     /**
-     * @var AssetInterface
+     * @var array
      */
-    protected $asset;
+    protected $config;
 
     /**
      * Constructs the service right before
@@ -25,11 +27,15 @@ class BootstrapFilter extends LessFilter
     public function __construct(array $config)
     {
         $this->config = $config;
-
-        parent::__construct(
-            $this->config['filter']['node_bin'],
-            $this->config['filter']['node_paths']
-        );
+        
+        if ($this->config['use_lessphp']) {
+            $this->lessFilter = new LessphpFilter();
+        } else {
+            $this->lessFilter = new LessFilter(
+                    $this->config['filter']['node_bin'],
+                    $this->config['filter']['node_paths']
+            );
+        }
     }
 
     /**
@@ -46,7 +52,7 @@ class BootstrapFilter extends LessFilter
 
         // Make sure we _always_ have the bootstrap import dir.
         if ($importDir !== $assetImportDir) {
-            $this->addLoadPath($importDir);
+            $this->lessFilter->addLoadPath($importDir);
         }
 
         $variables = array_merge(
@@ -73,7 +79,7 @@ class BootstrapFilter extends LessFilter
             $asset->setContent($variablesString.$asset->getContent());
         }
 
-        parent::filterLoad($asset);
+        $this->lessFilter->filterLoad($asset);
     }
 
     /**

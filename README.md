@@ -1,4 +1,4 @@
-# SxBootstrap 1.5.3
+# SxBootstrap 1.7.1
 This module is intended for usage with a default directory structure of a
 [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication/) and depends on the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
 It includes Twitter Bootstrap and allows you to build custom versions by overriding the configuration, and supplies some useful view helpers.
@@ -13,10 +13,11 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
 * Plenty of ViewHelpers
 * Extendable (run your own less files from bootstrap context to share mixins and variables)
 * Compatible, and tested with twitter bootstrap 2.1, 2.2 and 2.3+
+* Can use lessphp
 
 ## Installation
 
-1. **add the requirement to your composer.json file** by either...
+1. **Add the requirement to your composer.json file** by either...
     * ... Adding it through the command line,
 
         ```bash
@@ -35,19 +36,41 @@ Please rename your package to `spoonx/sxbootstrap`. It has been moved there.
 
 2. Enable `AssetManager` and `SxBootstrap` in your `application.config.php` file.
 
-3. Install NPM/NodeJS. If you've already done this, continue to step 4.
-    [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) can be found here.
+3. Install less...
 
-4. Install less.
-    Open up your command line, and navigate to your project (`cd /path/to/my/project`).
-    Once you get there, run the following command: `npm install less .` (including the dot).
-    This will install less in a new directory named node_modules, enabling us to find it.
-    If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)"
+    a) Via NPM/Node.js **(recommended method)**:
 
-5. Configure the filter to get it working. (This only applies to you if your node.js binary is not in `/usr/bin/node`,
-or your node paths are not the default, so you've ignored my advice in step 4.)
+       Install npm/node.js. [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) can be found here.
 
-6. Take a look at the [wiki](https://github.com/SpoonX/SxBootstrap/wiki) for examples and other information to get started.
+       To Install lessc, open up your command line, and navigate to your project (`cd /path/to/my/project`).
+       Once you get there, run the following command: `npm install less .` (including the dot).
+       This will install less in a new directory named node_modules, enabling us to find it.
+       If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)"
+
+    b) Via lessphp (please only use if absolutely necessary as lessphp is not yet complete):
+
+       **Add the requirement to your composer.json file**
+
+       ```json
+       {
+           "require": {
+               "leafo/lessphp": "0.*"
+           }
+       }
+       ```
+
+       Then add the following config to your application's module.config.php:
+
+       ```php
+       'twitter_bootstrap' => array(
+           'use_lessphp' => true,
+       ),
+       ```
+
+4. Configure the filter to get it working. (This only applies to you if your using node.js and the binary is not in `/usr/bin/node`,
+or your node paths are not the default, so you've ignored my advice in step 3a.)
+
+5. Take a look at the [wiki](https://github.com/SpoonX/SxBootstrap/wiki) for examples and other information to get started.
 Specifically the part on [how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)
 
 ## Usage
