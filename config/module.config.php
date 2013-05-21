@@ -42,6 +42,7 @@ return array(
             'sxbFormColorpicker' => 'SxBootstrap\View\Helper\Bootstrap\FormColorPicker',
             'sxBootstrap'        => 'SxBootstrap\View\Helper\Bootstrap\Bootstrap',
             'sxbFlashMessenger'  => 'SxBootstrap\View\Helper\Bootstrap\FlashMessenger',
+            'sxbNavigationMenu'  => 'SxBootstrap\View\Helper\Bootstrap\NavigationMenu',
         ),
     ),
     'asset_manager' => array(
