@@ -19,6 +19,7 @@ class NavigationMenu extends AbstractHtmlElement
      *
      * @param string|\SpiffyNavigation\Container|null $container
      * @param array $options
+     *
      * @return string
      */
     public function renderMenu($container = null, array $options = array())
@@ -57,6 +58,7 @@ class NavigationMenu extends AbstractHtmlElement
             $a->setAttribute('id', "drop{$index}");
             $a->appendChild($caret);
         }
+
         return $uls->getDocument()->saveHTML();
     }
 
@@ -74,6 +76,7 @@ class NavigationMenu extends AbstractHtmlElement
             ? $el->getAttribute('class') . ' ' . $css
             : $css
         );
+
         return $el;
     }
 
