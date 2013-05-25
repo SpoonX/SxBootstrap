@@ -46,6 +46,8 @@ class NavigationMenu extends AbstractHtmlElement
             $index = $key+1;
 
             $this->addCss('dropdown-menu', $ul);
+            $ul->setAttribute('role', 'menu');
+            $ul->setAttribute('aria-labelledby', "drop{$index}");
 
             $li = $ul->parentNode;
             $this->addCss('dropdown', $li);
