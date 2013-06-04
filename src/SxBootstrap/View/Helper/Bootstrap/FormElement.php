@@ -160,7 +160,7 @@ class FormElement extends ZendFormElement
     public function getElementErrorHelper()
     {
         if (!$this->elementErrorHelper) {
-            $this->setElementErrorHelper($this->view->plugin('formElementErrors'));
+            $this->setElementErrorHelper($this->view->plugin('sxbFormElementErrors'));
         }
         return $this->elementErrorHelper;
     }
