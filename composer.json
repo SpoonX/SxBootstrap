@@ -13,8 +13,7 @@
     "require": {
         "php": ">=5.3.3",
         "rwoverdijk/assetmanager": "1.*",
-        "twitter/bootstrap": "2.*",
-        "spiffy/spiffy-navigation": "dev-master"
+        "twitter/bootstrap": "2.*"
     },
     "replace": {
         "rwoverdijk/sxbootstrap": "*"
@@ -33,5 +32,8 @@
         "classmap": [
             "./"
         ]
+    },
+    "suggest" : {
+        "spiffy/spiffy-navigation": "Needed to use SxNavigationMenu and dropdown"
     }
 }
