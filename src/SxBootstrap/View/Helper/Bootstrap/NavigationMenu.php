@@ -19,7 +19,6 @@ class NavigationMenu extends AbstractHtmlElement
      *
      * @param string|\SpiffyNavigation\Container|null $container
      * @param array $options
-     *
      * @return string
      */
     public function renderMenu($container = null, array $options = array())
@@ -28,9 +27,10 @@ class NavigationMenu extends AbstractHtmlElement
     }
 
     /**
-     * @param null $container
-     * @param array $options
+     * Render a dropdown menu
      *
+     * @param string|\SpiffyNavigation\Container|null $container
+     * @param array $options
      * @return string
      */
     public function renderDropDownMenu($container = null, array $options = array())
@@ -65,9 +65,10 @@ class NavigationMenu extends AbstractHtmlElement
     }
 
     /**
+     * Add css to a DomElement
+     *
      * @param $css
      * @param \DOMElement $el
-     *
      * @return \DOMElement
      */
     protected function addCss($css, \DOMElement $el)
@@ -82,6 +83,17 @@ class NavigationMenu extends AbstractHtmlElement
         return $el;
     }
 
+    /**
+     * Renders the given $container by invoking the partial view helper
+     *
+     * The container will simply be passed on as a model to the view script
+     * as-is, and will be available in the partial script as 'container', e.g.
+     * <code>echo 'Number of pages: ', count($this->container);</code>.
+     *
+     * @param string|\SpiffyNavigation\Container|null $container [optional] container to pass to view script.
+     * @param string $partial [optional] partial view script to use.
+     * @return string
+     */
     public function renderPartial($container = null, $partial = null)
     {
         return $this->getView()->renderPartial($container, $partial);
