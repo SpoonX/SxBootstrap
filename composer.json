@@ -32,5 +32,8 @@
         "classmap": [
             "./"
         ]
+    },
+    "suggest" : {
+        "spiffy/spiffy-navigation": "Needed to use SxNavigationMenu and dropdown"
     }
 }
