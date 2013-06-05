@@ -75,7 +75,7 @@ abstract class AbstractElementHelper extends AbstractHelper
      */
     public final function __toString()
     {
-        return $this->render();
+        return (string)$this->render();
     }
 
     /**
