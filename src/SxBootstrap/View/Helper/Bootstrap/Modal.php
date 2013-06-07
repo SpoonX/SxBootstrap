@@ -33,6 +33,22 @@ class Modal extends AbstractElementHelper
     protected $remote;
 
     /**
+     * Renders a given ViewModel or passes the argument verbatim
+     *
+     * @param  string|\Zend\View\Model\ViewModel $content
+     *
+     * @return string
+     */
+    protected function maybeRender($content)
+    {
+        if ($content instanceof ViewModel) {
+            $content = $this->getView()->render($content);
+        }
+
+        return (string)$content;
+    }
+
+    /**
      * Returns the backdrop Bootstrap option
      *
      * @return string
@@ -75,7 +91,7 @@ class Modal extends AbstractElementHelper
      */
     public function setBody($body)
     {
-        $this->body = (string)$this->maybeRender($body);
+        $this->body = $this->maybeRender($body);
 
         return $this;
     }
@@ -123,7 +139,7 @@ class Modal extends AbstractElementHelper
      */
     public function setFooter($footer)
     {
-        $this->footer = (string)$this->maybeRender($footer);
+        $this->footer = $this->maybeRender($footer);
 
         return $this;
     }
@@ -147,7 +163,7 @@ class Modal extends AbstractElementHelper
      */
     public function setHeader($header)
     {
-        $this->header = (string)$this->maybeRender($header);
+        $this->header = $this->maybeRender($header);
 
         return $this;
     }
