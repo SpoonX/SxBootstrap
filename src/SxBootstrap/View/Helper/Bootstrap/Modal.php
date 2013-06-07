@@ -69,13 +69,13 @@ class Modal extends AbstractElementHelper
     /**
      * Sets the body div content
      *
-     * @param string $body
+     * @param string|\Zend\View\Model\ViewModel         $body
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Modal
      */
     public function setBody($body)
     {
-        $this->body = (string) $body;
+        $this->body = (string)$this->maybeRender($body);
 
         return $this;
     }
@@ -117,13 +117,13 @@ class Modal extends AbstractElementHelper
     /**
      * Sets the footer div content
      *
-     * @param string $footer
+     * @param string|\Zend\View\Model\ViewModel         $footer
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Modal
      */
     public function setFooter($footer)
     {
-        $this->footer = (string)$footer;
+        $this->footer = (string)$this->maybeRender($footer);
 
         return $this;
     }
@@ -141,13 +141,13 @@ class Modal extends AbstractElementHelper
     /**
      * Sets the header div content
      *
-     * @param string $header
+     * @param string|\Zend\View\Model\ViewModel         $header
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Modal
      */
     public function setHeader($header)
     {
-        $this->header = (string)$header;
+        $this->header = (string)$this->maybeRender($header);
 
         return $this;
     }

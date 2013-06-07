@@ -18,6 +18,22 @@ abstract class AbstractElementHelper extends AbstractHelper
     protected $element;
 
     /**
+     * Renders a given ViewModel or passes the argument verbatim
+     *
+     * @param  string|\Zend\View\Model\ViewModel $content
+     *
+     * @return string
+     */
+    protected function maybeRender($content)
+    {
+        if ($content instanceof ViewModel) {
+            $content = $this->getView()->render($content);
+        }
+
+        return $content;
+    }
+
+    /**
      * Add a class to the element
      *
      * @param   string  $class  name of the class
