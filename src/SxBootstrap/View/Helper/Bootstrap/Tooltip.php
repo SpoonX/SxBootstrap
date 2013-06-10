@@ -40,9 +40,9 @@ class Tooltip extends AbstractElementHelper
     );
 
     /**
-     * Display an Informational Label
+     * Display the tooltip title
      *
-     * @param string $tooltip
+     * @param  string $tooltip
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
      */
@@ -58,7 +58,8 @@ class Tooltip extends AbstractElementHelper
     /**
      * Set the default title for when the title attribute is not present
      *
-     * @param string $title
+     * @param  string $title
+     *
      * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
      */
     public function setDefaultTitle($title)
@@ -70,7 +71,8 @@ class Tooltip extends AbstractElementHelper
      * Set the selector.
      * All elements that are effected by this selector will get this tooltip.
      *
-     * @param string $selector
+     * @param  string $selector
+     *
      * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
      */
     public function setSelector($selector)
@@ -81,7 +83,8 @@ class Tooltip extends AbstractElementHelper
     /**
      * Set the placement
      *
-     * @param string placement
+     * @param  string placement
+     *
      * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
      */
     public function setPlacement($placement)
@@ -92,7 +95,8 @@ class Tooltip extends AbstractElementHelper
     /**
      * Set the trigger
      *
-     * @param string $trigger
+     * @param  string $trigger
+     *
      * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
      */
     public function setTrigger($trigger)
@@ -103,7 +107,8 @@ class Tooltip extends AbstractElementHelper
     /**
      * Set the href
      *
-     * @param string $href
+     * @param  string $href
+     *
      * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
      */
     public function setHref($href)
@@ -116,9 +121,9 @@ class Tooltip extends AbstractElementHelper
     /**
      * Set the tooltip options
      *
-     * @param array
+     * @param   array
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
+     * @return  \SxBootstrap\View\Helper\Bootstrap\Tooltip
      * @throws  Exception\InvalidArgumentException
      */
     public function setOptions(array $options)
@@ -133,8 +138,8 @@ class Tooltip extends AbstractElementHelper
     /**
      * Set a single option to the Tooltip
      *
-     * @param type $key
-     * @param type $value
+     * @param  type $key
+     * @param  type $value
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Label
      * @throws Exception\InvalidArgumentException
@@ -175,11 +180,11 @@ class Tooltip extends AbstractElementHelper
     /**
      * Invoke Tooltip
      *
-     * @param string $title
-     * @param string $content
-     * @param string $href
+     * @param  string $title
+     * @param  string $content
+     * @param  string $href
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Label
+     * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
     public function __invoke($title = null, $content = null, $href = null)
     {
