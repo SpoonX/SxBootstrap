@@ -57,6 +57,7 @@ return array(
             'sxBootstrap'           => 'SxBootstrap\View\Helper\Bootstrap\Bootstrap',
             'sxbFlashMessenger'     => 'SxBootstrap\View\Helper\Bootstrap\FlashMessenger',
             'sxbNavigationMenu'     => 'SxBootstrap\View\Helper\Bootstrap\NavigationMenu',
+            'sxbModal'              => 'SxBootstrap\View\Helper\Bootstrap\Modal',
         ),
     ),
     'asset_manager' => array(

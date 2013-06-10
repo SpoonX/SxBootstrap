@@ -12,8 +12,8 @@ abstract class AbstractElementHelper extends AbstractHelper
 {
 
     /**
-     * 	The html element to configure and render the element
-     * 	@var \SxBootstrap\Html\HtmlElement
+     * The html element to configure and render the element
+     * @var \SxBootstrap\Html\HtmlElement
      */
     protected $element;
 
@@ -75,7 +75,7 @@ abstract class AbstractElementHelper extends AbstractHelper
      */
     public final function __toString()
     {
-        return $this->render();
+        return (string)$this->render();
     }
 
     /**
