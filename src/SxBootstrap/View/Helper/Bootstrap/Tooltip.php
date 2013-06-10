@@ -48,9 +48,7 @@ class Tooltip extends AbstractElementHelper
      */
     public function setTitle($title)
     {
-        $this->getElement()->addAttributes(array(
-            'title' => $title,
-        ));
+        $this->getElement()->addAttribute('title', $title);
 
         return $this;
     }
