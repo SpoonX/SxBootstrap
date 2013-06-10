@@ -188,26 +188,29 @@ class Tooltip extends AbstractElementHelper
      */
     public function __invoke($title = null, $content = null, $href = null)
     {
+        $clone = clone $this;
+
         $element = new HtmlElement('a');
+
         $element->addAttributes(array(
             'data-toggle' => 'tooltip',
             'rel'         => 'tooltip',
         ));
 
-        $this->setElement($element);
+        $clone->setElement($element);
 
         if (!is_null($title)) {
-            $this->setTitle($title);
+            $clone->setTitle($title);
         }
 
         if (!is_null($content)) {
-            $this->setContent($content);
+            $clone->setContent($content);
         }
 
         if (!is_null($href)) {
-            $this->setHref($href);
+            $clone->setHref($href);
         }
 
-        return clone $this;
+        return $clone;
     }
 }
