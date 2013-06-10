@@ -58,6 +58,7 @@ return array(
             'sxbFlashMessenger'     => 'SxBootstrap\View\Helper\Bootstrap\FlashMessenger',
             'sxbNavigationMenu'     => 'SxBootstrap\View\Helper\Bootstrap\NavigationMenu',
             'sxbModal'              => 'SxBootstrap\View\Helper\Bootstrap\Modal',
+            'sxbTooltip'            => 'SxBootstrap\View\Helper\Bootstrap\Tooltip',
         ),
     ),
     'asset_manager' => array(
