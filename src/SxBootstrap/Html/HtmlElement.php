@@ -201,7 +201,7 @@ class HtmlElement
     }
 
     /**
-     * Prepend content after other content
+     * Prepend content before other content
      *
      * @param   string  $content
      *
