@@ -2,7 +2,7 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use SxBootstrap\Html\HtmlElement as HtmlElement;
+use SxCore\Html\HtmlElement;
 
 class ButtonToolbar extends AbstractElementHelper
 {

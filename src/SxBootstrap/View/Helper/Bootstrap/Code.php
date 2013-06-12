@@ -2,7 +2,7 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use SxBootstrap\Html\HtmlElement;
+use SxCore\Html\HtmlElement;
 
 /**
  * The ViewHelper that creates a block to represent Code.
