@@ -2,7 +2,7 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use SxBootstrap\Html\HtmlElement as HtmlElement;
+use SxCore\Html\HtmlElement;
 use SxBootstrap\View\Helper\Bootstrap\Button as SxButton;
 
 class ButtonGroup extends AbstractElementHelper
