@@ -109,7 +109,7 @@ class Modal extends AbstractElementHelper
     /**
      * Change whether modal will get a close button
      *
-     * @param bool $closable
+     * @param bool $closeButton
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Modal
      */
@@ -243,15 +243,27 @@ class Modal extends AbstractElementHelper
     /**
      * Create modal element
      *
+     * @param null|string|\Zend\View\Model\ViewModel $body
+     * @param null|string|\Zend\View\Model\ViewModel $footer
+     * @param null|string|\Zend\View\Model\ViewModel $header
+     * @param null|boolean                           $closeButton
+     *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Modal
      */
-    public function __invoke($body = null, $footer = null, $header = null)
-    {
+    public function __invoke(
+        $body        = null,
+        $footer      = null,
+        $header      = null,
+        $closeButton = null,
+    ) {
         $htmlElement = new   HtmlElement();
         $retVal      = clone $this;
 
         $retVal->setElement($htmlElement);
 
+        if (!is_null($closeButton)) {
+            $retVal->setCloseButton($closeButton);
+        }
         if (!is_null($header)) {
             $retVal->setHeader($header);
         }
