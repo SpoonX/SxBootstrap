@@ -8,7 +8,7 @@
  */
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use SxBootstrap\Html\HtmlElement;
+use SxCore\Html\HtmlElement;
 
 /**
  * Alert
@@ -107,7 +107,7 @@ class Alert extends AbstractElementHelper
     /**
      * Get the dismissal button
      *
-     * @return \SxBootstrap\Html\HtmlElement
+     * @return \SxCore\Html\HtmlElement
      */
     protected function createDismissButton()
     {

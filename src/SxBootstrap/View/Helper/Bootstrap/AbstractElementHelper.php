@@ -2,7 +2,7 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use SxBootstrap\Html\HtmlElement;
+use SxCore\Html\HtmlElement;
 use Zend\Form\View\Helper\AbstractHelper;
 
 /**
@@ -13,7 +13,7 @@ abstract class AbstractElementHelper extends AbstractHelper
 
     /**
      * The html element to configure and render the element
-     * @var \SxBootstrap\Html\HtmlElement
+     * @var \SxCore\Html\HtmlElement
      */
     protected $element;
 
@@ -79,7 +79,7 @@ abstract class AbstractElementHelper extends AbstractHelper
     }
 
     /**
-     * @return \SxBootstrap\Html\HtmlElement
+     * @return \SxCore\Html\HtmlElement
      */
     public function getElement()
     {
@@ -87,7 +87,7 @@ abstract class AbstractElementHelper extends AbstractHelper
     }
 
     /**
-     * @param \SxBootstrap\Html\HtmlElement $element
+     * @param \SxCore\Html\HtmlElement $element
      *
      * @return AbstractElementHelper
      */

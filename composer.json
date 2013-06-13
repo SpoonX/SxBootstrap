@@ -13,7 +13,8 @@
     "require": {
         "php": ">=5.3.3",
         "rwoverdijk/assetmanager": "1.*",
-        "twitter/bootstrap": "2.*"
+        "twitter/bootstrap": "2.*",
+        "spoonx/sxcore": "1.*"
     },
     "replace": {
         "rwoverdijk/sxbootstrap": "*"

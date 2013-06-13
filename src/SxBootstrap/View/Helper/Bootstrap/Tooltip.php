@@ -11,7 +11,7 @@
 namespace SxBootstrap\View\Helper\Bootstrap;
 
 use SxBootstrap\Exception;
-use SxBootstrap\Html\HtmlElement;
+use SxCore\Html\HtmlElement;
 
 /**
  * Tooltip
