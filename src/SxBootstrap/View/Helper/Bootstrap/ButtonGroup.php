@@ -33,6 +33,8 @@ class ButtonGroup extends AbstractElementHelper
      * Render buttons
      *
      * @param mixed $button
+     *
+     * @return string
      */
     protected function renderButton($button)
     {
@@ -54,9 +56,9 @@ class ButtonGroup extends AbstractElementHelper
     }
 
     /**
-     *  Make button group element and add buttons
+     * Make button group element and add buttons
      *
-     * @param  array $buttons
+     * @param array $buttons
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\ButtonGroup
      */
@@ -77,6 +79,8 @@ class ButtonGroup extends AbstractElementHelper
 
     /**
      * Add checkbox data to group
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\ButtonGroup
      */
     public function checkbox()
     {
@@ -87,6 +91,8 @@ class ButtonGroup extends AbstractElementHelper
 
     /**
      * Add radio data to group
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\ButtonGroup
      */
     public function radio()
     {
@@ -97,6 +103,8 @@ class ButtonGroup extends AbstractElementHelper
 
     /**
      * Add vertical class to group
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\ButtonGroup
      */
     public function vertical()
     {

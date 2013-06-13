@@ -13,9 +13,9 @@ class Well extends AbstractElementHelper
     /**
      * Create a HTML Code element
      *
-     * @param   string  $content    The contents of the element
+     * @param string $content The contents of the element
      *
-     * @return  SxBootstrap\View\Helper\Bootstrap\Code
+     * @return SxBootstrap\View\Helper\Bootstrap\Code
      */
     public function __invoke($content = '')
     {

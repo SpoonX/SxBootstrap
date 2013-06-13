@@ -13,18 +13,18 @@ abstract class AbstractElementHelper extends AbstractHelper
 
     /**
      * The html element to configure and render the element
-     * @var \SxCore\Html\HtmlElement
+     * @var \SxCore\Html\HtmlElement $element
      */
     protected $element;
 
     /**
      * Add a class to the element
      *
-     * @param   string  $class  name of the class
+     * @param string $class name of the class
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
      */
-    public final function addClass($class)
+    final public function addClass($class)
     {
         // Set the class on the element
         $this->element->addClass($class);
@@ -35,10 +35,10 @@ abstract class AbstractElementHelper extends AbstractHelper
     /**
      * Add attribute on element
      *
-     * @param   string  $key
-     * @param   string  $value
+     * @param string $key
+     * @param string $value
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
      */
     public function addAttribute($key, $value)
     {
@@ -50,7 +50,7 @@ abstract class AbstractElementHelper extends AbstractHelper
     /**
      * Set the content of the element
      *
-     * @param   string $content
+     * @param string $content
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
      */
@@ -66,16 +66,16 @@ abstract class AbstractElementHelper extends AbstractHelper
      *
      * @return string
      */
-    public abstract function render();
+    abstract public function render();
 
     /**
      * Return the markup string of the Code block
      *
      * @return string
      */
-    public final function __toString()
+    final public function __toString()
     {
-        return (string)$this->render();
+        return (string) $this->render();
     }
 
     /**

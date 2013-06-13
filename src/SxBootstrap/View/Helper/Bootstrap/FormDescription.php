@@ -35,6 +35,7 @@ class FormDescription extends AbstractHelper
      * Set Block Wrapper
      *
      * @param string $blockWrapper
+     *
      * @return FormDescription
      */
     public function setBlockWrapper($blockWrapper)
@@ -58,6 +59,7 @@ class FormDescription extends AbstractHelper
      * Set Inline wrapper
      *
      * @param string $inlineWrapper
+     *
      * @return FormDescription
      */
     public function setInlineWrapper($inlineWrapper)
@@ -81,8 +83,9 @@ class FormDescription extends AbstractHelper
      * Render
      *
      * @param ElementInterface $elmenet
-     * @param string $blockWrapper
-     * @param string $inlineWrapper
+     * @param string           $blockWrapper
+     * @param string           $inlineWrapper
+     *
      * @return string
      */
     public function render(ElementInterface $element, $blockWrapper = null, $inlineWrapper = null)
@@ -105,8 +108,9 @@ class FormDescription extends AbstractHelper
      * Magical Invoke Method
      *
      * @param ElementInterface $elemnet
-     * @param string $blockWrapper
-     * @param string $invokeWrapper
+     * @param string           $blockWrapper
+     * @param string           $invokeWrapper
+     *
      * @return string|FormDescription
      */
     public function __invoke(ElementInterface $element = null, $blockWrapper = null, $inlineWrapper = null)

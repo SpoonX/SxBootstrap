@@ -65,12 +65,14 @@ class FormElement extends ZendFormElement
      * Set Label Helper
      *
      * @param Zend\Form\View\Helper\FormLabel $labelHelper
+     *
      * @return FormElement
      */
     public function setLabelHelper(FormLabel $labelHelper)
     {
         $labelHelper->setView($this->getView());
         $this->labelHelper = $labelHelper;
+
         return $this;
     }
 
@@ -84,6 +86,7 @@ class FormElement extends ZendFormElement
         if (!$this->labelHelper) {
             $this->setLabelHelper($this->view->plugin('formlabel'));
         }
+
         return $this->labelHelper;
     }
 
@@ -91,12 +94,14 @@ class FormElement extends ZendFormElement
      * Set EscapeHtml Helper
      *
      * @param Zend\View\Helper\EscapeHtml $escapeHelper
+     *
      * @return FormElement
      */
     public function setEscapeHtmlHelper(EscapeHtml $escapeHelper)
     {
         $escapeHelper->setView($this->getView());
         $this->escapeHelper = $escapeHelper;
+
         return $this;
     }
 
@@ -110,6 +115,7 @@ class FormElement extends ZendFormElement
         if (!$this->escapeHelper) {
             $this->setEscapeHtmlHelper($this->view->plugin('escapeHtml'));
         }
+
         return $this->escapeHelper;
     }
 
@@ -117,12 +123,14 @@ class FormElement extends ZendFormElement
      * Set Element Helper
      *
      * @param Zend\Form\View\Helper\FormElement $elementHelper
+     *
      * @return FormElement
      */
     public function setElementHelper(ZendFormElement $elementHelper)
     {
         $elementHelper->setView($this->getView());
         $this->elementHelper = $elementHelper;
+
         return $this;
     }
 
@@ -136,6 +144,7 @@ class FormElement extends ZendFormElement
         if (!$this->elementHelper) {
             $this->setElementHelper($this->view->plugin('formElement'));
         }
+
         return $this->elementHelper;
     }
 
@@ -143,12 +152,14 @@ class FormElement extends ZendFormElement
      * Set Element Error Helper
      *
      * @param Zend\Form\View\Helper\FormElementErrors $errorHelper
+     *
      * @return FormElement
      */
     public function setElementErrorHelper(FormElementErrors $errorHelper)
     {
         $errorHelper->setView($this->getView());
         $this->elementErrorHelper = $errorHelper;
+
         return $this;
     }
 
@@ -162,6 +173,7 @@ class FormElement extends ZendFormElement
         if (!$this->elementErrorHelper) {
             $this->setElementErrorHelper($this->view->plugin('sxbFormElementErrors'));
         }
+
         return $this->elementErrorHelper;
     }
 
@@ -169,12 +181,14 @@ class FormElement extends ZendFormElement
      * Set Description Helper
      *
      * @param SxBootstrap\View\Helper\Bootstrap\FormDescription
+     *
      * @return FormElement
      */
     public function setDescriptionHelper(FormDescription $descriptionHelper)
     {
         $descriptionHelper->setView($this->getView());
         $this->descriptionHelper = $descriptionHelper;
+
         return $this;
     }
 
@@ -188,6 +202,7 @@ class FormElement extends ZendFormElement
         if (!$this->descriptionHelper) {
             $this->setDescriptionHelper($this->view->plugin('sxbFormDescription'));
         }
+
         return $this->descriptionHelper;
     }
 
@@ -195,11 +210,13 @@ class FormElement extends ZendFormElement
      * Set Group Wrapper
      *
      * @param string $groupWrapper
+     *
      * @return FormElement
      */
     public function setGroupWrapper($groupWrapper)
     {
         $this->groupWrapper = (string) $groupWrapper;
+
         return $this;
     }
 
@@ -216,12 +233,14 @@ class FormElement extends ZendFormElement
     /**
      * Set Control Wrapper
      *
-     * @param string $controlWrapper;
+     * @param string $controlWrapper
+     *
      * @return FormElement
      */
     public function setControlWrapper($controlWrapper)
     {
         $this->controlWrapper = (string) $controlWrapper;
+
         return $this;
     }
 
@@ -239,8 +258,9 @@ class FormElement extends ZendFormElement
      * Render
      *
      * @param Zend\Form\ElementInterface $element
-     * @param string $groupWrapper
-     * @param string $controlWrapper
+     * @param string                     $groupWrapper
+     * @param string                     $controlWrapper
+     *
      * @return string
      */
     public function render(ElementInterface $element, $groupWrapper = null, $controlWrapper = null)
@@ -301,8 +321,9 @@ class FormElement extends ZendFormElement
      * Magical Invoke
      *
      * @param Zend\Form\ElementInterface $element
-     * @param string $groupWrapper
-     * @param string $controlWrapper
+     * @param string                     $groupWrapper
+     * @param string                     $controlWrapper
+     *
      * @return string|FormElement
      */
     public function __invoke(ElementInterface $element = null, $groupWrapper = null, $controlWrapper = null)
