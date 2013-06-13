@@ -40,6 +40,7 @@ class Form extends AbstractHelper
      * Set Form Element Helper
      *
      * @param SxBootstrap\View\Helper\Bootstrap\FormElement $helper
+     *
      * @return SxBootstrap\View\Helper\Bootstrap\Form
      */
     public function setElementHelper(FormElement $helper)
@@ -58,6 +59,7 @@ class Form extends AbstractHelper
         if (!$this->formElementHelper) {
             $this->setElementHelper(new FormElement());
         }
+
         return $this->formElementHelper;
     }
 
@@ -65,12 +67,14 @@ class Form extends AbstractHelper
      * Set Form Helper
      *
      * @param Zend\Form\View\Helper\Form $form
+     *
      * @return Form
      */
     public function setFormHelper(FormHelper $form)
     {
         $form->setView($this->getView());
         $this->formHelper = $form;
+
         return $this;
     }
 
@@ -84,6 +88,7 @@ class Form extends AbstractHelper
         if (!$this->formHelper) {
             $this->setFormHelper($this->view->plugin('form'));
         }
+
         return $this->formHelper;
     }
 
@@ -91,6 +96,7 @@ class Form extends AbstractHelper
      * Display a Form
      *
      * @param Zend\Form\Form $form
+     *
      * @return void
      */
     public function __invoke(ZendForm $form)
@@ -98,6 +104,7 @@ class Form extends AbstractHelper
         $form->prepare();
         $html = $this->getFormHelper()->openTag($form);
         $html .= $this->render($form->getIterator());
+
         return $html . $this->getFormHelper()->closeTag();
     }
 
@@ -107,6 +114,7 @@ class Form extends AbstractHelper
      * or a fieldset which is basically an iterator.
      *
      * @param Traversable $fieldset
+     *
      * @return void
      */
     public function render(Traversable $fieldset)
@@ -124,6 +132,7 @@ class Form extends AbstractHelper
                 $form .= $elementHelper->render($element);
             }
         }
+
         return $form;
     }
 
@@ -131,11 +140,13 @@ class Form extends AbstractHelper
      * Render a Fieldset
      *
      * @param Zend\Form\Fieldset $fieldset
+     *
      * @return void
      */
     public function renderFieldset(Fieldset $fieldset)
     {
         $id = $fieldset->getAttribute('id') ?: $fieldset->getName();
+
         return '<fieldset id="fieldset-' . $id . '">'
             . $this->render($fieldset)
             . '</fieldset>';

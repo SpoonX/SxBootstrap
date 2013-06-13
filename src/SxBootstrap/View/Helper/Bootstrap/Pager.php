@@ -59,7 +59,7 @@ class Pager extends AbstractElementHelper
     /**
      * @param array $listAttributes
      *
-     * @return $this Pager
+     * @return self
      */
     public function setListAttributes($listAttributes)
     {
@@ -79,7 +79,7 @@ class Pager extends AbstractElementHelper
     /**
      * @param array $previousAttributes
      *
-     * @return $this Pager
+     * @return self
      */
     public function setPreviousAttributes($previousAttributes)
     {
@@ -99,7 +99,7 @@ class Pager extends AbstractElementHelper
     /**
      * @param array $nextAttributes
      *
-     * @return $this Pager
+     * @return self
      */
     public function setNextAttributes($nextAttributes)
     {
@@ -187,11 +187,11 @@ class Pager extends AbstractElementHelper
     /**
      * @param string $route
      *
-     * @return Pager
+     * @return self
      */
     public function setRoute($route)
     {
-        $this->route = (string)$route;
+        $this->route = (string) $route;
 
         return $this;
     }
@@ -224,7 +224,7 @@ class Pager extends AbstractElementHelper
     /**
      * @param array $routeParams
      *
-     * @return Pager
+     * @return self
      */
     public function setRouteParams(array $routeParams)
     {
@@ -244,7 +244,7 @@ class Pager extends AbstractElementHelper
     /**
      * @param $nextLabel
      *
-     * @return Pager
+     * @return self
      */
     public function setNextLabel($nextLabel)
     {
@@ -264,7 +264,7 @@ class Pager extends AbstractElementHelper
     /**
      * @param $prevLabel
      *
-     * @return Pager
+     * @return self
      */
     public function setPrevLabel($prevLabel)
     {
@@ -314,11 +314,11 @@ class Pager extends AbstractElementHelper
      *
      * @param bool $align
      *
-     * @return bool
+     * @return self
      */
     public function align($align = true)
     {
-        $this->align = (bool)$align;
+        $this->align = (bool) $align;
 
         return $this;
     }

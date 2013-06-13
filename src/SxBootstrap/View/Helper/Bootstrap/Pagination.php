@@ -81,7 +81,7 @@ class Pagination extends AbstractElementHelper
     /**
      * @param array $anchorAttributes
      *
-     * @return $this Pagination
+     * @return self
      */
     public function setAnchorAttributes($anchorAttributes)
     {
@@ -101,7 +101,7 @@ class Pagination extends AbstractElementHelper
     /**
      * @param array $listAttributes
      *
-     * @return $this Pagination
+     * @return self
      */
     public function setListAttributes($listAttributes)
     {
@@ -121,7 +121,7 @@ class Pagination extends AbstractElementHelper
     /**
      * @param array $listItemAttributes
      *
-     * @return $this Pagination
+     * @return self
      */
     public function setListItemAttributes($listItemAttributes)
     {
@@ -141,7 +141,7 @@ class Pagination extends AbstractElementHelper
     /**
      * @param array $previousAttributes
      *
-     * @return $this Pagination
+     * @return self
      */
     public function setPreviousAttributes($previousAttributes)
     {
@@ -161,7 +161,7 @@ class Pagination extends AbstractElementHelper
     /**
      * @param array $nextAttributes
      *
-     * @return $this Pagination
+     * @return self
      */
     public function setNextAttributes($nextAttributes)
     {
@@ -284,11 +284,11 @@ class Pagination extends AbstractElementHelper
     /**
      * @param string $route
      *
-     * @return Pagination
+     * @return self
      */
     public function setRoute($route)
     {
-        $this->route = (string)$route;
+        $this->route = (string) $route;
 
         return $this;
     }
@@ -304,7 +304,7 @@ class Pagination extends AbstractElementHelper
     /**
      * @param array $routeParams
      *
-     * @return Pagination
+     * @return self
      */
     public function setRouteParams(array $routeParams)
     {
@@ -324,7 +324,7 @@ class Pagination extends AbstractElementHelper
     /**
      * @param \Zend\Paginator\Paginator $paginator
      *
-     * @return Pagination
+     * @return self
      */
     public function setPaginator(Paginator $paginator)
     {
@@ -336,7 +336,7 @@ class Pagination extends AbstractElementHelper
     /**
      * Render the pagination LARGE
      *
-     * @return AbstractElementHelper
+     * @return self
      */
     public function large()
     {
@@ -346,7 +346,7 @@ class Pagination extends AbstractElementHelper
     /**
      * Render the pagination small
      *
-     * @return AbstractElementHelper
+     * @return self
      */
     public function small()
     {
@@ -356,7 +356,7 @@ class Pagination extends AbstractElementHelper
     /**
      * Render the pagination smallest
      *
-     * @return AbstractElementHelper
+     * @return self
      */
     public function mini()
     {
@@ -366,7 +366,7 @@ class Pagination extends AbstractElementHelper
     /**
      * Align the pagination in the center.
      *
-     * @return AbstractElementHelper
+     * @return self
      */
     public function centered()
     {
@@ -376,7 +376,7 @@ class Pagination extends AbstractElementHelper
     /**
      * Align the pagination to the right.
      *
-     * @return AbstractElementHelper
+     * @return self
      */
     public function right()
     {
@@ -386,7 +386,7 @@ class Pagination extends AbstractElementHelper
     /**
      * Set scroll style elastic
      *
-     * @return Pagination
+     * @return self
      */
     public function elastic()
     {
@@ -398,7 +398,7 @@ class Pagination extends AbstractElementHelper
     /**
      * Set scroll style jumping
      *
-     * @return Pagination
+     * @return self
      */
     public function jumping()
     {
@@ -410,7 +410,7 @@ class Pagination extends AbstractElementHelper
     /**
      * Set scroll style sliding
      *
-     * @return Pagination
+     * @return self
      */
     public function sliding()
     {
@@ -422,7 +422,7 @@ class Pagination extends AbstractElementHelper
     /**
      * Set scroll style all
      *
-     * @return Pagination
+     * @return self
      */
     public function all()
     {

@@ -4,7 +4,6 @@ namespace SxBootstrap;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
-use Zend\ModuleManager\Feature\ServiceProviderInterface;
 use SxBootstrap\Service\BootstrapFilter;
 use SxBootstrap\Service\BootstrapResolver;
 
@@ -53,6 +52,7 @@ class Module implements AutoloaderProviderInterface
                     $fee->setAttributes(array(
                         'class' => 'help-inline',
                     ));
+
                     return $fee;
                 }
             ),

@@ -73,8 +73,8 @@ class Label extends AbstractElementHelper
     /**
      * Render an Label
      *
-     * @return  string
-     * @throws  Exception\InvalidArgumentException
+     * @return string
+     * @throws Exception\InvalidArgumentException
      */
     public function render()
     {
@@ -84,9 +84,9 @@ class Label extends AbstractElementHelper
     /**
      * Invoke Label
      *
-     * @param   string  $label
+     * @param string $label
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Label
+     * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
     public function __invoke($label = null)
     {

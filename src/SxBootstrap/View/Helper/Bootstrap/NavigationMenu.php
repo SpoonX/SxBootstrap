@@ -8,7 +8,7 @@
  */
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use SxBootstrap\Exception;
+use DOMElement;
 use Zend\View\Helper\AbstractHtmlElement;
 use Zend\Dom\Query;
 
@@ -18,7 +18,8 @@ class NavigationMenu extends AbstractHtmlElement
      * Render a default menu.
      *
      * @param string|\SpiffyNavigation\Container|null $container
-     * @param array $options
+     * @param array                                   $options
+     *
      * @return string
      */
     public function renderMenu($container = null, array $options = array())
@@ -30,7 +31,8 @@ class NavigationMenu extends AbstractHtmlElement
      * Render a dropdown menu
      *
      * @param string|\SpiffyNavigation\Container|null $container
-     * @param array $options
+     * @param array                                   $options
+     *
      * @return string
      */
     public function renderDropDownMenu($container = null, array $options = array())
@@ -69,9 +71,10 @@ class NavigationMenu extends AbstractHtmlElement
      *
      * @param $css
      * @param \DOMElement $el
+     *
      * @return \DOMElement
      */
-    protected function addCss($css, \DOMElement $el)
+    protected function addCss($css, DOMElement $el)
     {
         $el->setAttribute(
             'class',
@@ -91,7 +94,8 @@ class NavigationMenu extends AbstractHtmlElement
      * <code>echo 'Number of pages: ', count($this->container);</code>.
      *
      * @param string|\SpiffyNavigation\Container|null $container [optional] container to pass to view script.
-     * @param string $partial [optional] partial view script to use.
+     * @param string                                  $partial   [optional] partial view script to use.
+     *
      * @return string
      */
     public function renderPartial($container = null, $partial = null)

@@ -1,7 +1,6 @@
 <?php
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-//use SxBootstrap\Exception;
 use Zend\View\Helper\AbstractHelper;
 
 /**

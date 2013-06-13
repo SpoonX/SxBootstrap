@@ -25,7 +25,7 @@ class FlashMessenger extends PluginFlashMessenger
     /**
      * Add a message with "warning" type
      *
-     * @param  string $message
+     * @param string $message
      *
      * @return FlashMessenger
      */
