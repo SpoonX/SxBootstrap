@@ -11,8 +11,8 @@ class Button extends AbstractHelper
 {
 
     /**
-    * @var \Zend\Form\ElementInterface
-    */
+     * @var \Zend\Form\ElementInterface
+     */
     protected $element;
 
     /**
@@ -39,7 +39,7 @@ class Button extends AbstractHelper
     /**
      * Add class to button
      *
-     * @param   string  $class
+     * @param   string $class
      *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Button
      */
@@ -59,8 +59,8 @@ class Button extends AbstractHelper
     /**
      * Add attribute on button element
      *
-     * @param   string  $key
-     * @param   string  $value
+     * @param   string $key
+     * @param   string $value
      *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Button
      */
@@ -74,9 +74,10 @@ class Button extends AbstractHelper
     /**
      * Get arguments and make button element
      *
-     * @param   mixed  $argument
+     * @param   mixed $argument
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @throws \SxBootstrap\Exception\InvalidArgumentException
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function __invoke($argument = null)
     {
@@ -86,10 +87,10 @@ class Button extends AbstractHelper
             $this->element = new ButtonElement;
         } elseif ($argument instanceof ElementInterface) {
             $this->element = $argument;
-        } elseif(is_string($argument)) {
+        } elseif (is_string($argument)) {
             $this->element = new ButtonElement;
             $this->element->setName($argument);
-        } elseif(is_array($argument)) {
+        } elseif (is_array($argument)) {
             $this->element = new ButtonElement;
             $this->element->setAttributes($argument);
         } else {
@@ -121,7 +122,7 @@ class Button extends AbstractHelper
     /**
      * Set label or value based on type
      *
-     * @param   string  $label
+     * @param   string $label
      *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Button
      */
@@ -225,7 +226,7 @@ class Button extends AbstractHelper
     /**
      * Display data-toggle text
      *
-     * @param   string $text
+     * @param $toggle
      *
      * @return  \SxBootstrap\View\Helper\Bootstrap\Button
      */
