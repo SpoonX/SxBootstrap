@@ -254,7 +254,7 @@ class Modal extends AbstractElementHelper
         $body        = null,
         $footer      = null,
         $header      = null,
-        $closeButton = null,
+        $closeButton = null
     ) {
         $htmlElement = new   HtmlElement();
         $retVal      = clone $this;
