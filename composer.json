@@ -16,6 +16,9 @@
         "twitter/bootstrap": "2.*",
         "spoonx/sxcore": "1.*"
     },
+    "require-dev" : {
+        "phpunit/phpunit" : "*"
+    },
     "replace": {
         "rwoverdijk/sxbootstrap": "*"
     },
@@ -35,6 +38,6 @@
         ]
     },
     "suggest" : {
-        "spiffy/spiffy-navigation": "Needed to use SxNavigationMenu and dropdown"
+        "spiffy/spiffy-navigation": "Required for SxNavigationMenu and dropdown"
     }
 }
