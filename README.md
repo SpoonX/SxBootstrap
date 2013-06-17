@@ -1,4 +1,4 @@
-# SxBootstrap 1.10.1
+# SxBootstrap 2.0
 This module is intended for usage with a default directory structure of a
 [ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication/) and depends on the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
 It includes Twitter Bootstrap and allows you to build custom versions by overriding the configuration, and supplies some useful view helpers.
@@ -10,8 +10,8 @@ It includes Twitter Bootstrap and allows you to build custom versions by overrid
 * Works with AssetManager
 * Plenty of ViewHelpers
 * Extendable (run your own less files from bootstrap context to share mixins and variables)
-* Compatible, and tested with twitter bootstrap 2.1, 2.2 and 2.3+
-* Can use lessphp
+* Tested with twitter bootstrap 2.3+ (older versions will probably work, too)
+* You can optionally use lessphp (not recommended)
 
 ## Installation
 
@@ -20,14 +20,14 @@ It includes Twitter Bootstrap and allows you to build custom versions by overrid
 
         ```bash
         ./composer.phar require spoonx/sxbootstrap
-        # When asked for a version, type: "1.*"
+        # When asked for a version, type: "2.*"
         ```
     * or, adding it manually to your composer.json file and **then running `./composer.phar install`** to install the dependencies
 
         ```json
         {
             "require": {
-                "spoonx/sxbootstrap": "1.*"
+                "spoonx/sxbootstrap": "2.*"
             }
         }
         ```
