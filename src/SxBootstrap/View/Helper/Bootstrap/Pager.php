@@ -191,7 +191,7 @@ class Pager extends AbstractElementHelper
      */
     public function setRoute($route)
     {
-        $this->route = (string)$route;
+        $this->route = (string) $route;
 
         return $this;
     }
@@ -318,7 +318,7 @@ class Pager extends AbstractElementHelper
      */
     public function align($align = true)
     {
-        $this->align = (bool)$align;
+        $this->align = (bool) $align;
 
         return $this;
     }

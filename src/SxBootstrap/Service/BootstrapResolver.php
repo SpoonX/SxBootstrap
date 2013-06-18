@@ -6,8 +6,6 @@ use Assetic\Asset\AssetCollection;
 use Assetic\Asset\AssetInterface;
 use AssetManager\Resolver\AggregateResolverAwareInterface;
 use AssetManager\Resolver\ResolverInterface;
-use AssetManager\Resolver\MimeResolverAwareInterface;
-use AssetManager\Service\MimeResolver;
 use AssetManager\Service\AssetFilterManagerAwareInterface;
 use AssetManager\Service\AssetFilterManager;
 use SxBootstrap\Exception;
@@ -116,8 +114,8 @@ class BootstrapResolver implements
     /**
      * Get the plugin names from the makefile.
      *
-     * @param   string  $makefile   /path/to/Makefile
-     * @return  array   plugin names.
+     * @param  string $makefile /path/to/Makefile
+     * @return array  plugin names.
      */
     protected function getPluginNames($makefile)
     {

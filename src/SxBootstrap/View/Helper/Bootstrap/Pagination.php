@@ -288,7 +288,7 @@ class Pagination extends AbstractElementHelper
      */
     public function setRoute($route)
     {
-        $this->route = (string)$route;
+        $this->route = (string) $route;
 
         return $this;
     }

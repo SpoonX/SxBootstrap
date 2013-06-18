@@ -10,11 +10,7 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use Zend\Form\ElementInterface;
-use Zend\Form\View\Helper\FormElement as ZendFormElement;
-use Zend\Form\View\Helper\FormLabel;
 use Zend\Form\View\Helper\FormElementErrors as ZendFormElementErrors;
-use Zend\View\Helper\EscapeHtml;
 
 /**
  * Form Element errors

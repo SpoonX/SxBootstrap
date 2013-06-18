@@ -19,7 +19,7 @@ class ButtonToolbar extends AbstractElementHelper
      */
     public function render()
     {
-        foreach($this->groups as $group) {
+        foreach ($this->groups as $group) {
             $this->getElement()->appendContent($group->render());
         }
 
@@ -39,7 +39,7 @@ class ButtonToolbar extends AbstractElementHelper
     /**
      * Make button toolbar element and add groups
      *
-     * @param  array $groups
+     * @param  array                                            $groups
      * @return \SxBootstrap\View\Helper\Bootstrap\ButtonToolbar
      */
     public function __invoke(array $groups = array())

@@ -35,7 +35,7 @@ class Modal extends AbstractElementHelper
     /**
      * Renders a given ViewModel or passes the argument verbatim
      *
-     * @param  string|\Zend\View\Model\ViewModel $content
+     * @param string|\Zend\View\Model\ViewModel $content
      *
      * @return string
      */
@@ -45,7 +45,7 @@ class Modal extends AbstractElementHelper
             $content = $this->getView()->render($content);
         }
 
-        return (string)$content;
+        return (string) $content;
     }
 
     /**
@@ -67,7 +67,7 @@ class Modal extends AbstractElementHelper
      */
     public function setBackdrop($backdrop)
     {
-        $this->backdrop = (string)$backdrop;
+        $this->backdrop = (string) $backdrop;
 
         return $this;
     }
@@ -85,7 +85,7 @@ class Modal extends AbstractElementHelper
     /**
      * Sets the body div content
      *
-     * @param string|\Zend\View\Model\ViewModel         $body
+     * @param string|\Zend\View\Model\ViewModel $body
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Modal
      */
@@ -115,7 +115,7 @@ class Modal extends AbstractElementHelper
      */
     public function setCloseButton($closeButton)
     {
-        $this->closeButton = (bool)$closeButton;
+        $this->closeButton = (bool) $closeButton;
 
         return $this;
     }
@@ -133,7 +133,7 @@ class Modal extends AbstractElementHelper
     /**
      * Sets the footer div content
      *
-     * @param string|\Zend\View\Model\ViewModel         $footer
+     * @param string|\Zend\View\Model\ViewModel $footer
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Modal
      */
@@ -157,7 +157,7 @@ class Modal extends AbstractElementHelper
     /**
      * Sets the header div content
      *
-     * @param string|\Zend\View\Model\ViewModel         $header
+     * @param string|\Zend\View\Model\ViewModel $header
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Modal
      */
@@ -187,7 +187,7 @@ class Modal extends AbstractElementHelper
      */
     public function setKeyboard($keyboard)
     {
-        $this->keyboard = (string)$keyboard;
+        $this->keyboard = (string) $keyboard;
 
         return $this;
     }
@@ -211,7 +211,7 @@ class Modal extends AbstractElementHelper
      */
     public function setShow($show)
     {
-        $this->show = (string)$show;
+        $this->show = (string) $show;
 
         return $this;
     }
@@ -235,7 +235,7 @@ class Modal extends AbstractElementHelper
      */
     public function setRemote($remote)
     {
-        $this->remote = (string)$remote;
+        $this->remote = (string) $remote;
 
         return $this;
     }
@@ -248,7 +248,7 @@ class Modal extends AbstractElementHelper
      * @param null|string|\Zend\View\Model\ViewModel $header
      * @param null|boolean                           $closeButton
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Modal
+     * @return \SxBootstrap\View\Helper\Bootstrap\Modal
      */
     public function __invoke(
         $body        = null,
@@ -326,7 +326,7 @@ class Modal extends AbstractElementHelper
     /**
      * Render markup
      *
-     * @return  string
+     * @return string
      */
     public function render()
     {

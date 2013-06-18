@@ -56,7 +56,7 @@ class ButtonGroup extends AbstractElementHelper
     /**
      *  Make button group element and add buttons
      *
-     * @param  array $buttons
+     * @param array $buttons
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\ButtonGroup
      */

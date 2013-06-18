@@ -14,7 +14,7 @@ class BootstrapFilter implements FilterInterface
      * @var \Assetic\Filter\FilterInterface
      */
     protected $lessFilter;
-    
+
     /**
      * @var array
      */
@@ -27,7 +27,7 @@ class BootstrapFilter implements FilterInterface
     public function __construct(array $config)
     {
         $this->config = $config;
-        
+
         if ($this->config['use_lessphp']) {
             $this->lessFilter = new LessphpFilter();
         } else {
@@ -85,8 +85,8 @@ class BootstrapFilter implements FilterInterface
     /**
      * Extract the imports from the import file.
      *
-     * @param   string  $variablesFile
-     * @return  array   The extracted imports
+     * @param  string $variablesFile
+     * @return array  The extracted imports
      */
     protected function extractImports($importsFile)
     {
@@ -100,8 +100,8 @@ class BootstrapFilter implements FilterInterface
     /**
      * Extract the variables from the less file.
      *
-     * @param   string  $variablesFile  The path to the less file
-     * @return  array   The extracted variables
+     * @param  string $variablesFile The path to the less file
+     * @return array  The extracted variables
      */
     protected function extractVariables($variablesFile)
     {
@@ -138,7 +138,7 @@ class BootstrapFilter implements FilterInterface
 
         if (!empty($config['excluded_components'])) {
             $imports = $this->removeImportFiles($imports, $config['excluded_components']);
-        } elseif(!empty($config['included_components'])) {
+        } elseif (!empty($config['included_components'])) {
             $imports = $this->addImportFiles($imports, $config['included_components']);
         }
 

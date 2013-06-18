@@ -221,7 +221,7 @@ class FormElement extends ZendFormElement
      */
     public function setGroupWrapper($groupWrapper)
     {
-        $this->groupWrapper = (string)$groupWrapper;
+        $this->groupWrapper = (string) $groupWrapper;
 
         return $this;
     }
@@ -245,7 +245,7 @@ class FormElement extends ZendFormElement
      */
     public function setControlWrapper($controlWrapper)
     {
-        $this->controlWrapper = (string)$controlWrapper;
+        $this->controlWrapper = (string) $controlWrapper;
 
         return $this;
     }
