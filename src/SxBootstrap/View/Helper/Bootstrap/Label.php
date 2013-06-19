@@ -51,7 +51,7 @@ class Label extends AbstractElementHelper
     }
 
     /**
-     * Display a Sucess Label
+     * Display a Success Label
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
@@ -68,17 +68,6 @@ class Label extends AbstractElementHelper
     public function warning()
     {
         return $this->addClass('label-warning');
-    }
-
-    /**
-     * Render an Label
-     *
-     * @return string
-     * @throws Exception\InvalidArgumentException
-     */
-    public function render()
-    {
-        return $this->getElement()->render();
     }
 
     /**

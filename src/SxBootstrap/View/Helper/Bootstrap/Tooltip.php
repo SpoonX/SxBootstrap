@@ -42,7 +42,7 @@ class Tooltip extends AbstractElementHelper
     /**
      * Display the tooltip title
      *
-     * @param string $tooltip
+     * @param string $title
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
      */
@@ -81,7 +81,7 @@ class Tooltip extends AbstractElementHelper
     /**
      * Set the placement
      *
-     * @param  string placement
+     * @param  string $placement
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
      */
@@ -136,8 +136,8 @@ class Tooltip extends AbstractElementHelper
     /**
      * Set a single option to the Tooltip
      *
-     * @param type $key
-     * @param type $value
+     * @param string $key
+     * @param string $value
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Label
      * @throws Exception\InvalidArgumentException
@@ -165,17 +165,6 @@ class Tooltip extends AbstractElementHelper
     }
 
     /**
-     * Render a tooltip
-     *
-     * @return string
-     * @throws Exception\InvalidArgumentException
-     */
-    public function render()
-    {
-        return $this->getElement()->render();
-    }
-
-    /**
      * Invoke Tooltip
      *
      * @param string $title
@@ -186,8 +175,6 @@ class Tooltip extends AbstractElementHelper
      */
     public function __invoke($title = null, $content = null, $href = null)
     {
-        $clone = clone $this;
-
         $element = new HtmlElement('a');
 
         $element->addAttributes(array(
@@ -195,20 +182,20 @@ class Tooltip extends AbstractElementHelper
             'rel'         => 'tooltip',
         ));
 
-        $clone->setElement($element);
+        $this->setElement($element);
 
         if (!is_null($title)) {
-            $clone->setTitle($title);
+            $this->setTitle($title);
         }
 
         if (!is_null($content)) {
-            $clone->setContent($content);
+            $this->setContent($content);
         }
 
         if (!is_null($href)) {
-            $clone->setHref($href);
+            $this->setHref($href);
         }
 
-        return $clone;
+        return clone $this;
     }
 }

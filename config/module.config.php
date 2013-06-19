@@ -59,6 +59,7 @@ return array(
             'sxbNavigationMenu'     => 'SxBootstrap\View\Helper\Bootstrap\NavigationMenu',
             'sxbModal'              => 'SxBootstrap\View\Helper\Bootstrap\Modal',
             'sxbTooltip'            => 'SxBootstrap\View\Helper\Bootstrap\Tooltip',
+            'sxbFormInput'          => 'SxBootstrap\View\Helper\Bootstrap\Form\Input',
         ),
     ),
     'asset_manager' => array(

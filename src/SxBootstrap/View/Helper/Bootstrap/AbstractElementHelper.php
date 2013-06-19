@@ -66,7 +66,10 @@ abstract class AbstractElementHelper extends AbstractHelper
      *
      * @return string
      */
-    abstract public function render();
+    public function render()
+    {
+        return $this->getElement()->render();
+    }
 
     /**
      * Return the markup string of the Code block

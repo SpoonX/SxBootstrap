@@ -30,15 +30,4 @@ class Code extends AbstractElementHelper
 
         return $this;
     }
-
-    /**
-     * Return the HTML string of this HTML element
-     *
-     * @return string
-     */
-    public function render()
-    {
-        return $this->getElement()->render();
-    }
-
 }

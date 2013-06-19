@@ -326,6 +326,7 @@ class Modal extends AbstractElementHelper
     /**
      * Render markup
      *
+     * @throws \SxBootstrap\Exception\RuntimeException
      * @return string
      */
     public function render()
