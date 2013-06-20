@@ -58,6 +58,44 @@ class TooltipTest extends PHPUnit_Framework_TestCase
         $instance->setOption('invalidOption', 'test');
     }
     
+    public function testInvokeSetOptions()
+    {
+        /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Tooltip */
+        $tooltipHelper = new Tooltip();
+        $instance    = $tooltipHelper();
+        $instance->setOptions(array(
+            'container' => 'test',
+            'animation' => 'test2'
+        ));
+        
+        $expected    = '<a data-toggle="tooltip" rel="tooltip" data-container="test" data-animation="test2"></a>';
+
+        $this->assertSame($expected, (string) $instance);
+    }
+    
+    public function testInvokeSetOptionsBool()
+    {
+        /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Tooltip */
+        $tooltipHelper = new Tooltip();
+        $instance    = $tooltipHelper();
+        $instance->setOption('container', true);
+        
+        $expected    = '<a data-toggle="tooltip" rel="tooltip" data-container="true"></a>';
+
+        $this->assertSame($expected, (string) $instance);
+    }
+    
+    /**
+     * @expectedException PHPUnit_Framework_Error
+     */
+    public function testInvokeSetOptionsErrorArray()
+    {
+        /* @var Exception\InvalidArgumentException */
+        $tooltipHelper = new Tooltip();
+        $instance    = $tooltipHelper();
+        $instance->setOptions('invalidOption');
+    }
+    
     public function testInvokeSetHref()
     {
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Tooltip */
