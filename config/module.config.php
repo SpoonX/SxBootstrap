@@ -60,6 +60,7 @@ return array(
             'sxbModal'              => 'SxBootstrap\View\Helper\Bootstrap\Modal',
             'sxbTooltip'            => 'SxBootstrap\View\Helper\Bootstrap\Tooltip',
             'sxbFormInput'          => 'SxBootstrap\View\Helper\Bootstrap\Form\Input',
+            'sxbFormPassword'       => 'SxBootstrap\View\Helper\Bootstrap\Form\Password',
         ),
     ),
     'asset_manager' => array(
