@@ -10,6 +10,26 @@ class Input extends AbstractElementHelper
 {
 
     /**
+     * @param \Zend\Form\ElementInterface|string|null $elementType
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Input
+     */
+    public function __invoke($elementType = null)
+    {
+        $this->setElement(new HtmlElement('input'));
+
+        if (is_object($elementType) && $elementType instanceof ElementInterface) {
+            return $this->initFormElement($elementType);
+        }
+
+        if (null !== $elementType) {
+            $this->type($elementType);
+        }
+
+        return clone $this;
+    }
+
+    /**
      * @param $placeholder
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Input
@@ -115,26 +135,6 @@ class Input extends AbstractElementHelper
     public function xxlarge()
     {
         return $this->addClass('input-xxlarge');
-    }
-
-    /**
-     * @param \Zend\Form\ElementInterface|string|null $elementType
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Input
-     */
-    public function __invoke($elementType = null)
-    {
-        $this->setElement(new HtmlElement('input'));
-
-        if (is_object($elementType) && $elementType instanceof ElementInterface) {
-            return $this->initFormElement($elementType);
-        }
-
-        if (null !== $elementType) {
-            $this->type($elementType);
-        }
-
-        return clone $this;
     }
 
     /**
