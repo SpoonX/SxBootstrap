@@ -154,4 +154,19 @@ class FlashMessenger extends AbstractElementHelper
         return clone $this;
     }
 
+    /**
+     * @return bool
+     */
+    public function hasMessages()
+    {
+        $namespaces = !is_null($this->namespaces) ? $this->namespaces : $this->availableNamespaces;
+
+        foreach ($namespaces as $namespace) {
+            if (0 < count($this->getView()->plugin('flash_messenger')->__invoke($namespace))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
