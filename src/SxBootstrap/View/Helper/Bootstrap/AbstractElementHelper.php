@@ -3,12 +3,12 @@
 namespace SxBootstrap\View\Helper\Bootstrap;
 
 use SxCore\Html\HtmlElement;
-use Zend\Form\View\Helper\AbstractHelper;
+use Zend\I18n\View\Helper\AbstractTranslatorHelper;
 
 /**
  * The ViewHelper that creates a block to represent a Well.
  */
-abstract class AbstractElementHelper extends AbstractHelper
+abstract class AbstractElementHelper extends AbstractTranslatorHelper
 {
 
     /**
@@ -30,6 +30,22 @@ abstract class AbstractElementHelper extends AbstractHelper
         $this->element->addClass($class);
 
         return $this;
+    }
+
+    /**
+     * Translate a string.
+     *
+     * @param $string
+     *
+     * @return string
+     */
+    protected function translate($string)
+    {
+        if ($this->hasTranslator()) {
+            return $this->getTranslator()->translate($string, $this->getTranslatorTextDomain());
+        }
+
+        return $string;
     }
 
     /**

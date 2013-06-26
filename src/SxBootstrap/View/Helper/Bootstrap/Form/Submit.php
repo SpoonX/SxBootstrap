@@ -18,6 +18,14 @@ class Submit extends Input
     }
 
     /**
+     * {@InheritDoc}
+     */
+    public function value($value)
+    {
+        return parent::value($this->translate($value));
+    }
+
+    /**
      * Display a Primary button
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Button

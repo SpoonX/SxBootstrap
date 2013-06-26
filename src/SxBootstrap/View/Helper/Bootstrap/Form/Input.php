@@ -30,6 +30,28 @@ class Input extends AbstractElementHelper
     }
 
     /**
+     * @param ElementInterface $element
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Input
+     */
+    protected function initFormElement(ElementInterface $element)
+    {
+        $this->name($element->getName())->type('text');
+
+        $this->getElement()->addAttributes($element->getAttributes());
+
+        $type = $element->getAttribute('type');
+
+        if (null !== $type) {
+            $this->type(strtolower($type));
+        }
+
+        $this->value($element->getValue());
+
+        return $this;
+    }
+
+    /**
      * @param $placeholder
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Input
@@ -150,27 +172,5 @@ class Input extends AbstractElementHelper
         $this->getElement()->setIsXhtml($doctypeHelper->isXhtml());
 
         return parent::render();
-    }
-
-    /**
-     * @param ElementInterface $element
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Input
-     */
-    protected function initFormElement(ElementInterface $element)
-    {
-        $this->name($element->getName())->type('text');
-
-        $this->getElement()->addAttributes($element->getAttributes());
-
-        $type = $element->getAttribute('type');
-
-        if (null !== $type) {
-            $this->type(strtolower($type));
-        }
-
-        $this->value($element->getValue());
-
-        return $this;
     }
 }

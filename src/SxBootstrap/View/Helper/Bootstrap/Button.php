@@ -3,10 +3,7 @@
 namespace SxBootstrap\View\Helper\Bootstrap;
 
 use SxCore\Html\HtmlElement;
-use Zend\Form\View\Helper\AbstractHelper;
-use SxBootstrap\Exception;
 use Zend\Form\Element\Button as ButtonElement;
-use Zend\Form\ElementInterface;
 
 class Button extends AbstractElementHelper
 {
@@ -19,21 +16,33 @@ class Button extends AbstractElementHelper
     /**
      * Get arguments and make button element
      *
-     * @param string|null $label
+     * @param string|null $labelOrElement
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
-    public function __invoke($label = null)
+    public function __invoke($labelOrElement = null)
     {
         $this->setElement(new HtmlElement('button'));
 
-        if (is_string($label)) {
-            $this->setLabel($label);
+        if ($labelOrElement instanceof ButtonElement) {
+            $this->init
+        }
+
+        if (is_string($labelOrElement)) {
+            $this->setLabel($labelOrElement);
         }
 
         $this->addClass('btn');
 
         return clone $this;
+    }
+
+    /**
+     * @param ButtonElement $element
+     */
+    protected function initFormElement(ButtonElement $element)
+    {
+        $this->getElement()->addAttributes($element->getAttributes());
     }
 
     /**
@@ -45,7 +54,7 @@ class Button extends AbstractElementHelper
      */
     public function setLabel($label)
     {
-        $this->setContent($label);
+        $this->setContent($this->translate($label));
 
         return $this;
     }
