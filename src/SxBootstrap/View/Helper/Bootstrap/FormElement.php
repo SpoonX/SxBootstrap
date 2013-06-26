@@ -282,8 +282,8 @@ class FormElement extends ZendFormElement
         $id                 = $element->getAttribute('id') ? : $element->getAttribute('name');
         $html               = "";
 
-        if (in_array($element->getAttribute('type'), array('button', 'submit'))) {
-            $elementHelper  = $this->getView()->plugin('sxb_button');
+        if ('submit' === $element->getAttribute('type')) {
+            $elementHelper  = $this->getView()->plugin('sxb_form_submit');
             $elementHelper  = $elementHelper($element);
             $controlWrapper = $this->formActionsWrapper;
         }

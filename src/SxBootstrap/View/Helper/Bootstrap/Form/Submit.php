@@ -1,53 +1,20 @@
 <?php
 
-namespace SxBootstrap\View\Helper\Bootstrap;
+namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
-use SxCore\Html\HtmlElement;
-use Zend\Form\View\Helper\AbstractHelper;
-use SxBootstrap\Exception;
-use Zend\Form\Element\Button as ButtonElement;
-use Zend\Form\ElementInterface;
-
-class Button extends AbstractElementHelper
+class Submit extends Input
 {
 
     /**
-     * @var \Zend\Form\ElementInterface
-     */
-    protected $element;
-
-    /**
-     * Get arguments and make button element
+     * Renders submit input type
      *
-     * @param string|null $label
+     * @param \Zend\Form\ElementInterface|string|null $elementType
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Input
      */
-    public function __invoke($label = null)
+    public function __invoke($elementType = null)
     {
-        $this->setElement(new HtmlElement('button'));
-
-        if (is_string($label)) {
-            $this->setLabel($label);
-        }
-
-        $this->addClass('btn');
-
-        return clone $this;
-    }
-
-    /**
-     * Set label or value based on type
-     *
-     * @param string $label
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
-     */
-    public function setLabel($label)
-    {
-        $this->setContent($label);
-
-        return $this;
+        return parent::__invoke($elementType)->type('submit')->addClass('btn');
     }
 
     /**
@@ -78,14 +45,6 @@ class Button extends AbstractElementHelper
     public function success()
     {
         return $this->addClass('btn-success');
-    }
-
-    /**
-     * @param string $type
-     */
-    public function type($type)
-    {
-        $this->addAttribute('type', (string) $type);
     }
 
     /**
@@ -215,5 +174,4 @@ class Button extends AbstractElementHelper
     {
         return $this->addClass('active');
     }
-
 }

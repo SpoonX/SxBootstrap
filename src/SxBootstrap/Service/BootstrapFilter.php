@@ -7,33 +7,37 @@ use Assetic\Filter\FilterInterface;
 use Assetic\Filter\LessFilter;
 use Assetic\Filter\LessphpFilter;
 use SxBootstrap\Exception;
+use SxBootstrap\Options\ModuleOptions;
 
 class BootstrapFilter implements FilterInterface
 {
+
     /**
      * @var \Assetic\Filter\FilterInterface
      */
     protected $lessFilter;
 
     /**
-     * @var array
+     * @var ModuleOptions
      */
     protected $config;
 
     /**
      * Constructs the service right before
-     * @param array $config
+     *
+     * @param ModuleOptions $config
      */
-    public function __construct(array $config)
+    public function __construct(ModuleOptions $config)
     {
         $this->config = $config;
 
-        if ($this->config['use_lessphp']) {
+        if ($this->config->getUseLessphp()) {
             $this->lessFilter = new LessphpFilter();
         } else {
+            $filter           = $this->config->getFilter();
             $this->lessFilter = new LessFilter(
-                    $this->config['filter']['node_bin'],
-                    $this->config['filter']['node_paths']
+                $filter['node_bin'],
+                $filter['node_paths']
             );
         }
     }
@@ -47,8 +51,8 @@ class BootstrapFilter implements FilterInterface
     {
         $assetRoot      = $asset->getSourceRoot();
         $assetPath      = $asset->getSourcePath();
-        $assetImportDir = dirname($assetRoot.'/'.$assetPath);
-        $importDir      = $this->config['bootstrap_path'] . '/less';
+        $assetImportDir = dirname($assetRoot . '/' . $assetPath);
+        $importDir      = $this->config->getBootstrapPath() . '/less';
 
         // Make sure we _always_ have the bootstrap import dir.
         if ($importDir !== $assetImportDir) {
@@ -56,27 +60,27 @@ class BootstrapFilter implements FilterInterface
         }
 
         $variables = array_merge(
-            $this->extractVariables($importDir.'/variables.less'),
-            $this->config['variables']
+            $this->extractVariables($importDir . '/variables.less'),
+            $this->config->getVariables()
         );
 
         $variablesString = '';
 
         foreach ($variables as $key => $value) {
-            $variablesString .= "@$key:$value;".PHP_EOL;
+            $variablesString .= "@$key:$value;" . PHP_EOL;
         }
 
         if ('bootstrap.less' === $assetPath) {
-            $imports   = $this->filterImportFiles(array_unique(array_merge(
-                $this->extractImports($importDir.'/bootstrap.less'),
-                $this->extractImports($importDir.'/responsive.less')
+            $imports = $this->filterImportFiles(array_unique(array_merge(
+                $this->extractImports($importDir . '/bootstrap.less'),
+                $this->extractImports($importDir . '/responsive.less')
             )));
 
             $assetContent = $variablesString . $imports;
 
             $asset->setContent($assetContent);
         } else {
-            $asset->setContent($variablesString.$asset->getContent());
+            $asset->setContent($variablesString . $asset->getContent());
         }
 
         $this->lessFilter->filterLoad($asset);
@@ -85,7 +89,8 @@ class BootstrapFilter implements FilterInterface
     /**
      * Extract the imports from the import file.
      *
-     * @param  string $variablesFile
+     * @param $importsFile
+     *
      * @return array  The extracted imports
      */
     protected function extractImports($importsFile)
@@ -101,6 +106,7 @@ class BootstrapFilter implements FilterInterface
      * Extract the variables from the less file.
      *
      * @param  string $variablesFile The path to the less file
+     *
      * @return array  The extracted variables
      */
     protected function extractVariables($variablesFile)
@@ -123,26 +129,31 @@ class BootstrapFilter implements FilterInterface
     /**
      * Filter the import files needed.
      *
+     * @param $imports
+     *
+     * @throws \SxBootstrap\Exception\RuntimeException
      * @return array
-     * @throws Exception\RuntimeException
      */
     protected function filterImportFiles($imports)
     {
         $config = $this->config;
 
-        if (!empty($config['excluded_components']) && !empty($config['included_components'])) {
+        $excludedComponents = $config->getExcludedComponents();
+        $includedComponents = $config->getIncludedComponents();
+
+        if (!empty($excludedComponents) && !empty($includedComponents)) {
             throw new Exception\RuntimeException(
                 'You may not set both excluded and included components.'
             );
         }
 
-        if (!empty($config['excluded_components'])) {
-            $imports = $this->removeImportFiles($imports, $config['excluded_components']);
-        } elseif (!empty($config['included_components'])) {
-            $imports = $this->addImportFiles($imports, $config['included_components']);
+        if (!empty($excludedComponents)) {
+            $imports = $this->removeImportFiles($imports, $excludedComponents);
+        } elseif (!empty($includedComponents)) {
+            $imports = $this->addImportFiles($imports, $includedComponents);
         }
 
-        array_walk($imports, function(&$val) {
+        array_walk($imports, function (&$val) {
             $val = "@import \"$val\";";
         });
 
@@ -152,7 +163,10 @@ class BootstrapFilter implements FilterInterface
     /**
      * Remove import files from the import config.
      *
+     * @param array $importFiles
      * @param array $config
+     *
+     * @return array
      */
     protected function removeImportFiles(array $importFiles, array $config)
     {
@@ -168,7 +182,10 @@ class BootstrapFilter implements FilterInterface
     /**
      * Remove everything from the import config except for the values in $config
      *
+     * @param array $importFiles
      * @param array $config
+     *
+     * @return array
      */
     protected function addImportFiles(array $importFiles, array $config)
     {

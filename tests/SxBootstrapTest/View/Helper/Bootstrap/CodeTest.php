@@ -16,24 +16,22 @@ class CodeTest extends PHPUnit_Framework_TestCase
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Code */
         $codeHelper  = new Code();
         $instance    = $codeHelper();
-        $attributes  = $instance->getElement()->getAttributes();
         $expected    = '<code></code>';
 
         $this->assertInstanceOf('SxBootstrap\View\Helper\Bootstrap\Code', $instance);
         $this->assertSame($expected, (string) $instance);
     }
-    
+
     public function testInvokeMessage()
     {
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Code */
         $codeHelper  = new Code();
         $instance    = $codeHelper('test tekst');
-        $attributes  = $instance->getElement()->getAttributes();
         $expected    = '<code>test tekst</code>';
 
         $this->assertSame($expected, (string) $instance);
     }
-    
+
     public function testInvokeMessageMultiLine()
     {
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Code */

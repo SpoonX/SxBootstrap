@@ -9,14 +9,16 @@ use AssetManager\Resolver\ResolverInterface;
 use AssetManager\Service\AssetFilterManagerAwareInterface;
 use AssetManager\Service\AssetFilterManager;
 use SxBootstrap\Exception;
+use SxBootstrap\Options\ModuleOptions;
 
 class BootstrapResolver implements
     ResolverInterface,
     AggregateResolverAwareInterface,
     AssetFilterManagerAwareInterface
 {
+
     /**
-     * @var array Resolver configuration.
+     * @var ModuleOptions Resolver configuration.
      */
     protected $config;
 
@@ -30,7 +32,7 @@ class BootstrapResolver implements
      */
     protected $filterManager;
 
-    public function __construct(array $config)
+    public function __construct(ModuleOptions $config)
     {
         $this->config = $config;
     }
@@ -40,8 +42,8 @@ class BootstrapResolver implements
      */
     public function resolve($path)
     {
-        if ($path !== $this->config['plugin_alias']) {
-            return;
+        if ($path !== $this->config->getPluginAlias()) {
+            return null;
         }
 
         return $this->resolvePlugins();
@@ -50,14 +52,17 @@ class BootstrapResolver implements
     /**
      * Resolve to the plugins for this module (expand).
      *
-     * @return AssetCollection
+     * @throws \SxBootstrap\Exception\RuntimeException
+     * @return \Assetic\Asset\AssetCollection
      */
     protected function resolvePlugins()
     {
-        $config      = $this->config;
-        $pluginFiles = $this->getPluginNames($config['makefile']);
+        $config          = $this->config;
+        $pluginFiles     = $this->getPluginNames($config->getMakeFile());
+        $includedPlugins = $config->getIncludedPlugins();
+        $excludedPlugins = $config->getExcludedPlugins();
 
-        if (!empty($config['excluded_plugins']) && !empty($config['included_plugins'])) {
+        if (!empty($excludedPlugins) && !empty($includedPlugins)) {
             throw new Exception\RuntimeException(
                 'You may not set both excluded and included plugins.'
             );
@@ -68,17 +73,17 @@ class BootstrapResolver implements
 
         foreach ($pluginFiles as $plugin) {
 
-            if (!empty($config['excluded_plugins'])
-                && in_array($plugin, $config['excluded_plugins'])
+            if (!empty($excludedPlugins)
+                && in_array($plugin, $excludedPlugins)
             ) {
                 continue;
-            } elseif (!empty($config['included_plugins'])
-                      && !in_array($plugin, $config['included_plugins'])
+            } elseif (!empty($includedPlugins)
+                && !in_array($plugin, $includedPlugins)
             ) {
                 continue;
             }
 
-            $res = $this->getAggregateResolver()->resolve('js/bootstrap-'.$plugin.'.js');
+            $res = $this->getAggregateResolver()->resolve('js/bootstrap-' . $plugin . '.js');
 
             if (null === $res) {
                 throw new Exception\RuntimeException("Asset '$plugin' could not be found.");
@@ -86,7 +91,7 @@ class BootstrapResolver implements
 
             if (!$res instanceof AssetInterface) {
                 throw new Exception\RuntimeException(
-                    "Asset '$asset' does not implement Assetic\\Asset\\AssetInterface."
+                    "Asset '$plugin' does not implement Assetic\\Asset\\AssetInterface."
                 );
             }
 
@@ -94,7 +99,7 @@ class BootstrapResolver implements
                 throw new Exception\RuntimeException(sprintf(
                     'Asset "%s" from collection "%s" doesn\'t have the expected mime-type "%s".',
                     $plugin,
-                    $config['plugin_alias'],
+                    $config->getPluginAlias(),
                     $mimeType
                 ));
             }
@@ -115,6 +120,7 @@ class BootstrapResolver implements
      * Get the plugin names from the makefile.
      *
      * @param  string $makefile /path/to/Makefile
+     *
      * @return array  plugin names.
      */
     protected function getPluginNames($makefile)
@@ -126,7 +132,7 @@ class BootstrapResolver implements
             $mkdata, $matches
         );
 
-        return array_map(function($value) {
+        return array_map(function ($value) {
             return preg_replace('/(js\/bootstrap-([\w_-]+)\.js)/', '\2', $value);
         }, preg_split('/\s+/', $matches['files']));
     }

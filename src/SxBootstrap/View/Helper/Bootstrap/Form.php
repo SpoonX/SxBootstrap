@@ -29,12 +29,12 @@ class Form extends AbstractHelper
 {
 
     /**
-     * @var Zend\View\Helper\Form
+     * @var \Zend\View\Helper\Form
      */
     protected $formHelper;
 
     /**
-     * @var SxBootstrap\View\Helper\Bootstrap\FormElement
+     * @var \SxBootstrap\View\Helper\Bootstrap\FormElement
      */
     protected $formElementHelper;
 

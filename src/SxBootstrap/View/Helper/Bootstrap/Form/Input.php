@@ -22,7 +22,7 @@ class Input extends AbstractElementHelper
             return $this->initFormElement($elementType);
         }
 
-        if (null !== $elementType) {
+        if (is_string($elementType)) {
             $this->type($elementType);
         }
 

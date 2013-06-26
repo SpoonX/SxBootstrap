@@ -10,6 +10,7 @@ use SxBootstrap\View\Helper\Bootstrap\Badge;
  */
 class BadgeTest extends PHPUnit_Framework_TestCase
 {
+
     public function testInvokeMessage()
     {
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Badge */
@@ -22,16 +23,16 @@ class BadgeTest extends PHPUnit_Framework_TestCase
         $this->assertSame('badge', $attributes['class']);
         $this->assertSame($expected, (string) $instance);
     }
-    
+
     public function testInfo()
     {
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Badge */
-        $badgetHelper   = new Badge();
-        $instance       = $badgetHelper('test');
+        $badgeHelper = new Badge();
+        $instance    = $badgeHelper('test');
 
         $instance->info();
 
-        $attributes     = $instance->getElement()->getAttributes();
+        $attributes = $instance->getElement()->getAttributes();
 
         $this->assertSame('badge badge-info', $attributes['class']);
     }
@@ -39,66 +40,76 @@ class BadgeTest extends PHPUnit_Framework_TestCase
     public function testImportant()
     {
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Badge */
-        $badgetHelper   = new Badge();
-        $instance       = $badgetHelper('test');
+        $badgeHelper = new Badge();
+        $instance    = $badgeHelper('test');
 
         $instance->important();
 
-        $attributes     = $instance->getElement()->getAttributes();
+        $attributes = $instance->getElement()->getAttributes();
 
         $this->assertSame('badge badge-important', $attributes['class']);
     }
-    
+
     public function testInverse()
     {
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Badge */
-        $badgetHelper   = new Badge();
-        $instance       = $badgetHelper('test');
+        $badgeHelper = new Badge();
+        $instance    = $badgeHelper('test');
 
         $instance->inverse();
 
-        $attributes     = $instance->getElement()->getAttributes();
+        $attributes = $instance->getElement()->getAttributes();
 
         $this->assertSame('badge badge-inverse', $attributes['class']);
     }
-    
+
     public function testSuccess()
     {
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Badge */
-        $badgetHelper   = new Badge();
-        $instance       = $badgetHelper('test');
+        $badgeHelper = new Badge();
+        $instance    = $badgeHelper('test');
 
         $instance->success();
 
-        $attributes     = $instance->getElement()->getAttributes();
+        $attributes = $instance->getElement()->getAttributes();
 
         $this->assertSame('badge badge-success', $attributes['class']);
-    }    
-    
+    }
+
     public function testWarning()
     {
         /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Badge */
-        $badgetHelper   = new Badge();
-        $instance       = $badgetHelper('test');
+        $badgeHelper = new Badge();
+        $instance    = $badgeHelper('test');
 
         $instance->warning();
 
-        $attributes     = $instance->getElement()->getAttributes();
+        $attributes = $instance->getElement()->getAttributes();
 
         $this->assertSame('badge badge-warning', $attributes['class']);
     }
-    
+
     public function testRender()
     {
-        /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Well */
-        $badgetHelper   = new Badge();
-        $instance       = $badgetHelper('test');
+        /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Badge */
+        $badgeHelper = new Badge();
+        $instance    = $badgeHelper('test');
 
         $instance->render();
 
-        $attributes     = $instance->getElement()->getAttributes();
-        $expected       = '<span class="badge">test</span>';
+        $expected = '<span class="badge">test</span>';
         $this->assertSame($expected, (string) $instance);
     }
-    
+
+    /**
+     * @expectedException \SxBootstrap\Exception\InvalidArgumentException
+     */
+    public function testInvokeFails()
+    {
+        /* @var $instance \SxBootstrap\View\Helper\Bootstrap\Badge */
+        $badgeHelper = new Badge();
+
+        $badgeHelper(array());
+    }
+
 }
