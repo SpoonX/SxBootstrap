@@ -81,7 +81,7 @@ class Tooltip extends AbstractElementHelper
     /**
      * Set the placement
      *
-     * @param  string $placement
+     * @param string $placement
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Tooltip
      */

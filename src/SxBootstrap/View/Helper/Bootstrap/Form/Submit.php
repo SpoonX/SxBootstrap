@@ -10,7 +10,7 @@ class Submit extends Input
      *
      * @param \Zend\Form\ElementInterface|string|null $elementType
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Input
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function __invoke($elementType = null)
     {
@@ -20,7 +20,7 @@ class Submit extends Input
     /**
      * Display a Primary button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function primary()
     {
@@ -30,7 +30,7 @@ class Submit extends Input
     /**
      * Display a Info button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function info()
     {
@@ -40,7 +40,7 @@ class Submit extends Input
     /**
      * Display a Success button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function success()
     {
@@ -50,7 +50,7 @@ class Submit extends Input
     /**
      * Display a Warning button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function warning()
     {
@@ -60,7 +60,7 @@ class Submit extends Input
     /**
      * Display a Danger button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function danger()
     {
@@ -70,7 +70,7 @@ class Submit extends Input
     /**
      * Display a Inverse button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function inverse()
     {
@@ -80,7 +80,7 @@ class Submit extends Input
     /**
      * Display a link button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function link()
     {
@@ -92,7 +92,7 @@ class Submit extends Input
      *
      * @param string $text
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function loadingText($text)
     {
@@ -106,7 +106,7 @@ class Submit extends Input
      *
      * @param string $toggle
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function toggle($toggle)
     {
@@ -118,7 +118,7 @@ class Submit extends Input
     /**
      * Display mini button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function mini()
     {
@@ -128,7 +128,7 @@ class Submit extends Input
     /**
      * Display small button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function small()
     {
@@ -138,7 +138,7 @@ class Submit extends Input
     /**
      * Display large button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function large()
     {
@@ -148,7 +148,7 @@ class Submit extends Input
     /**
      * Display block button
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function block()
     {
@@ -158,7 +158,7 @@ class Submit extends Input
     /**
      * Set button disabled
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function disabled()
     {
@@ -168,7 +168,7 @@ class Submit extends Input
     /**
      * Set button active
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Submit
      */
     public function active()
     {
