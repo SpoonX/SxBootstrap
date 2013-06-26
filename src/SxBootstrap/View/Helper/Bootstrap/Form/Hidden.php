@@ -2,17 +2,17 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
-class Password extends Input
+class Hidden extends Input
 {
-
     /**
-     * Renders password input type
+     * Renders hidden input type
+     *
      * @param \Zend\Form\ElementInterface|string|null $elementType
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Password
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Hidden
      */
     public function __invoke($elementType = null)
     {
-        return parent::__invoke($elementType)->type('password');
+        return parent::__invoke($elementType)->type('hidden');
     }
 }

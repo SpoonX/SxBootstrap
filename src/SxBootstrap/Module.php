@@ -1,7 +1,6 @@
 <?php
 namespace SxBootstrap;
 
-use Zend\EventManager\EventInterface;
 use Zend\Loader\AutoloaderFactory;
 use Zend\Loader\StandardAutoloader;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;

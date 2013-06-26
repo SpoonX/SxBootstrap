@@ -119,9 +119,9 @@ class BootstrapResolver implements
     /**
      * Get the plugin names from the makefile.
      *
-     * @param  string $makefile /path/to/Makefile
+     * @param string $makefile /path/to/Makefile
      *
-     * @return array  plugin names.
+     * @return array plugin names.
      */
     protected function getPluginNames($makefile)
     {

@@ -91,7 +91,7 @@ class BootstrapFilter implements FilterInterface
      *
      * @param $importsFile
      *
-     * @return array  The extracted imports
+     * @return array The extracted imports
      */
     protected function extractImports($importsFile)
     {
@@ -105,9 +105,9 @@ class BootstrapFilter implements FilterInterface
     /**
      * Extract the variables from the less file.
      *
-     * @param  string $variablesFile The path to the less file
+     * @param string $variablesFile The path to the less file
      *
-     * @return array  The extracted variables
+     * @return array The extracted variables
      */
     protected function extractVariables($variablesFile)
     {

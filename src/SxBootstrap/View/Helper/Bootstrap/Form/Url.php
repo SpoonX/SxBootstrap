@@ -2,17 +2,17 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
-class Password extends Input
+class Url extends Input
 {
-
     /**
-     * Renders password input type
+     * Renders URL input type
+     *
      * @param \Zend\Form\ElementInterface|string|null $elementType
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Password
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Url
      */
     public function __invoke($elementType = null)
     {
-        return parent::__invoke($elementType)->type('password');
+        return parent::__invoke($elementType)->type('url');
     }
 }
