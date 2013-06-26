@@ -123,6 +123,16 @@ class Alert extends AbstractElementHelper
     }
 
     /**
+     * @param string $alert
+     *
+     * @return AbstractElementHelper
+     */
+    public function setAlert($alert)
+    {
+        return $this->setContent($this->translate((string) $alert));
+    }
+
+    /**
      * Invoke Alert
      * The isBlock parameter is used to convert the display type of the element to block.
      *

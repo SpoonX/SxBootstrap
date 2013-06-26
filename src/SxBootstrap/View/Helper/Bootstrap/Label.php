@@ -70,6 +70,16 @@ class Label extends AbstractElementHelper
     }
 
     /**
+     * @param string $label
+     *
+     * @return AbstractElementHelper
+     */
+    public function setLabel($label)
+    {
+        return $this->setContent($this->translate((string) $label));
+    }
+
+    /**
      * Invoke Label
      *
      * @param string $label
@@ -81,7 +91,7 @@ class Label extends AbstractElementHelper
         $this->setElement(new HtmlElement('span'));
 
         if (!is_null($label)) {
-            $this->setContent($label);
+            $this->setLabel($label);
         }
 
         $this->addClass('label');
