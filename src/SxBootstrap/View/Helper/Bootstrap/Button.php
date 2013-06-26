@@ -3,9 +3,6 @@
 namespace SxBootstrap\View\Helper\Bootstrap;
 
 use SxCore\Html\HtmlElement;
-use Zend\Form\View\Helper\AbstractHelper;
-use SxBootstrap\Exception;
-use Zend\Form\Element\Button as ButtonElement;
 use Zend\Form\ElementInterface;
 
 class Button extends AbstractElementHelper

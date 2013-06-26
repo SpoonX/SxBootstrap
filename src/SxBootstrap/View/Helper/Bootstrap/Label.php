@@ -8,7 +8,6 @@
  */
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use SxBootstrap\Exception;
 use SxCore\Html\HtmlElement;
 
 /**
