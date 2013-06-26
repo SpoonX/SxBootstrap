@@ -46,6 +46,7 @@ return array(
             'sxbFormInput'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Input',
             'sxbFormPassword'      => 'SxBootstrap\View\Helper\Bootstrap\Form\Password',
             'sxbFormSubmit'        => 'SxBootstrap\View\Helper\Bootstrap\Form\Submit',
+            'sxbFormActions'       => 'SxBootstrap\View\Helper\Bootstrap\Form\FormActions',
         ),
     ),
     'asset_manager'      => array(

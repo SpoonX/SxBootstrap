@@ -9,7 +9,7 @@ class Button extends AbstractElementHelper
 {
 
     /**
-     * @var \Zend\Form\ElementInterface
+     * @var \Zend\Form\Element\Button
      */
     protected $element;
 
