@@ -24,7 +24,7 @@ class File extends Input
     public function accept($accept)
     {
         if (is_array($accept)) {
-            $accept = explode(',', $accept);
+            $accept = implode(',', $accept);
         }
 
         $this->addAttribute('accept', $accept);
@@ -35,7 +35,7 @@ class File extends Input
     /**
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\File
      */
-    public function multiple($name)
+    public function multiple()
     {
         $this->addAttribute('multiple', '');
 

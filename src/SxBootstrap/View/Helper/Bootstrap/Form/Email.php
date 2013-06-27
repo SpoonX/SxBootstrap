@@ -19,7 +19,7 @@ class Email extends Input
     /**
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Email
      */
-    public function multiple($name)
+    public function multiple()
     {
         $this->addAttribute('multiple', '');
 
