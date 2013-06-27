@@ -24,7 +24,7 @@ class File extends Input
     public function accept($accept)
     {
         if (is_array($accept)) {
-            $accept = join(',', $accept);
+            $accept = implode(',', $accept);
         }
 
         $this->addAttribute('accept', $accept);
