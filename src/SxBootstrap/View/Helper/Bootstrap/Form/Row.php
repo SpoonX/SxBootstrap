@@ -9,6 +9,12 @@ use SxBootstrap\Exception;
 class Row extends AbstractHelper
 {
 
+    /**
+     * @param      $elements
+     * @param bool $actions
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper|Actions|ControlGroup
+     */
     public function __invoke($elements, $actions = false)
     {
         return $actions ? $this->renderActionsRow($elements) : $this->renderRow($elements);
@@ -41,6 +47,12 @@ class Row extends AbstractHelper
         return $rowPlugin;
     }
 
+    /**
+     * @param $actions
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper|Actions
+     * @throws \SxBootstrap\Exception\RuntimeException
+     */
     public function renderActionsRow($actions)
     {
         /* @var $rowPlugin \SxBootstrap\View\Helper\Bootstrap\Form\Actions */

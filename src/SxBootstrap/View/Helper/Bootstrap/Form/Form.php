@@ -6,7 +6,6 @@
  * @package    SxBootstrap_View
  * @subpackage Helper
  */
-
 namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
 use SxCore\Html\HtmlElement;
@@ -16,9 +15,6 @@ use Zend\Form\Element;
 use Zend\Form\ElementInterface;
 use Zend\Form\Form as ZendForm;
 use Zend\Form\Fieldset;
-use Zend\Form\Element\Collection;
-use Zend\Form\View\Helper\Form as FormHelper;
-use Zend\View\Helper\AbstractHelper;
 use SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper;
 
 /**
@@ -31,7 +27,13 @@ use SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper;
 class Form extends AbstractElementHelper
 {
 
-    public function __invoke(ZendForm $form)
+    /**
+     * @param ZendForm $form
+     * @param bool     $groupActions
+     *
+     * @return Form
+     */
+    public function __invoke(ZendForm $form, $groupActions = false)
     {
         $form->prepare();
         $this->setElement(new HtmlElement('form'));
@@ -45,44 +47,79 @@ class Form extends AbstractElementHelper
         }
 
         $this->getElement()->setAttributes($form->getAttributes());
-
-        $this->setContent($this->renderElements($form->getIterator()));
+        $this->renderElements($form->getIterator(), $groupActions);
 
         return clone $this;
     }
 
-    public function renderElements(Traversable $elements)
+    /**
+     * @return AbstractElementHelper
+     */
+    public function horizontal()
     {
-        /* @var $rowPlugin \SxBootstrap\View\Helper\Bootstrap\Form\Row */
-        $elementPlugin = $this->getView()->plugin('sxb_form_row');
-
-        foreach ($elements as $element) {
-            if ($element instanceof ElementInterface) {
-                $this->getElement()->addChild($elementPlugin($element)->getElement());
-            } elseif ($element instanceof Fieldset) {
-                $this->getElement()->addChild($this->renderFieldset($element));
-            } else {
-                throw new Exception\RuntimeException('New case!');
-            }
-        }
-
-        return $this->getElement()->render();
+        return $this->addClass('form-horizontal');
     }
 
     /**
-     * @param $content
+     * @param Traversable $elements
+     * @param boolean     $groupActions
      *
-     * @return AbstractElementHelper
+     * @return $this
+     * @throws \SxBootstrap\Exception\RuntimeException
      */
-    public function addContent($content)
+    public function renderElements(Traversable $elements, $groupActions = false)
     {
-        return $this->setContent($this->getElement()->getContent() . $content);
+        /* @var $elementPlugin \SxBootstrap\View\Helper\Bootstrap\Form\Row */
+        /* @var $actionsPlugin \SxBootstrap\View\Helper\Bootstrap\Form\Actions */
+        $rowPlugin      = $this->getView()->plugin('sxb_form_row');
+        $actionElements = array();
+
+        foreach ($elements as $element) {
+            if ($element instanceof ElementInterface) {
+
+                $type = $element->getAttribute('type');
+
+                if ($groupActions && ($element instanceof Element\Submit || $element instanceof Element\Button || 'submit' === $type)) {
+                    $actionElements[] = $element;
+
+                    continue;
+                }
+
+                $this->getElement()->addChild($rowPlugin($element)->getElement());
+            } elseif ($element instanceof Fieldset) {
+                $this->getElement()->addChild($this->renderFieldset($element));
+            } else {
+                throw new Exception\RuntimeException('Unexpected element.');
+            }
+        }
+
+        if (!empty($actionElements)) {
+            $actionsPlugin = $this->getView()->plugin('sxb_form_actions');
+            $actionsPlugin = $actionsPlugin();
+            $elementPlugin = $this->getView()->plugin('sxb_form_element');
+
+            foreach ($actionElements as $actionElement) {
+
+                // Space to make sure buttons don't touch.
+                $actionsPlugin->addContent($elementPlugin($actionElement) . ' ');
+            }
+
+            $this->getElement()->addChild($actionsPlugin->getElement());
+        }
+
+        return $this;
     }
 
-    protected function renderFieldset(Fieldset $fieldset)
+    /**
+     * @param Fieldset $fieldset
+     * @param bool     $groupActions
+     *
+     * @return HtmlElement
+     */
+    protected function renderFieldset(Fieldset $fieldset, $groupActions = false)
     {
         $fieldsetElement = new HtmlElement('fieldset');
-        $fieldsetElement->setContent($this->renderelements($fieldset));
+        $fieldsetElement->setContent($this->renderelements($fieldset, $groupActions));
 
         return $fieldsetElement;
     }

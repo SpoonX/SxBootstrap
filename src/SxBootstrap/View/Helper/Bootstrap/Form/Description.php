@@ -42,7 +42,7 @@ class Description extends AbstractElementHelper
         }
 
         if (null === $message) {
-            return $this;
+            return '';
         }
 
         $this->setDescription($message);
