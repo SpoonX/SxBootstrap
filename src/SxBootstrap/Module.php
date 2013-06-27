@@ -24,28 +24,6 @@ class Module implements AutoloaderProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function getServiceConfig()
-    {
-        return array(
-            'factories' => array(
-                'formElementErrors' => function ($serviceManager) {
-                    $fee = new \Zend\Form\View\Helper\FormElementErrors();
-                    $fee->setMessageCloseString('</li></ul>');
-                    $fee->setMessageOpenFormat('<ul%s><li>');
-                    $fee->setMessageSeparatorString('</li><li>');
-                    $fee->setAttributes(array(
-                        'class' => 'help-inline',
-                    ));
-
-                    return $fee;
-                }
-            ),
-        );
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getConfig()
     {
         return include __DIR__ . '/../../config/module.config.php';
