@@ -72,7 +72,7 @@ class Label extends AbstractElementHelper
     /**
      * @param string $label
      *
-     * @return AbstractElementHelper
+     * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
     public function setLabel($label)
     {

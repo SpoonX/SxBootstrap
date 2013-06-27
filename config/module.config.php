@@ -23,9 +23,7 @@ return array(
     'view_helpers'       => array(
         'invokables' => array(
             'sxbCode'              => 'SxBootstrap\View\Helper\Bootstrap\Code',
-            'sxbForm'              => 'SxBootstrap\View\Helper\Bootstrap\Form',
-            'sxbFormElementErrors' => 'SxBootstrap\View\Helper\Bootstrap\FormElementErrors',
-            'sxbFormDescription'   => 'SxBootstrap\View\Helper\Bootstrap\FormDescription',
+            'sxbForm'              => 'SxBootstrap\View\Helper\Bootstrap\Form\Form',
             'sxbButtonGroup'       => 'SxBootstrap\View\Helper\Bootstrap\ButtonGroup',
             'sxbButtonToolbar'     => 'SxBootstrap\View\Helper\Bootstrap\ButtonToolbar',
             'sxbTabs'              => 'SxBootstrap\View\Helper\Bootstrap\Tabs',
@@ -43,6 +41,9 @@ return array(
             'sxbModal'             => 'SxBootstrap\View\Helper\Bootstrap\Modal',
             'sxbTooltip'           => 'SxBootstrap\View\Helper\Bootstrap\Tooltip',
             'sxbFormElement'       => 'SxBootstrap\View\Helper\Bootstrap\Form\Element',
+            'sxbFormRow'           => 'SxBootstrap\View\Helper\Bootstrap\Form\Row',
+            'sxbFormDescription'   => 'SxBootstrap\View\Helper\Bootstrap\Form\Description',
+            'sxbFormErrors'        => 'SxBootstrap\View\Helper\Bootstrap\Form\Errors',
             'sxbFormInput'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Input',
             'sxbFormPassword'      => 'SxBootstrap\View\Helper\Bootstrap\Form\Password',
             'sxbFormSubmit'        => 'SxBootstrap\View\Helper\Bootstrap\Form\Submit',

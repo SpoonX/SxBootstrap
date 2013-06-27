@@ -19,9 +19,7 @@ class Controls extends AbstractElementHelper
 
         if (is_array($controls)) {
             $this->addControls($controls);
-        }
-
-        if (null !== $controls) {
+        } elseif (null !== $controls) {
             $this->addControl($controls);
         }
 

@@ -10,8 +10,8 @@
 namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
 use SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper;
+use SxCore\Html\HtmlElement;
 use Zend\Form\ElementInterface;
-use Zend\Form\View\Helper\AbstractHelper;
 
 /**
  * Form Description
@@ -22,100 +22,41 @@ use Zend\Form\View\Helper\AbstractHelper;
  */
 class Description extends AbstractElementHelper
 {
-    /**
-     * @var string wrapper for displaying block help
-     */
-    protected $blockWrapper = '<p class="help-block">%s</p>';
 
     /**
-     * @var string wrapper for displaying inline help
-     */
-    protected $inlineWrapper = '<span class="help-inline">%s</span>';
-
-    /**
-     * Magical Invoke Method
+     * @param ElementInterface $element
+     * @param bool             $block
      *
-     * @param  ElementInterface       $elemnet
-     * @param  string                 $blockWrapper
-     * @param  string                 $invokeWrapper
-     * @return string|FormDescription
+     * @return Description
      */
-    public function __invoke(ElementInterface $element = null, $blockWrapper = null, $inlineWrapper = null)
+    public function __invoke(ElementInterface $element, $block = false)
     {
-        if ($element) {
-            return $this->render($element, $blockWrapper, $inlineWrapper);
+        $this->setElement(new HtmlElement('span'));
+
+        $message = null;
+
+        if (($message = $element->getOption('description-inline')) || ($message = $element->getOption('description'))) {
+            $this->addClass('help-inline');
+        } elseif (($message = $element->getOption('description-block'))) {
+            $this->addClass('help-block');
         }
 
-        return $this;
-    }
-
-    /**
-     * Render
-     *
-     * @param  ElementInterface $elmenet
-     * @param  string           $blockWrapper
-     * @param  string           $inlineWrapper
-     * @return string
-     */
-    public function render(ElementInterface $element, $blockWrapper = null, $inlineWrapper = null)
-    {
-        $blockWrapper   = $blockWrapper ?: $this->blockWrapper;
-        $inlineWrapper  = $inlineWrapper ?: $this->inlineWrapper;
-        $html           = '';
-
-        if (($inline = $element->getOption('help-inline'))) {
-            $html .= sprintf($inlineWrapper, $inline);
-        }
-        if (($block = $element->getOption('help-block'))) {
-            $html .= sprintf($blockWrapper, $block);
+        if (null === $message) {
+            return $this;
         }
 
-        return $html;
+        $this->setDescription($message);
+
+        return clone $this;
     }
 
     /**
-     * Set Block Wrapper
+     * @param string $description
      *
-     * @param  string          $blockWrapper
-     * @return FormDescription
+     * @return Description
      */
-    public function setBlockWrapper($blockWrapper)
+    public function setDescription($description)
     {
-        $this->blockWrapper = (string) $blockWrapper;
-
-        return $this;
-    }
-
-    /**
-     * Get Block Wrapper
-     *
-     * @return string
-     */
-    public function getBlockWrapper()
-    {
-        return $this->blockWrapper;
-    }
-
-    /**
-     * Set Inline wrapper
-     *
-     * @param  string          $inlineWrapper
-     * @return FormDescription
-     */
-    public function setInlineWrapper($inlineWrapper)
-    {
-        $this->inlineWrapper = (string) $inlineWrapper;
-
-        return $this;
-    }
-
-    /**
-     * Get Inline Wrapper
-     *
-     * @return string
-     */
-    public function getInlineWrapper()
-    {
-        return $this->inlineWrapper;
+        return $this->setContent($this->translate((string) $description));
     }
 }

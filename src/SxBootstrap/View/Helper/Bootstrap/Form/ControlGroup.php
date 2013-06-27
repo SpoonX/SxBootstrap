@@ -9,7 +9,7 @@ class ControlGroup extends AbstractElementHelper
 {
 
     /**
-     * @param null|string|array $control
+     * @param null|string $control
      *
      * @return ControlGroup
      */
@@ -18,11 +18,11 @@ class ControlGroup extends AbstractElementHelper
         $this->setElement(new HtmlElement);
 
         if (is_array($control)) {
-            $this->addControls($control);
+            $this->addContents($control);
         }
 
         if (null !== $control) {
-            $this->addControl($control);
+            $this->addContent($control);
         }
 
         $this->addClass('control-group');
@@ -30,12 +30,12 @@ class ControlGroup extends AbstractElementHelper
         return clone $this;
     }
 
-    /**4
+    /**
      * @param string $control
      *
-     * @return AbstractElementHelper
+     * @return ControlGroup
      */
-    public function addControl($control)
+    public function addContent($control)
     {
         return $this->setContent($this->getElement()->getContent() . $control);
     }
@@ -45,10 +45,10 @@ class ControlGroup extends AbstractElementHelper
      *
      * @return ControlGroup
      */
-    public function addControls(array $controls)
+    public function addContents(array $controls)
     {
         foreach ($controls as $control) {
-            $this->addControl($control);
+            $this->addContent($control);
         }
 
         return $this;

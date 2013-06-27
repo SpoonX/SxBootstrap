@@ -18,11 +18,11 @@ class Actions extends AbstractElementHelper
         $this->setElement(new HtmlElement);
 
         if (is_array($action)) {
-            $this->addActions($action);
+            $this->addContents($action);
         }
 
         if (null !== $action) {
-            $this->addAction($action);
+            $this->addContent($action);
         }
 
         $this->addClass('form-actions');
@@ -35,7 +35,7 @@ class Actions extends AbstractElementHelper
      *
      * @return AbstractElementHelper
      */
-    public function addAction($action)
+    public function addContent($action)
     {
         return $this->setContent($this->getElement()->getContent() . $action);
     }
@@ -45,10 +45,10 @@ class Actions extends AbstractElementHelper
      *
      * @return Actions
      */
-    public function addActions(array $actions)
+    public function addContents(array $actions)
     {
         foreach ($actions as $action) {
-            $this->addAction($action);
+            $this->addContent($action);
         }
 
         return $this;

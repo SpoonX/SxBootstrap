@@ -283,8 +283,8 @@ class FormElement extends ZendFormElement
         $html               = "";
 
         if ('submit' === $element->getAttribute('type')) {
-            $elementHelper  = $this->getView()->plugin('sxb_form_submit');
-            $elementHelper  = $elementHelper($element);
+            $elementHelper = $this->getView()->plugin('sxb_form_submit');
+            $elementHelper = $elementHelper($element);
         }
 
         $label = $element->getLabel();
