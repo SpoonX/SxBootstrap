@@ -136,10 +136,10 @@ class FlashMessenger extends AbstractElementHelper
     }
 
     /**
-     * @param   string|array|null   $namespace
-     * @param   boolean             $isBlock
+     * @param string|array|null $namespace
+     * @param boolean           $isBlock
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\FlashMessenger
+     * @return \SxBootstrap\View\Helper\Bootstrap\FlashMessenger
      */
     public function __invoke($namespace = null, $isBlock = true)
     {

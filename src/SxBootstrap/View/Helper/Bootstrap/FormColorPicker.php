@@ -45,10 +45,10 @@ class FormColorPicker extends FormInput
      *   - include_dependencies. Allow the view helper to add the dependencies to the headScript.
      *       Default:    false
      *
-     * @param    Zend\Form\Element\Element   $element
-     * @param    array                       $options
+     * @param Zend\Form\Element\Element $element
+     * @param array                     $options
      *
-     * @return   Zend\Form\View\Helper\FormInput
+     * @return Zend\Form\View\Helper\FormInput
      */
     public function __invoke($element, $options = array())
     {
@@ -60,6 +60,7 @@ class FormColorPicker extends FormInput
         }
 
         $element = $this->prepareElement($element);
+
         return parent::__invoke($element);
     }
 
@@ -89,9 +90,9 @@ class FormColorPicker extends FormInput
     /**
      * Prepare the element by applying all changes to it required for the colorpicker.
      *
-     * @param    Zend\Form\Element\Element   $element
+     * @param Zend\Form\Element\Element $element
      *
-     * @return   Zend\Form\View\Helper\FormInput
+     * @return Zend\Form\View\Helper\FormInput
      */
     protected function prepareElement($element)
     {

@@ -8,7 +8,6 @@
  */
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use SxBootstrap\Exception;
 use SxCore\Html\HtmlElement;
 
 /**
@@ -51,7 +50,7 @@ class Label extends AbstractElementHelper
     }
 
     /**
-     * Display a Sucess Label
+     * Display a Success Label
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
@@ -71,29 +70,28 @@ class Label extends AbstractElementHelper
     }
 
     /**
-     * Render an Label
+     * @param string $label
      *
-     * @return  string
-     * @throws  Exception\InvalidArgumentException
+     * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
-    public function render()
+    public function setLabel($label)
     {
-        return $this->getElement()->render();
+        return $this->setContent($this->translate((string) $label));
     }
 
     /**
      * Invoke Label
      *
-     * @param   string  $label
+     * @param string $label
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Label
+     * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
     public function __invoke($label = null)
     {
         $this->setElement(new HtmlElement('span'));
 
         if (!is_null($label)) {
-            $this->setContent($label);
+            $this->setLabel($label);
         }
 
         $this->addClass('label');
