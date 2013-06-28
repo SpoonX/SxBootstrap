@@ -41,6 +41,17 @@ class Button extends AbstractElementHelper
     protected function initFormElement(ButtonElement $element)
     {
         $this->getElement()->addAttributes($element->getAttributes());
+
+        $value = $element->getValue();
+        $label = $element->getLabel();
+
+        if (!empty($label)) {
+            $this->setLabel($label);
+        }
+
+        if (!empty($value)) {
+            $this->addAttribute('value', $value);
+        }
     }
 
     /**

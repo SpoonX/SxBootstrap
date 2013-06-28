@@ -2,6 +2,8 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
+use Zend\Form\ElementInterface;
+
 class Submit extends Input
 {
 
@@ -15,6 +17,20 @@ class Submit extends Input
     public function __invoke($elementType = null)
     {
         return parent::__invoke($elementType)->type('submit')->addClass('btn');
+    }
+
+    /**
+     * {@InheritDoc}
+     */
+    protected function initFormElement(ElementInterface $element)
+    {
+        $value = $element->getValue();
+
+        if (!empty($value)) {
+            $this->value($value);
+        }
+
+        return parent::initFormElement($element);
     }
 
     /**
