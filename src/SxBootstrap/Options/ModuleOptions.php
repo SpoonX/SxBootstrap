@@ -53,7 +53,7 @@ class ModuleOptions extends AbstractOptions
     /**
      * @var string
      */
-    protected $plugin_alias = 'js/bootstrap.js';
+    protected $pluginAlias = 'js/bootstrap.js';
 
     /**
      * @var array
@@ -248,11 +248,11 @@ class ModuleOptions extends AbstractOptions
     /**
      * The alias to use for the url (to resolve to the bootstrap javascript file.)
      *
-     * @param string $plugin_alias
+     * @param string $pluginAlias
      */
-    public function setPluginAlias($plugin_alias)
+    public function setPluginAlias($pluginAlias)
     {
-        $this->plugin_alias = (string) $plugin_alias;
+        $this->pluginAlias = (string) $pluginAlias;
     }
 
     /**
@@ -260,7 +260,7 @@ class ModuleOptions extends AbstractOptions
      */
     public function getPluginAlias()
     {
-        return $this->plugin_alias;
+        return $this->pluginAlias;
     }
 
     /**
