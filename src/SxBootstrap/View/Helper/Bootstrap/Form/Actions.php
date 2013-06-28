@@ -35,7 +35,7 @@ class Actions extends AbstractElementHelper
      */
     public function addContent($action)
     {
-        return $this->getElement()->appendContent($action);
+        return $this->getElement()->appendContent($action . ' ');
     }
 
     /**

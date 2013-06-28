@@ -23,29 +23,29 @@ class Time extends Input
      */
     public function min($min)
     {
-        $this->addAttribute('min', $min);
+        $this->addAttribute('min', (string) $min);
 
         return $this;
     }
 
     /**
-     * @param string $max Valid time string
+     * @param integer|string $max Valid time string
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Time
      */
     public function max($max)
     {
-        $this->addAttribute('max', $max);
+        $this->addAttribute('max', (string) $max);
 
         return $this;
     }
 
     /**
-     * @param int $step in seconds (default 60)
+     * @param integer|string $step in seconds (default 60)
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Time
      */
-    public function step($step)
+    public function step($step = 60)
     {
         $this->addAttribute('step', (string) $step);
 

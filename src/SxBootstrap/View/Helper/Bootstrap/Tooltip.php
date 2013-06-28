@@ -165,6 +165,14 @@ class Tooltip extends AbstractElementHelper
     }
 
     /**
+     * {@InheritDoc}
+     */
+    public function setContent($content)
+    {
+        return parent::setContent((string) $this->translate($content));
+    }
+
+    /**
      * Invoke Tooltip
      *
      * @param string $title

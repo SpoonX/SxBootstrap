@@ -35,7 +35,7 @@ class Controls extends AbstractElementHelper
      */
     public function addControl($control)
     {
-        return $this->setContent($this->getElement()->getContent() . $control);
+        return $this->getElement()->appendContent($control);
     }
 
     /**

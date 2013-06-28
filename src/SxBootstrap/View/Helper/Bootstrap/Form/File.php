@@ -37,7 +37,7 @@ class File extends Input
      */
     public function multiple()
     {
-        $this->addAttribute('multiple', '');
+        $this->addAttribute('multiple');
 
         return $this;
     }

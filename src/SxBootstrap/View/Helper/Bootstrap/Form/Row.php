@@ -10,8 +10,8 @@ class Row extends AbstractHelper
 {
 
     /**
-     * @param      $elements
-     * @param bool $actions
+     * @param array|ElementInterface $elements
+     * @param boolean                $actions
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper|Actions|ControlGroup
      */
@@ -55,7 +55,8 @@ class Row extends AbstractHelper
      */
     public function renderActionsRow($actions)
     {
-        /* @var $rowPlugin \SxBootstrap\View\Helper\Bootstrap\Form\Actions */
+        /* @var $rowPlugin     \SxBootstrap\View\Helper\Bootstrap\Form\Actions */
+        /* @var $elementPlugin \SxBootstrap\View\Helper\Bootstrap\Form\Element */
         $rowPlugin     = $this->getView()->plugin('sxb_form_actions');
         $rowPlugin     = $rowPlugin();
         $elementPlugin = $this->getView()->plugin('sxb_form_element');

@@ -4,6 +4,7 @@ namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
 class Date extends Input
 {
+
     /**
      * Renders Date input type
      *
@@ -23,7 +24,7 @@ class Date extends Input
      */
     public function min($min)
     {
-        $this->addAttribute('min', $min);
+        $this->addAttribute('min', (string) $min);
 
         return $this;
     }
@@ -35,13 +36,13 @@ class Date extends Input
      */
     public function max($max)
     {
-        $this->addAttribute('max', $max);
+        $this->addAttribute('max', (string) $max);
 
         return $this;
     }
 
     /**
-     * @param int $step in days (default 1)
+     * @param integer $step in days (default 1)
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Date
      */
