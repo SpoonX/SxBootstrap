@@ -2,139 +2,57 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use Zend\Form\View\Helper\AbstractHelper;
-use SxBootstrap\Exception;
+use SxCore\Html\HtmlElement;
 use Zend\Form\Element\Button as ButtonElement;
-use Zend\Form\ElementInterface;
 
-class Button extends AbstractHelper
+class Button extends AbstractElementHelper
 {
 
     /**
-     * @var \Zend\Form\ElementInterface
+     * @var \Zend\Form\Element\Button
      */
     protected $element;
 
     /**
-     * Render button
-     *
-     * @return  string
-     */
-    public function render()
-    {
-        if ($this->element->getAttribute('type') === 'submit') {
-            $plugin = 'form_submit';
-            $label  = $this->element->getValue();
-        } else {
-            $plugin = 'form_button';
-            $label  = $this->element->getLabel();
-        }
-
-        return $this->getView()->plugin($plugin)->render(
-            $this->element,
-            $label
-        );
-    }
-
-    /**
-     * Add class to button
-     *
-     * @param   string $class
-     *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
-     */
-    public function addClass($class)
-    {
-        $currClasses = $this->element->getAttribute('class');
-
-        if (!empty($currClasses)) {
-            $class = $currClasses . " $class";
-        }
-
-        $this->element->setAttribute('class', $class);
-
-        return $this;
-    }
-
-    /**
-     * Add attribute on button element
-     *
-     * @param   string $key
-     * @param   string $value
-     *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
-     */
-    public function addAttribute($key, $value)
-    {
-        $this->element->setAttribute($key, $value);
-
-        return $this;
-    }
-
-    /**
      * Get arguments and make button element
      *
-     * @param   mixed $argument
+     * @param string|null $labelOrElement
      *
-     * @throws \SxBootstrap\Exception\InvalidArgumentException
      * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
-    public function __invoke($argument = null)
+    public function __invoke($labelOrElement = null)
     {
-        $this->element = null;
+        $this->setElement(new HtmlElement('button'));
 
-        if (null === $argument) {
-            $this->element = new ButtonElement;
-        } elseif ($argument instanceof ElementInterface) {
-            $this->element = $argument;
-        } elseif (is_string($argument)) {
-            $this->element = new ButtonElement;
-            $this->element->setName($argument);
-        } elseif (is_array($argument)) {
-            $this->element = new ButtonElement;
-            $this->element->setAttributes($argument);
-        } else {
-            throw new Exception\InvalidArgumentException(
-                'Expected either array or "Zend\Form\ElementInterface", got ' . gettype($argument)
-            );
+        if ($labelOrElement instanceof ButtonElement) {
+            $this->initFormElement($labelOrElement);
+        } elseif (is_string($labelOrElement)) {
+            $this->setLabel($labelOrElement);
         }
 
-        $name = $this->element->getName();
+        $this->addClass('btn');
 
-        if (empty($name)) {
-            $name = 'sxbButton';
-            $this->element->setName($name);
-        }
-
-        return clone $this->setLabel($name)->addClass('btn');
+        return clone $this;
     }
 
     /**
-     * Display button
-     *
-     * @return  string
+     * @param ButtonElement $element
      */
-    public function __toString()
+    protected function initFormElement(ButtonElement $element)
     {
-        return $this->render();
+        $this->getElement()->addAttributes($element->getAttributes());
     }
 
     /**
      * Set label or value based on type
      *
-     * @param   string $label
+     * @param string $label
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function setLabel($label)
     {
-        if ($this->element->getAttribute('type') === 'submit') {
-            $this->element->setValue($label);
-
-            return $this;
-        }
-
-        $this->element->setLabel($label);
+        $this->setContent($this->translate($label));
 
         return $this;
     }
@@ -142,7 +60,7 @@ class Button extends AbstractHelper
     /**
      * Display a Primary button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function primary()
     {
@@ -152,7 +70,7 @@ class Button extends AbstractHelper
     /**
      * Display a Info button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function info()
     {
@@ -162,7 +80,7 @@ class Button extends AbstractHelper
     /**
      * Display a Success button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function success()
     {
@@ -170,9 +88,17 @@ class Button extends AbstractHelper
     }
 
     /**
+     * @param string $type
+     */
+    public function type($type)
+    {
+        $this->addAttribute('type', (string) $type);
+    }
+
+    /**
      * Display a Warning button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function warning()
     {
@@ -182,7 +108,7 @@ class Button extends AbstractHelper
     /**
      * Display a Danger button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function danger()
     {
@@ -192,7 +118,7 @@ class Button extends AbstractHelper
     /**
      * Display a Inverse button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function inverse()
     {
@@ -202,7 +128,7 @@ class Button extends AbstractHelper
     /**
      * Display a link button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function link()
     {
@@ -212,13 +138,13 @@ class Button extends AbstractHelper
     /**
      * Display data-loading-text text
      *
-     * @param   string $text
+     * @param string $text
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function loadingText($text)
     {
-        $this->element->setAttribute('data-loading-text', $text);
+        $this->addAttribute('data-loading-text', $text);
 
         return $this;
     }
@@ -226,13 +152,13 @@ class Button extends AbstractHelper
     /**
      * Display data-toggle text
      *
-     * @param $toggle
+     * @param string $toggle
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function toggle($toggle)
     {
-        $this->element->setAttribute('data-toggle', $toggle);
+        $this->addAttribute('data-toggle', (string) $toggle);
 
         return $this;
     }
@@ -240,7 +166,7 @@ class Button extends AbstractHelper
     /**
      * Display mini button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function mini()
     {
@@ -250,7 +176,7 @@ class Button extends AbstractHelper
     /**
      * Display small button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function small()
     {
@@ -260,7 +186,7 @@ class Button extends AbstractHelper
     /**
      * Display large button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function large()
     {
@@ -270,7 +196,7 @@ class Button extends AbstractHelper
     /**
      * Display block button
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function block()
     {
@@ -280,7 +206,7 @@ class Button extends AbstractHelper
     /**
      * Set button disabled
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function disabled()
     {
@@ -290,7 +216,7 @@ class Button extends AbstractHelper
     /**
      * Set button active
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Button
+     * @return \SxBootstrap\View\Helper\Bootstrap\Button
      */
     public function active()
     {

@@ -13,9 +13,9 @@ class Well extends AbstractElementHelper
     /**
      * Create a HTML Code element
      *
-     * @param   string  $content    The contents of the element
+     * @param string $content The contents of the element
      *
-     * @return  SxBootstrap\View\Helper\Bootstrap\Code
+     * @return \SxBootstrap\View\Helper\Bootstrap\Code
      */
     public function __invoke($content = '')
     {
@@ -28,13 +28,13 @@ class Well extends AbstractElementHelper
         // Convert the content to valid html.
         $this->getElement()->setContent($content);
 
-        return $this;
+        return clone $this;
     }
 
     /**
      * Use the small well.
      *
-     * @return SxBootstrap\View\Helper\Bootstrap\Well
+     * @return \SxBootstrap\View\Helper\Bootstrap\Well
      */
     public function small()
     {
@@ -46,23 +46,13 @@ class Well extends AbstractElementHelper
     /**
      * Use the large well.
      *
-     * @return SxBootstrap\View\Helper\Bootstrap\Well
+     * @return \SxBootstrap\View\Helper\Bootstrap\Well
      */
     public function large()
     {
         $this->addClass('well-large');
 
         return $this;
-    }
-
-    /**
-     * Return the HTML string of this HTML element
-     *
-     * @return string
-     */
-    public function render()
-    {
-        return $this->getElement()->render();
     }
 
 }
