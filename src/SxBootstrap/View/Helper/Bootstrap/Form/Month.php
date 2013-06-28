@@ -23,7 +23,7 @@ class Month extends Input
      */
     public function min($min)
     {
-        $this->addAttribute('min', $min);
+        $this->addAttribute('min', (string) $min);
 
         return $this;
     }
@@ -35,13 +35,13 @@ class Month extends Input
      */
     public function max($max)
     {
-        $this->addAttribute('max', $max);
+        $this->addAttribute('max', (string) $max);
 
         return $this;
     }
 
     /**
-     * @param int $step in months (default 1)
+     * @param integer|string $step in months (default 1)
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Month
      */

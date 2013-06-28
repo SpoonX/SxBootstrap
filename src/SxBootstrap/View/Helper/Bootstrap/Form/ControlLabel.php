@@ -9,14 +9,13 @@ class ControlLabel extends AbstractElementHelper
 {
 
     /**
-     * @param string $for
      * @param string $label
+     * @param string $for
      *
      * @return ControlLabel
      */
     public function __invoke($label = null, $for = null)
     {
-
         $this->setElement(new HtmlElement('label'));
 
         if (null !== $label) {

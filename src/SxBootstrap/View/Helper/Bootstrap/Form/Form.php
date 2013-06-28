@@ -29,7 +29,7 @@ class Form extends AbstractElementHelper
 
     /**
      * @param ZendForm $form
-     * @param bool     $groupActions
+     * @param boolean  $groupActions
      *
      * @return Form
      */
@@ -39,25 +39,17 @@ class Form extends AbstractElementHelper
         $this->setElement(new HtmlElement('form'));
         $this->getElement()->setAttributes(array(
             'action' => '',
-            'method' => 'get',
+            'method' => 'GET',
         ));
 
         if (!$form->hasAttribute('id')) {
             $form->setAttribute('id', $form->getName());
         }
 
-        $this->getElement()->setAttributes($form->getAttributes());
+        $this->getElement()->addAttributes($form->getAttributes());
         $this->renderElements($form->getIterator(), $groupActions);
 
         return clone $this;
-    }
-
-    /**
-     * @return AbstractElementHelper
-     */
-    public function horizontal()
-    {
-        return $this->addClass('form-horizontal');
     }
 
     /**
@@ -69,7 +61,7 @@ class Form extends AbstractElementHelper
      */
     public function renderElements(Traversable $elements, $groupActions = false)
     {
-        /* @var $elementPlugin \SxBootstrap\View\Helper\Bootstrap\Form\Row */
+        /* @var $rowPlugin     \SxBootstrap\View\Helper\Bootstrap\Form\Row */
         /* @var $actionsPlugin \SxBootstrap\View\Helper\Bootstrap\Form\Actions */
         $rowPlugin      = $this->getView()->plugin('sxb_form_row');
         $actionElements = array();
@@ -79,7 +71,14 @@ class Form extends AbstractElementHelper
 
                 $type = $element->getAttribute('type');
 
-                if ($groupActions && ($element instanceof Element\Submit || $element instanceof Element\Button || 'submit' === $type)) {
+                $conditions = array(
+                    $element instanceof Element\Submit,
+                    $element instanceof Element\Button,
+                    'submit' === $type,
+                    'reset' === $type,
+                );
+
+                if ($groupActions && (in_array(true, $conditions))) {
                     $actionElements[] = $element;
 
                     continue;
@@ -87,38 +86,37 @@ class Form extends AbstractElementHelper
 
                 $this->getElement()->addChild($rowPlugin($element)->getElement());
             } elseif ($element instanceof Fieldset) {
-                $this->getElement()->addChild($this->renderFieldset($element));
+                $this->getElement()->addChild($this->renderFieldset($element, $groupActions));
             } else {
                 throw new Exception\RuntimeException('Unexpected element.');
             }
         }
 
         if (!empty($actionElements)) {
-            $actionsPlugin = $this->getView()->plugin('sxb_form_actions');
-            $actionsPlugin = $actionsPlugin();
-            $elementPlugin = $this->getView()->plugin('sxb_form_element');
-
-            foreach ($actionElements as $actionElement) {
-
-                // Space to make sure buttons don't touch.
-                $actionsPlugin->addContent($elementPlugin($actionElement) . ' ');
-            }
-
-            $this->getElement()->addChild($actionsPlugin->getElement());
+            $this->getElement()->addChild($rowPlugin($actionElements, true)->getElement());
         }
 
         return $this;
     }
 
     /**
+     * @return AbstractElementHelper
+     */
+    public function horizontal()
+    {
+        return $this->addClass('form-horizontal');
+    }
+
+    /**
      * @param Fieldset $fieldset
-     * @param bool     $groupActions
+     * @param boolean  $groupActions
      *
      * @return HtmlElement
      */
     protected function renderFieldset(Fieldset $fieldset, $groupActions = false)
     {
         $fieldsetElement = new HtmlElement('fieldset');
+
         $fieldsetElement->setContent($this->renderelements($fieldset, $groupActions));
 
         return $fieldsetElement;

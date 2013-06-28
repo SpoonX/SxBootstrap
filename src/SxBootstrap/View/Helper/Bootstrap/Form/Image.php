@@ -23,7 +23,7 @@ class Image extends Input
      */
     public function alt($alt)
     {
-        $this->addAttribute('alt', $alt);
+        $this->addAttribute('alt', (string) $alt);
 
         return $this;
     }
@@ -35,13 +35,13 @@ class Image extends Input
      */
     public function src($src)
     {
-        $this->addAttribute('src', $src);
+        $this->addAttribute('src', (string) $src);
 
         return $this;
     }
 
     /**
-     * @param int $width
+     * @param string|integer $width
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Image
      */
@@ -53,7 +53,7 @@ class Image extends Input
     }
 
     /**
-     * @param int $height
+     * @param string|integer $height
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Image
      */

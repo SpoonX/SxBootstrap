@@ -17,35 +17,35 @@ class Week extends Input
     }
 
     /**
-     * @param string $min Valid week string
+     * @param integer|string $min Valid week string
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Week
      */
     public function min($min)
     {
-        $this->addAttribute('min', $min);
+        $this->addAttribute('min', (string) $min);
 
         return $this;
     }
 
     /**
-     * @param string $max Valid week string
+     * @param integer|string $max Valid week string
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Week
      */
     public function max($max)
     {
-        $this->addAttribute('max', $max);
+        $this->addAttribute('max', (string) $max);
 
         return $this;
     }
 
     /**
-     * @param int $step in weeks (default 1)
+     * @param integer|string $step in weeks (default 1)
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Week
      */
-    public function step($step)
+    public function step($step = 1)
     {
         $this->addAttribute('step', (string) $step);
 

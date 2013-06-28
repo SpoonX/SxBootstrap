@@ -7,6 +7,7 @@ class Password extends Input
 
     /**
      * Renders password input type
+     *
      * @param \Zend\Form\ElementInterface|string|null $elementType
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Password

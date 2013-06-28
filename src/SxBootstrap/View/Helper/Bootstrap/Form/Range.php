@@ -17,7 +17,7 @@ class Range extends Input
     }
 
     /**
-     * @param double $min
+     * @param integer|string $min
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Range
      */
@@ -29,7 +29,7 @@ class Range extends Input
     }
 
     /**
-     * @param double $max
+     * @param integer|string $max
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Range
      */
@@ -41,7 +41,7 @@ class Range extends Input
     }
 
     /**
-     * @param int $step
+     * @param integer|string $step
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Range
      */
