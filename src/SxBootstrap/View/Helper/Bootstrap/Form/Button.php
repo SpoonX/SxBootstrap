@@ -2,6 +2,8 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
+use Zend\Form\ElementInterface;
+
 class Button extends Input
 {
     /**
@@ -14,5 +16,19 @@ class Button extends Input
     public function __invoke($elementType = null)
     {
         return parent::__invoke($elementType)->type('button');
+    }
+
+    /**
+     * {@InheritDoc}
+     */
+    protected function initFormElement(ElementInterface $element)
+    {
+        $value = $element->getValue();
+
+        if (!empty($value)) {
+            $this->addAttribute('value', $this->translate($value));
+        }
+
+        return parent::initFormElement($element);
     }
 }
