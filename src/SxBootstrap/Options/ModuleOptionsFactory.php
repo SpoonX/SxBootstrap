@@ -16,7 +16,7 @@ class ModuleOptionsFactory implements FactoryInterface
     public function createService(ServiceLocatorInterface $serviceLocator)
     {
         $config          = $serviceLocator->get('Config');
-        $bootstrapConfig = $config['twitter_bootstrap'];
+        $bootstrapConfig = !empty($config['twitter_bootstrap']) ? $config['twitter_bootstrap'] : array();
         $moduleOptions   = new ModuleOptions($bootstrapConfig);
 
         return $moduleOptions;

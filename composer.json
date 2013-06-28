@@ -1,43 +1,43 @@
 {
-    "name": "spoonx/sxbootstrap",
-    "description": "A twitter bootstrap module for ZF2 (zend framework 2) based on rwoverdijk/assetmanager",
-    "license": "BSD-2-Clause",
-    "keywords": [
+    "name" : "spoonx/sxbootstrap",
+    "description" : "A twitter bootstrap module for ZF2 (zend framework 2) based on rwoverdijk/assetmanager",
+    "license" : "BSD-2-Clause",
+    "keywords" : [
         "twitter",
         "bootstrap",
         "assetmanager",
         "zf2",
         "zend framework"
     ],
-    "homepage": "https://github.com/SpoonX/SxBootstrap",
-    "require": {
-        "php": ">=5.3.3",
-        "rwoverdijk/assetmanager": "1.*",
-        "twitter/bootstrap": "2.*",
-        "spoonx/sxcore": "1.*"
+    "homepage" : "https://github.com/SpoonX/SxBootstrap",
+    "require" : {
+        "php" : ">=5.3.3",
+        "spoonx/sxcore" : "1.*"
     },
     "require-dev" : {
         "phpunit/phpunit" : "*"
     },
-    "replace": {
-        "rwoverdijk/sxbootstrap": "*"
+    "replace" : {
+        "rwoverdijk/sxbootstrap" : "*"
     },
-    "authors": [
+    "authors" : [
         {
-            "name": "Wesley Overdijk",
-            "email": "r.w.overdijk@gmail.com",
-            "homepage": "http://blog.spoonx.nl/"
+            "name" : "Wesley Overdijk",
+            "email" : "r.w.overdijk@gmail.com",
+            "homepage" : "http://blog.spoonx.nl/"
         }
     ],
     "autoload" : {
-        "psr-0": {
-            "SxBootstrap": "src/"
+        "psr-0" : {
+            "SxBootstrap" : "src/"
         },
-        "classmap": [
+        "classmap" : [
             "./"
         ]
     },
     "suggest" : {
-        "spiffy/spiffy-navigation": "Required for SxNavigationMenu and dropdown"
+        "spiffy/spiffy-navigation" : "Required for SxNavigationMenu and dropdown",
+        "rwoverdijk/assetmanager" : "Required for the renderer",
+        "twitter/bootstrap" : "Required for the renderer"
     }
 }

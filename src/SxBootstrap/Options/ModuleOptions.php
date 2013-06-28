@@ -31,12 +31,14 @@ class ModuleOptions extends AbstractOptions
     protected $makeFile;
 
     /**
+     * @var string
+     */
+    protected $nodeBin = '/usr/bin/node';
+
+    /**
      * @var array
      */
-    protected $filter = array(
-        'node_bin'   => '/usr/bin/node',
-        'node_paths' => array('node_modules'),
-    );
+    protected $nodePaths = array('node_modules');
 
     /**
      * @var boolean
@@ -72,6 +74,46 @@ class ModuleOptions extends AbstractOptions
      * @var array
      */
     protected $includedComponents = array();
+
+    /**
+     * Path to the nodejs binary
+     *
+     * @param string $nodeBin
+     *
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#node_bin
+     */
+    public function setNodeBin($nodeBin)
+    {
+        $this->nodeBin = $nodeBin;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNodeBin()
+    {
+        return $this->nodeBin;
+    }
+
+    /**
+     * An array of paths to look in for node_modules.
+     *
+     * @param array $nodePaths
+     *
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#node_paths
+     */
+    public function setNodePaths($nodePaths)
+    {
+        $this->nodePaths = $nodePaths;
+    }
+
+    /**
+     * @return array
+     */
+    public function getNodePaths()
+    {
+        return $this->nodePaths;
+    }
 
     /**
      * Exclude components (blacklist).
@@ -182,26 +224,6 @@ class ModuleOptions extends AbstractOptions
     }
 
     /**
-     * An array of filter options. Possible keys are:
-     *  - node_bin      Path to the nodejs binary
-     *  - node_paths    An array of paths to look in for node_modules.
-     *
-     * @param array $filter
-     */
-    public function setFilter(array $filter)
-    {
-        $this->filter = $filter;
-    }
-
-    /**
-     * @return array
-     */
-    public function getFilter()
-    {
-        return $this->filter;
-    }
-
-    /**
      * Where the makefile is located. When "null", will use $bootstrapPath/makefile (usually fine).
      *
      * @param string $makeFile
@@ -217,7 +239,7 @@ class ModuleOptions extends AbstractOptions
     public function getMakeFile()
     {
         if (null === $this->makeFile) {
-            return $this->getBootstrapPath() . '/makefile';
+            return $this->getBootstrapPath() . '/Makefile';
         }
 
         return $this->makeFile;

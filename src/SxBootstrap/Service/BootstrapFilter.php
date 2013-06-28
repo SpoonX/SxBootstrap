@@ -34,10 +34,9 @@ class BootstrapFilter implements FilterInterface
         if ($this->config->getUseLessphp()) {
             $this->lessFilter = new LessphpFilter();
         } else {
-            $filter           = $this->config->getFilter();
             $this->lessFilter = new LessFilter(
-                $filter['node_bin'],
-                $filter['node_paths']
+                $this->config->getNodeBin(),
+                $this->config->getNodePaths()
             );
         }
     }

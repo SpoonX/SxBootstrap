@@ -1,60 +1,45 @@
 # SxBootstrap 2.0
-This module is intended for usage with a default directory structure of a
-[ZendSkeletonApplication](https://github.com/zendframework/ZendSkeletonApplication/) and depends on the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
-It includes Twitter Bootstrap and allows you to build custom versions by overriding the configuration, and supplies some useful view helpers.
+This version has revisited the Form implementation, and is now easier to use than ever!
 
-## Features
-* Simple awesome forms
-* Fast
-* Customizable (variables, components, plugins)
-* Works with AssetManager
-* Plenty of ViewHelpers
-* Extendable (run your own less files from bootstrap context to share mixins and variables)
-* Tested with twitter bootstrap 2.3+ (older versions will probably work, too)
-* You can optionally use lessphp (not recommended)
+This module supplies view helpers to make it easy to work with twitter bootstrap.
+Optionally, this module also allows you to build, cache, modify and extend twitter bootstrap using the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
 
-## Installation
+## Installation ViewHelpers
+### How?
+**Add the requirement to your composer.json file**
 
-1. **Add the requirement to your composer.json file** by either...
-    * ... Adding it through the command line,
+    ```bash
+    ./composer.phar require spoonx/sxbootstrap
+    # When asked for a version, type: "2.*"
+    ```
 
-        ```bash
-        ./composer.phar require spoonx/sxbootstrap
-        # When asked for a version, type: "2.*"
-        ```
-    * or, adding it manually to your composer.json file and **then running `./composer.phar install`** to install the dependencies
+## Installation renderer (recommended)
 
-        ```json
-        {
-            "require": {
-                "spoonx/sxbootstrap": "2.*"
-            }
-        }
-        ```
+### How?
+1. Add the dependencies to your composer.less file:
 
-2. Enable `AssetManager` and `SxBootstrap` in your `application.config.php` file.
+    ```bash
+    ./composer.phar require rwoverdijk/assetmanager twitter/bootstrap
+    # When asked for a version, type: "1.*" for assetmanager and "2.*" for bootstrap.
+    ```
+
+2. Enable `AssetManager` and `SxBootstrap` in your `application.config.php` config file.
 
 3. Install less...
 
     a) Via NPM/Node.js **(recommended method)**:
 
-       Install npm/node.js. [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) can be found here.
+       1. Install npm/node.js. [Instructions](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) can be found here.
+       2. To Install lessc, open up your command line, and navigate to your project (`cd /path/to/my/project`).
+       3. Once you get there, run the following command: `npm install less .` (including the dot).
 
-       To Install lessc, open up your command line, and navigate to your project (`cd /path/to/my/project`).
-       Once you get there, run the following command: `npm install less .` (including the dot).
-       This will install less in a new directory named node_modules, enabling us to find it.
-       If you're stubborn, and wish to install less somewhere else, Check out the wiki at "[how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)"
+    b) Via lessphp (Advised against):
 
-    b) Via lessphp (please only use if absolutely necessary as lessphp is not yet complete):
+       **Add the requirement**
 
-       **Add the requirement to your composer.json file**
-
-       ```json
-       {
-           "require": {
-               "leafo/lessphp": "0.*"
-           }
-       }
+       ```bash
+       ./composer.phar require leafo/lessphp
+       # When asked for a version, type: "0.*"
        ```
 
        Then add the following config to your application's module.config.php:
@@ -71,19 +56,28 @@ or your node paths are not the default, so you've ignored my advice in step 3a.)
 5. Take a look at the [wiki](https://github.com/SpoonX/SxBootstrap/wiki) for examples and other information to get started.
 Specifically the part on [how to configure the filter to get it working (bottom of the page)](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options)
 
+### Okay... Why?
+The renderer has a lot of advantages.
+
+- Allows easy customization
+- Allows you to extend [(use mixins and variables in your own less files!)](https://github.com/SpoonX/SxBootstrap/wiki/Shared-variables-and-mixins)
+- Prevents having to manually manage assets
+- Allows toggling components, and plugins to include (minimizing file size by not included what you do not need).
+- And more.
+
+## Features
+* Simple awesome forms
+* Fast
+* Customizable (variables, components, plugins)
+* Works with AssetManager
+* Plenty of ViewHelpers
+* Extendable (run your own less files from bootstrap context to share mixins and variables)
+* Tested with twitter bootstrap 2.3+ (older versions will probably work, too)
+* You can optionally use lessphp (not recommended)
+
 ## Usage
-I'm not going into detail here, as you can find all of the information in the [wiki](https://github.com/SpoonX/SxBootstrap/wiki). But to test if
-things are working you can simply call the view helper in your layout (before outputting headscript/headlink!):
-
-```php
-
-<?php $this->sxBootstrap(); ?>
-
-```
-
-Refresh the page and see if it downloaded the required files. Please **realize** that this module
-will take up to a second (depending on your server's performance) to load **every time**,
-so please enable caching of some sort [(read about it here, the FilePath cache is recommended)](https://github.com/RWOverdijk/AssetManager/wiki/Caching#wiki-filepath).
+Check out the `config/sxbootstrap.local.php.dist` file in _vendor/spoonx/sxbootstrap/config_ for the configuration options, and info.
+Also, please check out the [wiki](https://github.com/SpoonX/SxBootstrap/wiki).
 
 ## Questions / support
 If you're having trouble with the module there are a couple of resources that might be of help.
@@ -91,7 +85,3 @@ If you're having trouble with the module there are a couple of resources that mi
 * [RWOverdijk at irc.freenode.net #zftalk.dev](http://webchat.freenode.net?channels=zftalk.dev%2Czftalk&uio=MTE9MTAz8d)
 * [Issue tracker](https://github.com/SpoonX/SxBootstrap/issues). (Please try to not submit unrelated issues).
 * By [mail](mailto:r.w.overdijk@gmail.com?Subject=SxBootstrap%20help)
-
-## Todo
-* Include other components as view helpers
-* Add unit tests

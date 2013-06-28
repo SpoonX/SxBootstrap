@@ -100,15 +100,4 @@ return array(
             ),
         ),
     ),
-    'twitter_bootstrap'  => array(
-        'bootstrap_path' => $bootstrapPath,
-        'makefile'       => $bootstrapPath . '/Makefile',
-        'filter'         => array(
-            'node_bin'   => '/usr/bin/node',
-            'node_paths' => array('node_modules'),
-        ),
-        'use_lessphp'    => false,
-        'variables'      => array(),
-        'plugin_alias'   => 'js/bootstrap.js',
-    ),
 );
