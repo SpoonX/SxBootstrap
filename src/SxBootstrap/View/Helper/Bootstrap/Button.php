@@ -26,9 +26,7 @@ class Button extends AbstractElementHelper
 
         if ($labelOrElement instanceof ButtonElement) {
             $this->initFormElement($labelOrElement);
-        }
-
-        if (is_string($labelOrElement)) {
+        } elseif (is_string($labelOrElement)) {
             $this->setLabel($labelOrElement);
         }
 

@@ -19,9 +19,7 @@ class Actions extends AbstractElementHelper
 
         if (is_array($action)) {
             $this->addContents($action);
-        }
-
-        if (null !== $action) {
+        } elseif (null !== $action) {
             $this->addContent($action);
         }
 
@@ -37,7 +35,7 @@ class Actions extends AbstractElementHelper
      */
     public function addContent($action)
     {
-        return $this->setContent($this->getElement()->getContent() . $action);
+        return $this->getElement()->appendContent($action);
     }
 
     /**

@@ -16,6 +16,8 @@ class ButtonToolbar extends AbstractElementHelper
 
     /**
      * Render toolbar
+     *
+     * @return string
      */
     public function render()
     {
@@ -39,7 +41,8 @@ class ButtonToolbar extends AbstractElementHelper
     /**
      * Make button toolbar element and add groups
      *
-     * @param  array                                            $groups
+     * @param array $groups
+     *
      * @return \SxBootstrap\View\Helper\Bootstrap\ButtonToolbar
      */
     public function __invoke(array $groups = array())

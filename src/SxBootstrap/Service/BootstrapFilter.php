@@ -88,7 +88,7 @@ class BootstrapFilter implements FilterInterface
     /**
      * Extract the imports from the import file.
      *
-     * @param $importsFile
+     * @param string $importsFile
      *
      * @return array The extracted imports
      */
@@ -128,12 +128,12 @@ class BootstrapFilter implements FilterInterface
     /**
      * Filter the import files needed.
      *
-     * @param $imports
+     * @param array $imports
      *
      * @throws \SxBootstrap\Exception\RuntimeException
      * @return array
      */
-    protected function filterImportFiles($imports)
+    protected function filterImportFiles(array $imports)
     {
         $config = $this->config;
 

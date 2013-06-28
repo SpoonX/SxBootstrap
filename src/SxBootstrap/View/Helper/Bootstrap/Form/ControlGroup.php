@@ -19,9 +19,7 @@ class ControlGroup extends AbstractElementHelper
 
         if (is_array($control)) {
             $this->addContents($control);
-        }
-
-        if (null !== $control) {
+        } elseif (null !== $control) {
             $this->addContent($control);
         }
 
@@ -37,7 +35,7 @@ class ControlGroup extends AbstractElementHelper
      */
     public function addContent($control)
     {
-        return $this->setContent($this->getElement()->getContent() . $control);
+        return $this->getElement()->appendContent($control);
     }
 
     /**
