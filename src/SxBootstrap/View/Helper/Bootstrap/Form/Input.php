@@ -20,9 +20,7 @@ class Input extends AbstractElementHelper
 
         if (is_object($elementType) && $elementType instanceof ElementInterface) {
             return $this->initFormElement($elementType);
-        }
-
-        if (is_string($elementType)) {
+        } elseif (is_string($elementType)) {
             $this->type($elementType);
         }
 
@@ -52,13 +50,13 @@ class Input extends AbstractElementHelper
     }
 
     /**
-     * @param $placeholder
+     * @param string $placeholder
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Input
      */
     public function placeholder($placeholder)
     {
-        $this->addAttribute('placeholder', $placeholder);
+        $this->addAttribute('placeholder', (string) $placeholder);
 
         return $this;
     }
@@ -70,7 +68,7 @@ class Input extends AbstractElementHelper
      */
     public function type($type)
     {
-        $this->addAttribute('type', $type);
+        $this->addAttribute('type', (string) $type);
 
         return $this;
     }
@@ -94,7 +92,7 @@ class Input extends AbstractElementHelper
      */
     public function name($name)
     {
-        $this->addAttribute('name', $name);
+        $this->addAttribute('name', (string) $name);
 
         return $this;
     }

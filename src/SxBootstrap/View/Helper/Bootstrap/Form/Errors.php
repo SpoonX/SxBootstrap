@@ -25,11 +25,11 @@ class Errors extends AbstractElementHelper
 
     /**
      * @param ElementInterface $element
-     * @param bool             $block
+     * @param boolean          $block
      *
      * @return null|string
      */
-    public function __invoke(ElementInterface $element = null, $block = false)
+    public function __invoke(ElementInterface $element, $block = false)
     {
         $messages = $element->getMessages();
 

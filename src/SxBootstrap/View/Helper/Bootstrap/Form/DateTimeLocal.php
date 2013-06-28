@@ -23,7 +23,7 @@ class DateTimeLocal extends Input
      */
     public function min($min)
     {
-        $this->addAttribute('min', $min);
+        $this->addAttribute('min', (string) $min);
 
         return $this;
     }
@@ -35,13 +35,13 @@ class DateTimeLocal extends Input
      */
     public function max($max)
     {
-        $this->addAttribute('max', $max);
+        $this->addAttribute('max', (string) $max);
 
         return $this;
     }
 
     /**
-     * @param int $step in seconds (default 60)
+     * @param integer $step in seconds (default 60)
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\DateTimeLocal
      */

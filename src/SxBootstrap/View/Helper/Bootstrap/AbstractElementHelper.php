@@ -56,7 +56,7 @@ abstract class AbstractElementHelper extends AbstractTranslatorHelper
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
      */
-    public function addAttribute($key, $value)
+    public function addAttribute($key, $value = null)
     {
         $this->element->addAttribute($key, $value);
 

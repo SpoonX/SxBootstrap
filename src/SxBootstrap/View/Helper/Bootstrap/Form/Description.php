@@ -25,9 +25,9 @@ class Description extends AbstractElementHelper
 
     /**
      * @param ElementInterface $element
-     * @param bool             $block
+     * @param boolean          $block
      *
-     * @return Description
+     * @return string
      */
     public function __invoke(ElementInterface $element, $block = false)
     {
@@ -47,7 +47,7 @@ class Description extends AbstractElementHelper
 
         $this->setDescription($message);
 
-        return clone $this;
+        return $this->render();
     }
 
     /**
@@ -55,7 +55,7 @@ class Description extends AbstractElementHelper
      *
      * @return Description
      */
-    public function setDescription($description)
+    protected function setDescription($description)
     {
         return $this->setContent($this->translate((string) $description));
     }
