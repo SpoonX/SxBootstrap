@@ -55,7 +55,6 @@ class Form extends AbstractElementHelper
 
         $this->getElement()->addAttributes($form->getAttributes());
         $this->renderElements($form->getIterator(), $groupActions);
-
         $this->renderFormActions();
 
         return clone $this;
@@ -63,7 +62,7 @@ class Form extends AbstractElementHelper
 
     /**
      * @param Traversable $elements
-     * @param boolean     $groupActions (doesn't work well with fieldset).
+     * @param boolean     $groupActions
      *
      * @return $this
      * @throws \SxBootstrap\Exception\RuntimeException
