@@ -26,6 +26,14 @@ use SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper;
  */
 class Form extends AbstractElementHelper
 {
+
+    /**
+     * All buttons, submit types etc to be rendered last.
+     *
+     * @var array
+     */
+    protected $formActionElements = array();
+
     /**
      * @param ZendForm $form
      * @param boolean  $groupActions
@@ -48,22 +56,21 @@ class Form extends AbstractElementHelper
         $this->getElement()->addAttributes($form->getAttributes());
         $this->renderElements($form->getIterator(), $groupActions);
 
+        $this->renderFormActions();
+
         return clone $this;
     }
 
     /**
      * @param Traversable $elements
-     * @param boolean     $groupActions
+     * @param boolean     $groupActions (doesn't work well with fieldset).
      *
      * @return $this
      * @throws \SxBootstrap\Exception\RuntimeException
      */
     public function renderElements(Traversable $elements, $groupActions = false)
     {
-        /* @var $rowPlugin     \SxBootstrap\View\Helper\Bootstrap\Form\Row */
-        /* @var $actionsPlugin \SxBootstrap\View\Helper\Bootstrap\Form\Actions */
-        $rowPlugin      = $this->getView()->plugin('sxb_form_row');
-        $actionElements = array();
+        $rowPlugin = $this->getRowPlugin();
 
         foreach ($elements as $element) {
             if ($element instanceof Fieldset) {
@@ -80,7 +87,7 @@ class Form extends AbstractElementHelper
                 );
 
                 if ($groupActions && (in_array(true, $conditions))) {
-                    $actionElements[] = $element;
+                    $this->formActionElements[] = $element;
 
                     continue;
                 }
@@ -89,10 +96,6 @@ class Form extends AbstractElementHelper
             } else {
                 throw new Exception\RuntimeException('Unexpected element.');
             }
-        }
-
-        if (!empty($actionElements)) {
-            $this->getElement()->addChild($rowPlugin($actionElements, true)->getElement());
         }
 
         return $this;
@@ -116,10 +119,45 @@ class Form extends AbstractElementHelper
     {
         $fieldsetElement = new HtmlElement('fieldset');
         $id              = $fieldset->getAttribute('id') ? : $fieldset->getName();
+        $parent          = $this->getElement();
 
         $fieldsetElement->addAttribute('id', $id);
-        $fieldsetElement->setContent($this->renderelements($fieldset, $groupActions));
+
+        /**
+         * This changes the scope of the current element,
+         * so that the child elements (the ones that are about to be rendered),
+         * will be set on the fieldset.
+         * Then change it back again so that the fieldset will be added to the form.
+         */
+        $this
+            ->setElement($fieldsetElement)
+            ->renderelements($fieldset, $groupActions)
+            ->setElement($parent);
 
         return $fieldsetElement;
+    }
+
+    /**
+     * Render the form action elements, when needed.
+     *
+     * @return $this
+     */
+    protected function renderFormActions()
+    {
+        $rowPlugin = $this->getRowPlugin();
+
+        if (!empty($this->formActionElements)) {
+            $this->getElement()->addChild($rowPlugin($this->formActionElements, true)->getElement());
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Row
+     */
+    protected function getRowPlugin()
+    {
+        return $this->getView()->plugin('sxb_form_row');
     }
 }
