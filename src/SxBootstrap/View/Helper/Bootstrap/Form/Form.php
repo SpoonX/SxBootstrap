@@ -26,7 +26,6 @@ use SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper;
  */
 class Form extends AbstractElementHelper
 {
-
     /**
      * @param ZendForm $form
      * @param boolean  $groupActions
@@ -67,7 +66,9 @@ class Form extends AbstractElementHelper
         $actionElements = array();
 
         foreach ($elements as $element) {
-            if ($element instanceof ElementInterface) {
+            if ($element instanceof Fieldset) {
+                $this->getElement()->addChild($this->renderFieldset($element, $groupActions));
+            } elseif ($element instanceof ElementInterface) {
 
                 $type = $element->getAttribute('type');
 
@@ -85,8 +86,6 @@ class Form extends AbstractElementHelper
                 }
 
                 $this->getElement()->addChild($rowPlugin($element)->getElement());
-            } elseif ($element instanceof Fieldset) {
-                $this->getElement()->addChild($this->renderFieldset($element, $groupActions));
             } else {
                 throw new Exception\RuntimeException('Unexpected element.');
             }
@@ -116,7 +115,9 @@ class Form extends AbstractElementHelper
     protected function renderFieldset(Fieldset $fieldset, $groupActions = false)
     {
         $fieldsetElement = new HtmlElement('fieldset');
+        $id              = $fieldset->getAttribute('id') ? : $fieldset->getName();
 
+        $fieldsetElement->addAttribute('id', $id);
         $fieldsetElement->setContent($this->renderelements($fieldset, $groupActions));
 
         return $fieldsetElement;
