@@ -116,5 +116,4 @@ abstract class AbstractElementHelper extends AbstractTranslatorHelper
 
         return $this;
     }
-
 }
