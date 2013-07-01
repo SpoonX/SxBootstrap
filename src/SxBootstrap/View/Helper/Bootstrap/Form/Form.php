@@ -42,6 +42,8 @@ class Form extends AbstractElementHelper
      */
     public function __invoke(ZendForm $form, $groupActions = false)
     {
+        $this->formActionElements = array();
+
         $form->prepare();
         $this->setElement(new HtmlElement('form'));
         $this->getElement()->setAttributes(array(
@@ -130,7 +132,7 @@ class Form extends AbstractElementHelper
          */
         $this
             ->setElement($fieldsetElement)
-            ->renderelements($fieldset, $groupActions)
+            ->renderElements($fieldset, $groupActions)
             ->setElement($parent);
 
         return $fieldsetElement;
