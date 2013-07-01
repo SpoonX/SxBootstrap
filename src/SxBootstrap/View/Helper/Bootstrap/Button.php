@@ -70,6 +70,26 @@ class Button extends AbstractElementHelper
     }
 
     /**
+     * @param string $type
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     */
+    public function type($type)
+    {
+        return $this->addAttribute('type', (string) $type);
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     */
+    public function name($name)
+    {
+        return $this->addAttribute('name', (string) $name);
+    }
+
+    /**
      * Display a Primary button
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Button
@@ -97,26 +117,6 @@ class Button extends AbstractElementHelper
     public function success()
     {
         return $this->addClass('btn-success');
-    }
-
-    /**
-     * @param string $type
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
-     */
-    public function type($type)
-    {
-        return $this->addAttribute('type', (string) $type);
-    }
-
-    /**
-     * @param string $name
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
-     */
-    public function name($name)
-    {
-        return $this->addAttribute('name', (string) $name);
     }
 
     /**
