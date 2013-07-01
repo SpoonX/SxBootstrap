@@ -22,7 +22,7 @@ abstract class AbstractElementHelper extends AbstractTranslatorHelper
      *
      * @param string $class name of the class
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     * @return $this
      */
     final public function addClass($class)
     {
@@ -54,7 +54,7 @@ abstract class AbstractElementHelper extends AbstractTranslatorHelper
      * @param string $key
      * @param string $value
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     * @return $this
      */
     public function addAttribute($key, $value = null)
     {
@@ -68,7 +68,7 @@ abstract class AbstractElementHelper extends AbstractTranslatorHelper
      *
      * @param string $content
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     * @return $this
      */
     public function setContent($content)
     {
@@ -108,7 +108,7 @@ abstract class AbstractElementHelper extends AbstractTranslatorHelper
     /**
      * @param \SxCore\Html\HtmlElement $element
      *
-     * @return AbstractElementHelper
+     * @return $this
      */
     public function setElement(HtmlElement $element)
     {
