@@ -23,6 +23,7 @@ class Button extends AbstractElementHelper
     public function __invoke($labelOrElement = null)
     {
         $this->setElement(new HtmlElement('button'));
+        $this->type('button');
 
         if ($labelOrElement instanceof ButtonElement) {
             $this->initFormElement($labelOrElement);
