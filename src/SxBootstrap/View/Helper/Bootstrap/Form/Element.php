@@ -159,7 +159,7 @@ class Element extends AbstractHelper
         }
 
         if ('radio' === $type) {
-            $helper = $renderer->plugin('sxb_form_radio');
+            $helper = $renderer->plugin('form_radio');
 
             return $helper($element);
         }

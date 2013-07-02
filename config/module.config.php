@@ -63,7 +63,6 @@ return array(
             'sxbFormImage'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Image',
             'sxbFormMonth'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Month',
             'sxbFormNumber'        => 'SxBootstrap\View\Helper\Bootstrap\Form\Number',
-            'sxbFormRadio'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Radio',
             'sxbFormRange'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Range',
             'sxbFormReset'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Reset',
             'sxbFormSearch'        => 'SxBootstrap\View\Helper\Bootstrap\Form\Search',
