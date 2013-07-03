@@ -43,7 +43,6 @@ class Badge extends AbstractElementHelper
     /**
      * Display an Inverse Badge
      *
-     * @param   string  $badge
      * @return \SxBootstrap\View\Helper\Bootstrap\Badge
      */
     public function inverse()
@@ -52,7 +51,7 @@ class Badge extends AbstractElementHelper
     }
 
     /**
-     * Display a Sucess Badge
+     * Display a success Badge
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Badge
      */
@@ -72,22 +71,12 @@ class Badge extends AbstractElementHelper
     }
 
     /**
-     * Render an Badge
-     *
-     * @return  string
-     */
-    public function render()
-    {
-        return $this->getElement()->render();
-    }
-
-    /**
      * Invoke Badge
      *
-     * @param   string  $badge
+     * @param string $badge
      *
-     * @return  Badge
-     * @throws  Exception\InvalidArgumentException
+     * @return Badge
+     * @throws Exception\InvalidArgumentException
      */
     public function __invoke($badge)
     {

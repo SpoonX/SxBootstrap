@@ -1,0 +1,104 @@
+<?php
+
+return array(
+    /**
+     * Where the bootstrap checkout files reside.
+     * When using composer, the default will do just fine.
+     *
+     *  NOTE: When changing this, you'll also have to change the routes specified.
+     *
+     * @var string
+     */
+    'bootstrapPath'      => 'vendor/twitter/bootstrap',
+
+    /**
+     * Where the makefile is located. When "null", will use $bootstrapPath/makefile (usually fine).
+     *
+     * @var string|null
+     */
+    'makeFile'           => null,
+
+    /**
+     * If your nodejs binary is located elsewhere, you can specify it using this option.
+     *
+     * @var string
+     *
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#node_bin
+     */
+    'node_bin'           => '/usr/bin/node',
+
+    /**
+     * If your node_modules reside elsewhere (e.g. locally installed already as a shared instance),
+     * you can define that here.
+     *
+     * @var array
+     *
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#node_paths
+     */
+    'node_paths'         => array('node_modules'),
+
+    /**
+     * If you feel like being a rebel, and ignoring all of my warnings, fine! Go for it.
+     * You can set this option to true to use LessPHP.
+     *
+     * @var boolean
+     */
+    'useLessphp'         => false,
+
+    /**
+     * An array of variables used by the less renderer.
+     *
+     * @var  array
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#variables
+     */
+    'variables'          => array(),
+
+    /**
+     * The alias to use for the url (to resolve to the bootstrap javascript file.).
+     * This defaults to /js/bootstrap.js
+     *
+     * @var string
+     */
+    'plugin_alias'       => 'js/bootstrap.js',
+
+    /**
+     * This option allows you to exclude (blacklist) jquery plugins as packaged with twitter bootstrap.
+     * Normally, you'd have to use the format bootstrap-pluginname.js, which I think is against the DRY principle.
+     * For that reason, you only have to supply the name of the the plugin.
+     *
+     * @var  array
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#excluded_plugins
+     */
+    'excludedPlugins'    => array(),
+
+    /**
+     * This option allows you to include (whitelist) jquery plugins as packaged with twitter bootstrap.
+     * Normally, you'd have to use the format bootstrap-pluginname.js, which I think is against the DRY principle.
+     * For that reason, you only have to supply the name of the the plugin.
+     *
+     * @var  array
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#included_plugins
+     */
+    'includedPlugins'    => array(),
+
+    /**
+     * Exclude components (blacklist).
+     * This means that all components get included by default, except for the ones defined within this array.
+     * FontAwesome is a realistic reason for you to want to use this and exclude the sprites.
+     *
+     * @var  array
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#excluded_components
+     */
+    'excludedComponents' => array(),
+
+    /**
+     * This configuration option allows you to include (whitelist) components by name.
+     * This means that it will by default, not include any other component besides the ones you've defined.
+     * If it's not working, you might have forgotten to include a specific file.
+     * (variables.less does get included by default, but mixins doesn't.)
+     *
+     * @var  array
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#included_components
+     */
+    'includedComponents' => array(),
+);

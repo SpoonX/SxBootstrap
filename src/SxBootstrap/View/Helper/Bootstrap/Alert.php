@@ -19,15 +19,16 @@ use SxCore\Html\HtmlElement;
  */
 class Alert extends AbstractElementHelper
 {
-     /**
-      * @var boolean Enable/Disable the dismiss button
-      */
-     protected $closable = true;
+
+    /**
+     * @var boolean Enable/Disable the dismiss button
+     */
+    protected $closable = true;
 
     /**
      * Display an Informational Alert
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Alert
+     * @return \SxBootstrap\View\Helper\Bootstrap\Alert
      */
     public function info()
     {
@@ -37,7 +38,7 @@ class Alert extends AbstractElementHelper
     /**
      * Display an Error Alert
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Alert
+     * @return \SxBootstrap\View\Helper\Bootstrap\Alert
      */
     public function error()
     {
@@ -75,7 +76,7 @@ class Alert extends AbstractElementHelper
     }
 
     /**
-     * Toggle the dismissbutton which makes it closable for the user.
+     * Toggle the dismissButton which makes it closable for the user.
      *
      * @param boolean $enabled
      *
@@ -83,7 +84,7 @@ class Alert extends AbstractElementHelper
      */
     public function closable($enabled)
     {
-        $this->closable = (bool)$enabled;
+        $this->closable = (bool) $enabled;
 
         return $this;
     }
@@ -91,7 +92,7 @@ class Alert extends AbstractElementHelper
     /**
      * Render an Alert
      *
-     * @return  string
+     * @return string
      */
     public function render()
     {
@@ -115,25 +116,34 @@ class Alert extends AbstractElementHelper
             ->spawnChild('button')
             ->setContent('&times;')
             ->setAttributes(array(
-                'data-dismiss'  => 'alert',
-                'type'          => 'button'
+                'data-dismiss' => 'alert',
+                'type'         => 'button',
             ))
             ->addClass('close');
+    }
+
+    /**
+     * @param string $alert
+     *
+     * @return AbstractElementHelper
+     */
+    public function setAlert($alert)
+    {
+        return $this->setContent($this->translate((string) $alert));
     }
 
     /**
      * Invoke Alert
      * The isBlock parameter is used to convert the display type of the element to block.
      *
-     * @param   string  $alert
-     * @param   boolean $isBlock
+     * @param string  $alert
+     * @param boolean $isBlock
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\Alert
+     * @return \SxBootstrap\View\Helper\Bootstrap\Alert
      */
     public function __invoke($alert = null, $isBlock = false)
     {
-        $this->setElement(new HtmlElement);
-        $this->addClass('alert');
+        $this->setElement(new HtmlElement)->addClass('alert');
 
         if ($isBlock) {
             $this->block();

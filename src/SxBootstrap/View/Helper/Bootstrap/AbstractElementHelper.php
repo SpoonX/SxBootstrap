@@ -3,12 +3,12 @@
 namespace SxBootstrap\View\Helper\Bootstrap;
 
 use SxCore\Html\HtmlElement;
-use Zend\Form\View\Helper\AbstractHelper;
+use Zend\I18n\View\Helper\AbstractTranslatorHelper;
 
 /**
  * The ViewHelper that creates a block to represent a Well.
  */
-abstract class AbstractElementHelper extends AbstractHelper
+abstract class AbstractElementHelper extends AbstractTranslatorHelper
 {
 
     /**
@@ -20,11 +20,11 @@ abstract class AbstractElementHelper extends AbstractHelper
     /**
      * Add a class to the element
      *
-     * @param   string  $class  name of the class
+     * @param string $class name of the class
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     * @return $this
      */
-    public final function addClass($class)
+    final public function addClass($class)
     {
         // Set the class on the element
         $this->element->addClass($class);
@@ -33,14 +33,30 @@ abstract class AbstractElementHelper extends AbstractHelper
     }
 
     /**
+     * Translate a string.
+     *
+     * @param $string
+     *
+     * @return string
+     */
+    protected function translate($string)
+    {
+        if ($this->hasTranslator()) {
+            return $this->getTranslator()->translate($string, $this->getTranslatorTextDomain());
+        }
+
+        return $string;
+    }
+
+    /**
      * Add attribute on element
      *
-     * @param   string  $key
-     * @param   string  $value
+     * @param string $key
+     * @param string $value
      *
-     * @return  \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     * @return $this
      */
-    public function addAttribute($key, $value)
+    public function addAttribute($key, $value = null)
     {
         $this->element->addAttribute($key, $value);
 
@@ -50,9 +66,9 @@ abstract class AbstractElementHelper extends AbstractHelper
     /**
      * Set the content of the element
      *
-     * @param   string $content
+     * @param string $content
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper
+     * @return $this
      */
     public function setContent($content)
     {
@@ -66,16 +82,19 @@ abstract class AbstractElementHelper extends AbstractHelper
      *
      * @return string
      */
-    public abstract function render();
+    public function render()
+    {
+        return $this->getElement()->render();
+    }
 
     /**
      * Return the markup string of the Code block
      *
      * @return string
      */
-    public final function __toString()
+    final public function __toString()
     {
-        return (string)$this->render();
+        return (string) $this->render();
     }
 
     /**
@@ -89,7 +108,7 @@ abstract class AbstractElementHelper extends AbstractHelper
     /**
      * @param \SxCore\Html\HtmlElement $element
      *
-     * @return AbstractElementHelper
+     * @return $this
      */
     public function setElement(HtmlElement $element)
     {
@@ -97,5 +116,4 @@ abstract class AbstractElementHelper extends AbstractHelper
 
         return $this;
     }
-
 }
