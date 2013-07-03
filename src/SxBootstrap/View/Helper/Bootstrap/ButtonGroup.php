@@ -16,7 +16,7 @@ class ButtonGroup extends AbstractElementHelper
     protected $buttons = array();
 
     /**
-     * Render buttongroup
+     * Render buttonGroup
      *
      * @return string
      */
@@ -30,9 +30,9 @@ class ButtonGroup extends AbstractElementHelper
     }
 
     /**
-     * Render buttons
+     * @param SxButton|string $button
      *
-     * @param mixed $button
+     * @return string
      */
     protected function renderButton($button)
     {
@@ -56,7 +56,7 @@ class ButtonGroup extends AbstractElementHelper
     /**
      *  Make button group element and add buttons
      *
-     * @param  array $buttons
+     * @param array $buttons
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\ButtonGroup
      */

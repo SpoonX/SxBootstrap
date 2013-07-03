@@ -8,7 +8,6 @@
  */
 namespace SxBootstrap\View\Helper\Bootstrap;
 
-use SxBootstrap\Exception;
 use Zend\View\Helper\AbstractHtmlElement;
 use Zend\Dom\Query;
 
@@ -17,8 +16,8 @@ class NavigationMenu extends AbstractHtmlElement
     /**
      * Render a default menu.
      *
-     * @param string|\SpiffyNavigation\Container|null $container
-     * @param array $options
+     * @param  string|\SpiffyNavigation\Container|null $container
+     * @param  array                                   $options
      * @return string
      */
     public function renderMenu($container = null, array $options = array())
@@ -29,8 +28,8 @@ class NavigationMenu extends AbstractHtmlElement
     /**
      * Render a dropdown menu
      *
-     * @param string|\SpiffyNavigation\Container|null $container
-     * @param array $options
+     * @param  string|\SpiffyNavigation\Container|null $container
+     * @param  array                                   $options
      * @return string
      */
     public function renderDropDownMenu($container = null, array $options = array())
@@ -68,7 +67,7 @@ class NavigationMenu extends AbstractHtmlElement
      * Add css to a DomElement
      *
      * @param $css
-     * @param \DOMElement $el
+     * @param  \DOMElement $el
      * @return \DOMElement
      */
     protected function addCss($css, \DOMElement $el)
@@ -90,8 +89,8 @@ class NavigationMenu extends AbstractHtmlElement
      * as-is, and will be available in the partial script as 'container', e.g.
      * <code>echo 'Number of pages: ', count($this->container);</code>.
      *
-     * @param string|\SpiffyNavigation\Container|null $container [optional] container to pass to view script.
-     * @param string $partial [optional] partial view script to use.
+     * @param  string|\SpiffyNavigation\Container|null $container [optional] container to pass to view script.
+     * @param  string                                  $partial   [optional] partial view script to use.
      * @return string
      */
     public function renderPartial($container = null, $partial = null)
