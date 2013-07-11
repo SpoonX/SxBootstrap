@@ -168,7 +168,7 @@ class Button extends AbstractElementHelper
      */
     public function loadingText($text)
     {
-        $this->addAttribute('data-loading-text', $text);
+        $this->addAttribute('data-loading-text', $this->translate($text));
 
         return $this;
     }

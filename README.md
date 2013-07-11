@@ -1,4 +1,4 @@
-# SxBootstrap 2.0
+# SxBootstrap 2.0.1
 This version has revisited the Form implementation, and is now easier to use than ever!
 
 This module supplies view helpers to make it easy to work with twitter bootstrap.
