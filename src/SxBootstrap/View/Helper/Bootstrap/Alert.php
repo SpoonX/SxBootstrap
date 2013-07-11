@@ -150,7 +150,7 @@ class Alert extends AbstractElementHelper
         }
 
         if (!is_null($alert)) {
-            $this->setContent($alert);
+            $this->setAlert($alert);
         }
 
         return clone $this;
