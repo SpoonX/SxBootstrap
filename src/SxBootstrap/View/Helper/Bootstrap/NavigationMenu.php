@@ -37,11 +37,11 @@ class NavigationMenu extends AbstractHtmlElement
         $menu = $this->getView()->navigationMenu()->renderMenu($container, $options);
         $query = new Query($menu);
         $uls = $query->execute('li>ul');
-        $caret = $uls->getDocument()->createDocumentFragment();
-        $caret->appendXML('<b class="caret" />');
 
         /** @var \DOMElement $ul */
         foreach ($uls as $key => $ul) {
+            $caret = $uls->getDocument()->createDocumentFragment();
+            $caret->appendXML('<b class="caret" />');
             $index = $key+1;
 
             $this->addCss('dropdown-menu', $ul);
