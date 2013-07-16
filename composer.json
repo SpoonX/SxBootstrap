@@ -15,7 +15,8 @@
         "spoonx/sxcore" : "1.*"
     },
     "require-dev" : {
-        "phpunit/phpunit" : "*"
+        "phpunit/phpunit" : "*",
+        "zendframework/zendframework": "dev-master"
     },
     "replace" : {
         "rwoverdijk/sxbootstrap" : "*"
