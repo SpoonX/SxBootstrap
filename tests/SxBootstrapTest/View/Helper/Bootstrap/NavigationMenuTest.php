@@ -23,26 +23,6 @@ class NavigationMenuTest extends TestCase
     protected $helper;
 
     /**
-     * @var Navigation
-     */
-    protected $nav;
-
-    /**
-     * @var \SpiffyNavigation\Container
-     */
-    protected $container1;
-
-    /**
-     * @var \SpiffyNavigation\Container
-     */
-    protected $container2;
-
-    /**
-     * @var \SpiffyNavigation\Container
-     */
-    protected $container3;
-
-    /**
      * @var ServiceManager
      */
     protected $serviceManager;
