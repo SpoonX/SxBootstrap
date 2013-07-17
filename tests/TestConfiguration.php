@@ -2,6 +2,7 @@
 
 return array(
     'modules' => array(
+		'SpiffyNavigation',
         'SxBootstrap',
     ),
     'module_listener_options' => array(

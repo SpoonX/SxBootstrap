@@ -13,6 +13,8 @@ use Zend\Dom\Query;
 
 class NavigationMenu extends AbstractHtmlElement
 {
+	protected $navigationMenu = null;
+	
     /**
      * Render a default menu.
      *
@@ -22,7 +24,7 @@ class NavigationMenu extends AbstractHtmlElement
      */
     public function renderMenu($container = null, array $options = array())
     {
-        return $this->getView()->navigationMenu()->renderMenu($container, $options);
+        return $this->getNavigationMenu()->renderMenu($container, $options);
     }
 
     /**
@@ -34,7 +36,7 @@ class NavigationMenu extends AbstractHtmlElement
      */
     public function renderDropDownMenu($container = null, array $options = array())
     {
-        $menu = $this->getView()->navigationMenu()->renderMenu($container, $options);
+        $menu = $this->getNavigationMenu()->renderMenu($container, $options);
         $query = new Query($menu);
         $uls = $query->execute('li>ul');
 
@@ -97,4 +99,18 @@ class NavigationMenu extends AbstractHtmlElement
     {
         return $this->getView()->renderPartial($container, $partial);
     }
+	
+	public function getNavigationMenu()
+	{
+		if ($this->navigationMenu === null) $this->navigationMenu = $this->getView()->navigationMenu();
+		
+		return $this->navigationMenu;
+	}
+	
+	public function setNavigationMenu($navigationMenu)
+	{
+		$this->navigationMenu = $navigationMenu;
+		
+		return $this;
+	}
 }
