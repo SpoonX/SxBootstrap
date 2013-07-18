@@ -2,7 +2,7 @@
 
 return array(
     'modules' => array(
-		'SpiffyNavigation',
+        'SpiffyNavigation',
         'SxBootstrap',
     ),
     'module_listener_options' => array(
