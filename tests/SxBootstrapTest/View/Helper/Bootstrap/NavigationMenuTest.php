@@ -27,9 +27,9 @@ class NavigationMenuTest extends TestCase
      */
     protected $serviceManager;
 
-	/**
-	 * Standard setUp
-	 */
+    /**
+     * Standard setUp
+     */
     public function setUp()
     {
         $nav = $this->getMockBuilder('SpiffyNavigation\Service\Navigation')
@@ -70,15 +70,15 @@ class NavigationMenuTest extends TestCase
         $spiffyNavStub->expects($this->any())
              ->method('renderMenu')
              ->will($this->returnValue('<info>testing only code coverage here</info>'));
-			 
+
 	$this->serviceManager->setAllowOverride(true);
-	$this->serviceManager->setService('navigationMenu', $spiffyNavStub);
+        $this->serviceManager->setService('navigationMenu', $spiffyNavStub);
 
         $service = $this->serviceManager->get('navigationMenu');
 
-	$this->assertEquals(
-	    '<info>testing only code coverage here</info>',
-	    $this->helper->setNavigationMenu($spiffyNavStub)->renderMenu('test')
+        $this->assertEquals(
+            '<info>testing only code coverage here</info>',
+            $this->helper->setNavigationMenu($spiffyNavStub)->renderMenu('test')
 	);
     }
 	
@@ -96,26 +96,26 @@ class NavigationMenuTest extends TestCase
         $spiffyNavStub->expects($this->any())
             ->method('renderMenu')
             ->will($this->returnValue(
-		        '<ul><li><ul><li>one</li><li>two</li></ul></li><li><ul><li>one</li><li>two</li></ul></li></ul>'
-		    )
-	);
-		 
-	$this->serviceManager->setAllowOverride(true);
-	$this->serviceManager->setService('navigationMenu', $spiffyNavStub);
+                '<ul><li><ul><li>one</li><li>two</li></ul></li><li><ul><li>one</li><li>two</li></ul></li></ul>'
+            )
+        );
+	 
+        $this->serviceManager->setAllowOverride(true);
+        $this->serviceManager->setService('navigationMenu', $spiffyNavStub);
 
         $service = $this->serviceManager->get('navigationMenu');
 		
 	try {
-	    $this->helper->setNavigationMenu($spiffyNavStub)->renderDropDownMenu('test');
-	} catch (\PHPUnit_Framework_Error_Warning $e) {
-	    $this->fail($e->getMessage());
-	}
+            $this->helper->setNavigationMenu($spiffyNavStub)->renderDropDownMenu('test');
+        } catch (\PHPUnit_Framework_Error_Warning $e) {
+            $this->fail($e->getMessage());
+        }
 		
 	$this->assertContains(
-	    '<b class="caret"></b>',
-	    $this->helper->setNavigationMenu($spiffyNavStub)->renderDropDownMenu('test')
-	);
-     }
+            '<b class="caret"></b>',
+            $this->helper->setNavigationMenu($spiffyNavStub)->renderDropDownMenu('test')
+        );
+    }
 	
     /**
      * add css
