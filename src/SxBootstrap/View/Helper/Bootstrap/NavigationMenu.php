@@ -13,7 +13,7 @@ use Zend\Dom\Query;
 
 class NavigationMenu extends AbstractHtmlElement
 {
-	protected $navigationMenu = null;
+    protected $navigationMenu = null;
 	
     /**
      * Render a default menu.
@@ -100,17 +100,18 @@ class NavigationMenu extends AbstractHtmlElement
         return $this->getView()->renderPartial($container, $partial);
     }
 	
-	public function getNavigationMenu()
-	{
-		if ($this->navigationMenu === null) $this->navigationMenu = $this->getView()->navigationMenu();
-		
-		return $this->navigationMenu;
-	}
+    public function getNavigationMenu()
+    {
+        if ($this->navigationMenu === null) {
+            $this->navigationMenu = $this->getView()->navigationMenu();
+        }	
+	return $this->navigationMenu;
+    }
 	
-	public function setNavigationMenu($navigationMenu)
-	{
-		$this->navigationMenu = $navigationMenu;
+    public function setNavigationMenu($navigationMenu)
+    {
+        $this->navigationMenu = $navigationMenu;
 		
-		return $this;
-	}
+        return $this;
+    }
 }
