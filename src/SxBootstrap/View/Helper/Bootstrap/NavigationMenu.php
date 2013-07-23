@@ -104,8 +104,9 @@ class NavigationMenu extends AbstractHtmlElement
     {
         if ($this->navigationMenu === null) {
             $this->navigationMenu = $this->getView()->navigationMenu();
-        }	
-	return $this->navigationMenu;
+        }
+
+        return $this->navigationMenu;
     }
 	
     public function setNavigationMenu($navigationMenu)
