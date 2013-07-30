@@ -1,6 +1,6 @@
 <?php
 
-$bootstrapPath = 'vendor/twitter/bootstrap';
+$bootstrapPath = 'vendor/twbs/bootstrap';
 
 return array(
     'controller_plugins' => array(

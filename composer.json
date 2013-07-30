@@ -40,6 +40,6 @@
     "suggest" : {
         "spiffy/spiffy-navigation" : "Required for SxNavigationMenu and dropdown",
         "rwoverdijk/assetmanager" : "Required for the renderer",
-        "twitter/bootstrap" : "Required for the renderer"
+        "twbs/bootstrap" : "Required for the renderer"
     }
 }

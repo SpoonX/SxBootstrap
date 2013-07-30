@@ -23,7 +23,7 @@ class ModuleOptions extends AbstractOptions
     /**
      * @var string
      */
-    protected $bootstrapPath = 'vendor/twitter/bootstrap';
+    protected $bootstrapPath = 'vendor/twbs/bootstrap';
 
     /**
      * @var string|null

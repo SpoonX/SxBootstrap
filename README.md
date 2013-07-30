@@ -1,4 +1,5 @@
-# SxBootstrap 2.0.1
+# SxBootstrap 2.0.2
+
 This version has revisited the Form implementation, and is now easier to use than ever!
 
 This module supplies view helpers to make it easy to work with twitter bootstrap.
@@ -8,10 +9,10 @@ Optionally, this module also allows you to build, cache, modify and extend twitt
 ### How?
 **Add the requirement to your composer.json file**
 
-    ```bash
-    ./composer.phar require spoonx/sxbootstrap
-    # When asked for a version, type: "2.*"
-    ```
+```bash
+./composer.phar require spoonx/sxbootstrap
+# When asked for a version, type: "2.*"
+```
 
 ## Installation renderer (recommended)
 
@@ -19,7 +20,7 @@ Optionally, this module also allows you to build, cache, modify and extend twitt
 1. Add the dependencies to your composer.less file:
 
     ```bash
-    ./composer.phar require rwoverdijk/assetmanager twitter/bootstrap
+    ./composer.phar require rwoverdijk/assetmanager twbs/bootstrap
     # When asked for a version, type: "1.*" for assetmanager and "2.*" for bootstrap.
     ```
 
