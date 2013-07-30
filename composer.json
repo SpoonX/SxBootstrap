@@ -12,7 +12,8 @@
     "homepage" : "https://github.com/SpoonX/SxBootstrap",
     "require" : {
         "php" : ">=5.3.3",
-        "spoonx/sxcore" : "1.*"
+        "spoonx/sxcore" : "1.*",
+        "zendframework/zendframework": "dev-master@dev"
     },
     "require-dev" : {
         "phpunit/phpunit" : "*"
