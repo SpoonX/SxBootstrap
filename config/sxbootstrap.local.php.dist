@@ -9,7 +9,7 @@ return array(
      *
      * @var string
      */
-    'bootstrapPath'      => 'vendor/twitter/bootstrap',
+    'bootstrapPath'      => 'vendor/twbs/bootstrap',
 
     /**
      * Where the makefile is located. When "null", will use $bootstrapPath/makefile (usually fine).

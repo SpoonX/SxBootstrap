@@ -20,7 +20,7 @@ Optionally, this module also allows you to build, cache, modify and extend twitt
 1. Add the dependencies to your composer.less file:
 
     ```bash
-    ./composer.phar require rwoverdijk/assetmanager twitter/bootstrap
+    ./composer.phar require rwoverdijk/assetmanager twbs/bootstrap
     # When asked for a version, type: "1.*" for assetmanager and "2.*" for bootstrap.
     ```
 
