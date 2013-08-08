@@ -238,7 +238,7 @@ class ModuleOptions extends AbstractOptions
      */
     public function getMakeFile()
     {
-        if (null === $this->makeFile) {
+        if (empty($this->makeFile)) {
             return $this->getBootstrapPath() . '/Makefile';
         }
 
