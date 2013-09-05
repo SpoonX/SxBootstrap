@@ -14,7 +14,7 @@ Optionally, this module also allows you to build, cache, modify and extend twitt
 # When asked for a version, type: "2.*"
 ```
 
-# Installation [Font Awesome](http://fontawesome.io/)
+## Installation [Font Awesome](http://fontawesome.io/)
 ### How?
 1. Add the dependency to your composer.json file:
 
