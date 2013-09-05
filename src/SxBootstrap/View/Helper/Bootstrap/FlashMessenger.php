@@ -18,7 +18,7 @@ use SxBootstrap\Exception;
 class FlashMessenger extends AbstractElementHelper
 {
     /**
-     * @var boolean $block displaymode
+     * @var boolean $block display-mode
      */
     protected $isBlock = true;
 
@@ -95,7 +95,9 @@ class FlashMessenger extends AbstractElementHelper
     /**
      * Set the namespace that should be displayed
      *
-     * @param string|array
+     * @param mixed $namespaces
+     *
+     * @throws \SxBootstrap\Exception\InvalidArgumentException
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\FlashMessenger
      */

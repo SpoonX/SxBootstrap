@@ -58,6 +58,11 @@ class ModuleOptions extends AbstractOptions
     /**
      * @var array
      */
+    protected $loadPaths = array();
+
+    /**
+     * @var array
+     */
     protected $excludedPlugins = array();
 
     /**
@@ -74,6 +79,21 @@ class ModuleOptions extends AbstractOptions
      * @var array
      */
     protected $includedComponents = array();
+
+    /**
+     * @var array
+     */
+    protected $customComponents = array();
+
+    /**
+     * @var boolean
+     */
+    protected $useFontAwesome = false;
+
+    /**
+     * @var string
+     */
+    protected $fontAwesomePath = 'vendor/fortawesome/font-awesome';
 
     /**
      * Path to the nodejs binary
@@ -158,6 +178,18 @@ class ModuleOptions extends AbstractOptions
     public function getIncludedComponents()
     {
         return $this->includedComponents;
+    }
+
+    /**
+     * @param string $component
+     *
+     * @return $this
+     */
+    public function addIncludedComponent($component)
+    {
+        $this->includedComponents[] = (string) $component;
+
+        return $this;
     }
 
     /**
@@ -264,6 +296,29 @@ class ModuleOptions extends AbstractOptions
     }
 
     /**
+     * This option expects an array of load paths.
+     * These paths will be added for every file that has the bootstrap filter applied to it,
+     * allowing you to include less files from these locations, too.
+     * By default the only two loadPaths are those of the asset being loaded, and twitter bootstrap.
+     *
+     * @param array $loadPaths
+     *
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#load_paths
+     */
+    public function setLoadPaths($loadPaths)
+    {
+        $this->loadPaths = (array) $loadPaths;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLoadPaths()
+    {
+        return $this->loadPaths;
+    }
+
+    /**
      * Whether or not to use lessPHP
      *
      * @param boolean $useLessphp
@@ -285,6 +340,8 @@ class ModuleOptions extends AbstractOptions
      * An array of variables used by the less renderer.
      *
      * @param array $variables
+     *
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#variables
      */
     public function setVariables(array $variables)
     {
@@ -298,4 +355,64 @@ class ModuleOptions extends AbstractOptions
     {
         return $this->variables;
     }
+
+    /**
+     * This option allows you to enable Font Awesome.
+     * When enabled, all you have to do is add the Font Awesome dependency to your composer.json.
+     *
+     * @param boolean $useFontAwesome
+     *
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#use_font_awesome
+     */
+    public function setUseFontAwesome($useFontAwesome)
+    {
+        $this->useFontAwesome = (bool) $useFontAwesome;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getUseFontAwesome()
+    {
+        return $this->useFontAwesome;
+    }
+
+    /**
+     * @param string $fontAwesomePath
+     */
+    public function setFontAwesomePath($fontAwesomePath)
+    {
+        $this->fontAwesomePath = (string) $fontAwesomePath;
+    }
+
+    /**
+     * The Custom components option allows you to specify an array of files,
+     * that should be added to the bootstrap.css build when using the bootstrap asset helper.
+     * This is especially useful when writing plugins for twitter bootstrap.
+     *
+     * @param array $customComponents
+     *
+     * @link https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#custom_components
+     */
+    public function setCustomComponents(array $customComponents)
+    {
+        $this->customComponents = $customComponents;
+    }
+
+    /**
+     * @return array
+     */
+    public function getCustomComponents()
+    {
+        return $this->customComponents;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFontAwesomePath()
+    {
+        return $this->fontAwesomePath;
+    }
+
 }

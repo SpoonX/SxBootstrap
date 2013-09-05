@@ -42,6 +42,43 @@ class BootstrapFilter implements FilterInterface
     }
 
     /**
+     * @param array $imports
+     *
+     * @return array
+     */
+    protected function setupFontAwesome(array $imports)
+    {
+        if (!$this->config->getUseFontAwesome()) {
+            return $imports;
+        }
+
+        $this->lessFilter->addLoadPath($this->config->getFontAwesomePath() . '/less');
+
+        if (false !== ($key = array_search('sprites.less', $imports))) {
+            $imports[$key] = 'font-awesome.less';
+        } else {
+            $imports[] = 'font-awesome.less';
+        }
+
+        return $imports;
+    }
+
+    /**
+     * @param string $assetImportDir
+     */
+    protected function setupLoadPaths($assetImportDir)
+    {
+        $loadPaths = $this->config->getLoadPaths();
+        $loadPath  = $this->config->getBootstrapPath() . '/less';
+
+        if ($assetImportDir !== $loadPath) {
+            $loadPaths[] = $loadPath;
+        }
+
+        $this->lessFilter->setLoadPaths($loadPaths);
+    }
+
+    /**
      * Sets the by-config generated imports on the asset.
      *
      * {@inheritDoc}
@@ -52,6 +89,8 @@ class BootstrapFilter implements FilterInterface
         $assetPath      = $asset->getSourcePath();
         $assetImportDir = dirname($assetRoot . '/' . $assetPath);
         $importDir      = $this->config->getBootstrapPath() . '/less';
+
+        $this->setupLoadPaths($assetImportDir);
 
         // Make sure we _always_ have the bootstrap import dir.
         if ($importDir !== $assetImportDir) {
@@ -70,9 +109,11 @@ class BootstrapFilter implements FilterInterface
         }
 
         if ('bootstrap.less' === $assetPath) {
+
             $imports = $this->filterImportFiles(array_unique(array_merge(
                 $this->extractImports($importDir . '/bootstrap.less'),
-                $this->extractImports($importDir . '/responsive.less')
+                $this->extractImports($importDir . '/responsive.less'),
+                $this->config->getCustomComponents()
             )));
 
             $assetContent = $variablesString . $imports;
@@ -135,8 +176,7 @@ class BootstrapFilter implements FilterInterface
      */
     protected function filterImportFiles(array $imports)
     {
-        $config = $this->config;
-
+        $config             = $this->config;
         $excludedComponents = $config->getExcludedComponents();
         $includedComponents = $config->getIncludedComponents();
 
@@ -151,6 +191,8 @@ class BootstrapFilter implements FilterInterface
         } elseif (!empty($includedComponents)) {
             $imports = $this->addImportFiles($imports, $includedComponents);
         }
+
+        $imports = $this->setupFontAwesome($imports);
 
         array_walk($imports, function (&$val) {
             $val = "@import \"$val\";";
