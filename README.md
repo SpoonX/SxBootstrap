@@ -32,7 +32,6 @@ Optionally, this module also allows you to build, cache, modify and extend twitt
             'use_font_awesome' => true,
         ),
     );
-
     ```
 
 ## Installation renderer (recommended)
