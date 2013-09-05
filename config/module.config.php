@@ -1,6 +1,7 @@
 <?php
 
 $bootstrapPath = 'vendor/twbs/bootstrap';
+$fontAwesomePath = 'vendor/fortawesome/font-awesome';
 
 return array(
     'controller_plugins' => array(
@@ -86,6 +87,11 @@ return array(
                 'img/glyphicons-halflings.png'       => $bootstrapPath . '/img/glyphicons-halflings.png',
                 'img/glyphicons-halflings-white.png' => $bootstrapPath . '/img/glyphicons-halflings-white.png',
                 'css/bootstrap.css'                  => $bootstrapPath . '/less/bootstrap.less',
+                'font/fontawesome-webfont.woff'      => $fontAwesomePath . '/font/fontawesome-webfont.woff',
+                'font/fontawesome-webfont.eot'       => $fontAwesomePath . '/font/fontawesome-webfont.eot',
+                'font/fontawesome-webfont.svg'       => $fontAwesomePath . '/font/fontawesome-webfont.svg',
+                'font/fontawesome-webfont.ttf'       => $fontAwesomePath . '/font/fontawesome-webfont.ttf',
+                'font/fontawesome.otf'               => $fontAwesomePath . '/font/fontawesome.otf',
             ),
             'paths' => array(
                 $bootstrapPath,
