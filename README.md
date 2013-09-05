@@ -1,4 +1,4 @@
-# SxBootstrap 2.0.3
+# SxBootstrap
 
 This version has revisited the Form implementation, and is now easier to use than ever!
 
@@ -13,6 +13,26 @@ Optionally, this module also allows you to build, cache, modify and extend twitt
 ./composer.phar require spoonx/sxbootstrap
 # When asked for a version, type: "2.*"
 ```
+
+## Installation [Font Awesome](http://fontawesome.io/)
+### How?
+1. Add the dependency to your composer.json file:
+
+    ```bash
+    ./composer.phar require fortawesome/font-awesome
+    # When asked for a version, type: "3.*"
+    ```
+
+2. Enable the use of [Font Awesome](http://fontawesome.io/) by adding the following in `config/autoload/sxbootstrap.local.php`:
+
+    ```php
+    <?php
+    return array(
+        'twitter_bootstrap' => array(
+            'use_font_awesome' => true,
+        ),
+    );
+    ```
 
 ## Installation renderer (recommended)
 
@@ -68,7 +88,9 @@ The renderer has a lot of advantages.
 
 ## Features
 * Simple awesome forms
-* Fast
+* **NEW** Optional [Font Awesome integration](https://github.com/SpoonX/SxBootstrap/wiki/Configuration-options#use_font_awesome)
+* **NEW** Add load paths
+* **NEW** Add custom components
 * Customizable (variables, components, plugins)
 * Works with AssetManager
 * Plenty of ViewHelpers

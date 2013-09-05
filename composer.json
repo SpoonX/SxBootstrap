@@ -40,6 +40,7 @@
     "suggest" : {
         "spiffy/spiffy-navigation" : "Required for SxNavigationMenu and dropdown",
         "rwoverdijk/assetmanager" : "Required for the renderer",
-        "twbs/bootstrap" : "Required for the renderer"
+        "twbs/bootstrap" : "Required for the renderer",
+        "fortawesome/font-awesome" : "Required for Font Awesome integration"
     }
 }
