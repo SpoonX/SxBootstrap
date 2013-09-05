@@ -18,22 +18,22 @@ Optionally, this module also allows you to build, cache, modify and extend twitt
 ### How?
 1. Add the dependency to your composer.json file:
 
-```bash
-./composer.phar require fortawesome/font-awesome
-# When asked for a version, type: "3.*"
-```
+    ```bash
+    ./composer.phar require fortawesome/font-awesome
+    # When asked for a version, type: "3.*"
+    ```
 
 2. Enable the use of [Font Awesome](http://fontawesome.io/) by adding the following in `config/autoload/sxbootstrap.local.php`:
 
-```php
-<?php
-return array(
-    'twitter_bootstrap' => array(
-        'use_font_awesome' => true,
-    ),
-);
+    ```php
+    <?php
+    return array(
+        'twitter_bootstrap' => array(
+            'use_font_awesome' => true,
+        ),
+    );
 
-```
+    ```
 
 ## Installation renderer (recommended)
 
