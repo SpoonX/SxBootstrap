@@ -1,6 +1,6 @@
 <?php
 
-$bootstrapPath = 'vendor/twbs/bootstrap';
+$bootstrapPath   = 'vendor/twbs/bootstrap';
 $fontAwesomePath = 'vendor/fortawesome/font-awesome';
 
 return array(
