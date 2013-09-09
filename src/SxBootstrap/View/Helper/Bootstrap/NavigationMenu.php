@@ -37,7 +37,7 @@ class NavigationMenu extends AbstractHtmlElement
     public function renderDropDownMenu($container = null, array $options = array())
     {
         $menu = $this->getNavigationMenu()->renderMenu($container, $options);
-        $query = new Query($menu);
+        $query = new Query($menu, strtolower(mb_detect_encoding($menu)));
         $uls = $query->execute('li>ul');
 
         /** @var \DOMElement $ul */
