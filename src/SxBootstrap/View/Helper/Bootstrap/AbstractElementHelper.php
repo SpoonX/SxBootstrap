@@ -64,6 +64,22 @@ abstract class AbstractElementHelper extends AbstractTranslatorHelper
     }
 
     /**
+     * Add attributes on element
+     *
+     * @param array $array
+     *
+     * @return $this
+     */
+    public function addAttributes(array $array)
+    {
+        foreach ($array as $key => $val) {
+            $this->addAttribute($key, $val);
+        }
+
+        return $this;
+    }
+
+    /**
      * Set the content of the element
      *
      * @param string $content
