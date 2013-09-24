@@ -89,7 +89,7 @@ class Row extends AbstractHelper
         $label       = $element->getLabel();
 
         if (null !== $label) {
-            $label = $labelPlugin($label, $element->getName());
+            $label = $labelPlugin($label, $element->getName(), $element->getLabelAttributes());
         }
 
         return $label;
