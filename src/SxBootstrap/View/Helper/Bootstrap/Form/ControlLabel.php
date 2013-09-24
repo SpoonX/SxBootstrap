@@ -27,10 +27,8 @@ class ControlLabel extends AbstractElementHelper
             $this->setFor($for);
         }
 
-        if (is_array($labelAttributes)) {
-            foreach ($labelAttributes as $key => $value) {
-                $this->addAttribute($key, $value);
-            }
+        if (!empty($labelAttributes)) {
+            $this->addAttributes($labelAttributes);
         }
 
         $this->addClass('control-label');
