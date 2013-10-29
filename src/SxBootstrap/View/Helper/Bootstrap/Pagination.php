@@ -51,7 +51,7 @@ class Pagination extends AbstractElementHelper
     /**
      * @var array
      */
-    protected $urlOptions = array();
+    protected $routeOptions = array();
 
     /**
      * @var string|null
@@ -213,7 +213,7 @@ class Pagination extends AbstractElementHelper
             return $route;
         }
 
-        return $urlHelper($route, $params, $this->getUrlOptions());
+        return $urlHelper($route, $params, $this->getRouteOptions());
     }
 
     /**
@@ -327,27 +327,27 @@ class Pagination extends AbstractElementHelper
     }
 
     /**
-     * The url options that are provided to the UrlHelper
+     * The route options that are provided to the UrlHelper
      *
-     * @param array $urlOptions
+     * @param array $routeOptions
      *
      * @return $this
      */
-    public function setUrlOptions($urlOptions)
+    public function setRouteOptions($routeOptions)
     {
-        $this->urlOptions = $urlOptions;
+        $this->routeOptions = $routeOptions;
 
         return $this;
     }
 
     /**
-     * The url options that are provided to the UrlHelper
+     * The route options that are provided to the UrlHelper
      *
      * @return array
      */
-    public function getUrlOptions()
+    public function getRouteOptions()
     {
-        return $this->urlOptions;
+        return $this->routeOptions;
     }
 
     /**
