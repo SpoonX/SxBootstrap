@@ -5,13 +5,13 @@ namespace SxBootstrap\View\Helper\Bootstrap\Form;
 use SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper;
 use SxCore\Html\HtmlElement;
 
-class ControlGroup extends AbstractElementHelper
+class FormGroup extends AbstractElementHelper
 {
 
     /**
      * @param null|string $control
      *
-     * @return ControlGroup
+     * @return FormGroup
      */
     public function __invoke($control = null)
     {
@@ -23,7 +23,7 @@ class ControlGroup extends AbstractElementHelper
             $this->addContent($control);
         }
 
-        $this->addClass('control-group');
+        $this->addClass('form-group');
 
         return clone $this;
     }
@@ -31,7 +31,7 @@ class ControlGroup extends AbstractElementHelper
     /**
      * @param string $control
      *
-     * @return ControlGroup
+     * @return FormGroup
      */
     public function addContent($control)
     {
@@ -41,7 +41,7 @@ class ControlGroup extends AbstractElementHelper
     /**
      * @param array $controls
      *
-     * @return ControlGroup
+     * @return FormGroup
      */
     public function addContents(array $controls)
     {
@@ -53,7 +53,7 @@ class ControlGroup extends AbstractElementHelper
     }
 
     /**
-     * @return ControlGroup
+     * @return FormGroup
      */
     public function info()
     {
@@ -61,7 +61,7 @@ class ControlGroup extends AbstractElementHelper
     }
 
     /**
-     * @return ControlGroup
+     * @return FormGroup
      */
     public function error()
     {
@@ -69,7 +69,7 @@ class ControlGroup extends AbstractElementHelper
     }
 
     /**
-     * @return ControlGroup
+     * @return FormGroup
      */
     public function success()
     {
@@ -77,7 +77,7 @@ class ControlGroup extends AbstractElementHelper
     }
 
     /**
-     * @return ControlGroup
+     * @return FormGroup
      */
     public function warning()
     {
