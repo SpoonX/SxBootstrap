@@ -13,7 +13,7 @@ class Controls extends AbstractElementHelper
      *
      * @return Controls
      */
-    public function __invoke($controls = null)
+    public function __invoke($controls = null, $css = 'controls')
     {
         $this->setElement(new HtmlElement);
 
@@ -23,7 +23,7 @@ class Controls extends AbstractElementHelper
             $this->addControl($controls);
         }
 
-        $this->addClass('controls');
+        $this->addClass($css);
 
         return clone $this;
     }

@@ -28,7 +28,7 @@ class Row extends AbstractHelper
     public function renderRow(ElementInterface $element)
     {
         /* @var $rowPlugin \SxBootstrap\View\Helper\Bootstrap\Form\FormGroup */
-        $rowPlugin   = $this->getView()->plugin('sxb_form_control_group');
+        $rowPlugin   = $this->getView()->plugin('sxb_form_form_group');
         $rowPlugin   = $rowPlugin();
         $errors      = $this->renderError($element);
         $label       = $this->renderLabel($element);
@@ -106,10 +106,13 @@ class Row extends AbstractHelper
         $elementPlugin  = $this->getView()->plugin('sxb_form_element');
         $controlsPlugin = $this->getView()->plugin('sxb_form_controls');
 
-        return $controlsPlugin(array(
-            (string) $elementPlugin($element),
-            $help,
-        ));
+        return $controlsPlugin(
+            array(
+                (string) $elementPlugin($element),
+                $help,
+            ),
+            $element->getOption('wrapper-class')
+        );
     }
 
     /**
