@@ -51,7 +51,7 @@ return array(
             'sxbFormActions'       => 'SxBootstrap\View\Helper\Bootstrap\Form\Actions',
             'sxbFormButton'        => 'SxBootstrap\View\Helper\Bootstrap\Form\Button',
             'sxbFormColor'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Color',
-            'sxbFormControlGroup'  => 'SxBootstrap\View\Helper\Bootstrap\Form\ControlGroup',
+            'sxbFormFormGroup'     => 'SxBootstrap\View\Helper\Bootstrap\Form\FormGroup',
             'sxbFormControlLabel'  => 'SxBootstrap\View\Helper\Bootstrap\Form\ControlLabel',
             'sxbFormControls'      => 'SxBootstrap\View\Helper\Bootstrap\Form\Controls',
             'sxbFormDate'          => 'SxBootstrap\View\Helper\Bootstrap\Form\Date',

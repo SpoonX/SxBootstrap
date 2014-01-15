@@ -13,7 +13,7 @@ class Row extends AbstractHelper
      * @param array|ElementInterface $elements
      * @param boolean                $actions
      *
-     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper|Actions|ControlGroup
+     * @return \SxBootstrap\View\Helper\Bootstrap\AbstractElementHelper|Actions|FormGroup
      */
     public function __invoke($elements, $actions = false)
     {
@@ -23,12 +23,12 @@ class Row extends AbstractHelper
     /**
      * @param ElementInterface $element
      *
-     * @return ControlGroup
+     * @return FormGroup
      */
     public function renderRow(ElementInterface $element)
     {
-        /* @var $rowPlugin \SxBootstrap\View\Helper\Bootstrap\Form\ControlGroup */
-        $rowPlugin   = $this->getView()->plugin('sxb_form_control_group');
+        /* @var $rowPlugin \SxBootstrap\View\Helper\Bootstrap\Form\FormGroup */
+        $rowPlugin   = $this->getView()->plugin('sxb_form_form_group');
         $rowPlugin   = $rowPlugin();
         $errors      = $this->renderError($element);
         $label       = $this->renderLabel($element);
@@ -106,10 +106,13 @@ class Row extends AbstractHelper
         $elementPlugin  = $this->getView()->plugin('sxb_form_element');
         $controlsPlugin = $this->getView()->plugin('sxb_form_controls');
 
-        return $controlsPlugin(array(
-            (string) $elementPlugin($element),
-            $help,
-        ));
+        return $controlsPlugin(
+            array(
+                (string) $elementPlugin($element),
+                $help,
+            ),
+            $element->getOption('wrapper-class')
+        );
     }
 
     /**
