@@ -25,11 +25,10 @@ class Errors extends AbstractElementHelper
 
     /**
      * @param ElementInterface $element
-     * @param boolean          $block
      *
      * @return null|string
      */
-    public function __invoke(ElementInterface $element, $block = false)
+    public function __invoke(ElementInterface $element)
     {
         $messages = $element->getMessages();
 
@@ -42,7 +41,7 @@ class Errors extends AbstractElementHelper
         foreach ($messages as $message) {
             $error = new HtmlElement('span');
 
-            $error->addClass($block ? 'help-block' : 'help-inline');
+            $error->addClass('help-block');
             $error->setContent($this->translate((string) $message));
 
             $errors[] = $error;

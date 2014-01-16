@@ -57,7 +57,7 @@ class FormGroup extends AbstractElementHelper
      */
     public function info()
     {
-        return $this->addClass('info');
+        return $this->addClass('has-info');
     }
 
     /**
@@ -65,7 +65,7 @@ class FormGroup extends AbstractElementHelper
      */
     public function error()
     {
-        return $this->addClass('error');
+        return $this->addClass('has-error');
     }
 
     /**
@@ -73,7 +73,7 @@ class FormGroup extends AbstractElementHelper
      */
     public function success()
     {
-        return $this->addClass('success');
+        return $this->addClass('has-success');
     }
 
     /**
@@ -81,6 +81,6 @@ class FormGroup extends AbstractElementHelper
      */
     public function warning()
     {
-        return $this->addClass('warning');
+        return $this->addClass('has-warning');
     }
 }

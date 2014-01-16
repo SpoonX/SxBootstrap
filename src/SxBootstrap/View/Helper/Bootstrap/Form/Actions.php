@@ -23,7 +23,7 @@ class Actions extends AbstractElementHelper
             $this->addContent($action);
         }
 
-        $this->addClass('form-actions');
+        $this->addClass('form-group');
 
         return clone $this;
     }
