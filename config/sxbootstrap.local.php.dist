@@ -12,11 +12,11 @@ return array(
     'bootstrapPath'      => 'vendor/twbs/bootstrap',
 
     /**
-     * Where the makefile is located. When "null", will use $bootstrapPath/makefile (usually fine).
+     * Where the gruntFile is located. When "null", will use $bootstrapPath/Gruntfile.js (usually fine).
      *
      * @var string|null
      */
-    'makeFile'           => null,
+    'gruntFile'           => null,
 
     /**
      * If your nodejs binary is located elsewhere, you can specify it using this option.
