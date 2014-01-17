@@ -19,6 +19,9 @@ use SxCore\Html\HtmlElement;
  */
 class Label extends AbstractElementHelper
 {
+    /**
+     * @var string
+     */
     protected $labelType = 'label-default';
 
     /**
@@ -41,7 +44,7 @@ class Label extends AbstractElementHelper
     }
 
     /**
-     * Display an Primary Label
+     * Display a Primary Label
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
@@ -61,7 +64,7 @@ class Label extends AbstractElementHelper
     }
 
     /**
-     * Display an Danger Label
+     * Display a Danger Label
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
@@ -120,6 +123,11 @@ class Label extends AbstractElementHelper
         return clone $this;
     }
 
+    /**
+     * Render the label depending of its type
+     *
+     * @return string
+     */
     public function render()
     {
         $this->addClass($this->getLabelType());
