@@ -19,6 +19,37 @@ use SxCore\Html\HtmlElement;
  */
 class Label extends AbstractElementHelper
 {
+    protected $labelType = 'label-default';
+
+    /**
+     * @param $labelType
+     *
+     * @return $this
+     */
+    protected function setLabelType($labelType)
+    {
+        $this->labelType = $labelType;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    protected function getLabelType()
+    {
+        return $this->labelType;
+    }
+
+    /**
+     * Display an Primary Label
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\Label
+     */
+    public function primary()
+    {
+        return $this->setLabelType('label-primary');
+    }
+
     /**
      * Display an Informational Label
      *
@@ -26,27 +57,17 @@ class Label extends AbstractElementHelper
      */
     public function info()
     {
-        return $this->addClass('label-info');
+        return $this->setLabelType('label-info');
     }
 
     /**
-     * Display an Important Label
+     * Display an Danger Label
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Label
      */
-    public function important()
+    public function danger()
     {
-        return $this->addClass('label-important');
-    }
-
-    /**
-     * Display an Inverse Label
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Label
-     */
-    public function inverse()
-    {
-        return $this->addClass('label-inverse');
+        return $this->setLabelType('label-danger');
     }
 
     /**
@@ -56,7 +77,7 @@ class Label extends AbstractElementHelper
      */
     public function success()
     {
-        return $this->addClass('label-success');
+        return $this->setLabelType('label-success');
     }
 
     /**
@@ -66,7 +87,7 @@ class Label extends AbstractElementHelper
      */
     public function warning()
     {
-        return $this->addClass('label-warning');
+        return $this->setLabelType('label-warning');
     }
 
     /**
@@ -97,5 +118,11 @@ class Label extends AbstractElementHelper
         $this->addClass('label');
 
         return clone $this;
+    }
+
+    public function render()
+    {
+        $this->addClass($this->getLabelType());
+        return (string) parent::render();
     }
 }
