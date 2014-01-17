@@ -131,6 +131,6 @@ class Label extends AbstractElementHelper
     public function render()
     {
         $this->addClass($this->getLabelType());
-        return (string) parent::render();
+        return parent::render();
     }
 }
