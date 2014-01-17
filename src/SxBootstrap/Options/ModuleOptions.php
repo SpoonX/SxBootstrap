@@ -28,7 +28,7 @@ class ModuleOptions extends AbstractOptions
     /**
      * @var string|null
      */
-    protected $makeFile;
+    protected $gruntFile;
 
     /**
      * @var string
@@ -256,25 +256,25 @@ class ModuleOptions extends AbstractOptions
     }
 
     /**
-     * Where the makefile is located. When "null", will use $bootstrapPath/makefile (usually fine).
+     * Where the gruntFile is located. When "null", will use $bootstrapPath/Gruntfile.js (usually fine).
      *
-     * @param string $makeFile
+     * @param string $gruntFile
      */
-    public function setMakeFile($makeFile)
+    public function setGruntFile($gruntFile)
     {
-        $this->makeFile = (string) $makeFile;
+        $this->gruntFile = (string) $gruntFile;
     }
 
     /**
      * @return string
      */
-    public function getMakeFile()
+    public function getGruntFile()
     {
-        if (empty($this->makeFile)) {
-            return $this->getBootstrapPath() . '/Makefile';
+        if (empty($this->gruntFile)) {
+            return $this->getBootstrapPath() . '/Gruntfile.js';
         }
 
-        return $this->makeFile;
+        return $this->gruntFile;
     }
 
     /**

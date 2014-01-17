@@ -58,7 +58,7 @@ class BootstrapResolver implements
     protected function resolvePlugins()
     {
         $config          = $this->config;
-        $pluginFiles     = $this->getPluginNames($config->getMakeFile());
+        $pluginFiles     = $this->getPluginNames($config->getGruntFile());
         $includedPlugins = $config->getIncludedPlugins();
         $excludedPlugins = $config->getExcludedPlugins();
 
@@ -83,7 +83,7 @@ class BootstrapResolver implements
                 continue;
             }
 
-            $res = $this->getAggregateResolver()->resolve('js/bootstrap-' . $plugin . '.js');
+            $res = $this->getAggregateResolver()->resolve('js/' . $plugin . '.js');
 
             if (null === $res) {
                 throw new Exception\RuntimeException("Asset '$plugin' could not be found.");
@@ -117,24 +117,21 @@ class BootstrapResolver implements
     }
 
     /**
-     * Get the plugin names from the makefile.
+     * Get the plugin names from the gruntFile.
      *
-     * @param string $makefile /path/to/Makefile
+     * @param string $gruntFile /path/to/GruntFile.js
      *
      * @return array plugin names.
      */
-    protected function getPluginNames($makefile)
+    protected function getPluginNames($gruntFile)
     {
-        $mkdata = file_get_contents($makefile);
+        $mkdata = file_get_contents($gruntFile);
 
-        preg_match(
-            '/bootstrap(\:|\/js\/\*\.js: js\/\*\.js)\s?\n(\n|.)*?((cat\s)(?P<files>.*?))\s>/i',
-            $mkdata, $matches
-        );
-
+        preg_match_all('/concat\s*\:\s*{.*?bootstrap.*?src\s*\:\s*\[\s*(?<scripts>.*?)\s*\]/si', $mkdata, $matches);
+        $scripts = explode(',', preg_replace(array("/'/", '/\s/'), '', $matches['scripts'][0]));
         return array_map(function ($value) {
-            return preg_replace('/(js\/bootstrap-([\w_-]+)\.js)/', '\2', $value);
-        }, preg_split('/\s+/', $matches['files']));
+            return preg_replace('/(js\/([\w_-]+)\.js)/', '\2', $value);
+        }, $scripts);
     }
 
     /**

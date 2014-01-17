@@ -2,6 +2,7 @@
 
 namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
+use SxCore\Html\HtmlElement;
 use Zend\Form\ElementInterface;
 use Zend\View\Helper\AbstractHelper;
 use SxBootstrap\Exception;
@@ -74,6 +75,8 @@ class Row extends AbstractHelper
         foreach ($actions as $action) {
             $rowPlugin->addContent($elementPlugin($action));
         }
+        $content = $rowPlugin->getElement()->getContent();
+        $rowPlugin->getElement()->setContent('<div class="col-sm-offset-2 col-sm-8">'.$content.'</div>');
 
         return $rowPlugin;
     }
