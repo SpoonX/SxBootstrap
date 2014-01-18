@@ -112,7 +112,7 @@ class BootstrapFilter implements FilterInterface
 
             $imports = $this->filterImportFiles(array_unique(array_merge(
                 $this->extractImports($importDir . '/bootstrap.less'),
-//                $this->extractImports($importDir . '/responsive.less'),
+                //  $this->extractImports($importDir . '/responsive.less'),
                 $this->config->getCustomComponents()
             )));
 
