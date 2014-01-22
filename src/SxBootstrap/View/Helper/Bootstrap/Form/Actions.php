@@ -23,11 +23,7 @@ class Actions extends AbstractElementHelper
         }
 
         $this->addClass('form-group');
-
-        $child = new HtmlElement();
-        $child->addClass('col-sm-offset-2 col-sm-8');
-
-        $this->getElement()->addChild($child);
+        $this->getElement()->spawnChild()->addClass('col-sm-offset-2 col-sm-8');
 
         return clone $this;
     }
