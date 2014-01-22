@@ -167,8 +167,8 @@ class Form extends AbstractElementHelper
      */
     public function getActionsElement()
     {
-        $childs = $this->getElement()->getChildren();
+        $children = $this->getElement()->getChildren();
 
-        return end($childs);
+        return end($children);
     }
 }
