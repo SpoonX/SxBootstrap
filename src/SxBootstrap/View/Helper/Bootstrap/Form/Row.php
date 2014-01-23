@@ -39,8 +39,7 @@ class Row extends AbstractHelper
             $rowPlugin->error();
         }
 
-        $checkBoxAndRadioTypes = array('checkbox', 'radio');
-        if (!in_array($element->getAttribute('type'), $checkBoxAndRadioTypes)) {
+        if ('checkbox' != $element->getAttribute('type')) {
             $label       = $this->renderLabel($element);
             $controls    = $this->renderControls($element, null !== $errors ? $errors : $description);
             $rowPlugin->addContents(array(
@@ -49,11 +48,9 @@ class Row extends AbstractHelper
             ));
         } else {
             $rowPlugin->addContents(array(
-                $this->renderControlsRadioCheckbox($element, null !== $errors ? $errors : $description)
+                $this->renderControlsCheckbox($element, null !== $errors ? $errors : $description)
             ));
         }
-
-
 
         return $rowPlugin;
     }
@@ -112,7 +109,7 @@ class Row extends AbstractHelper
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Form\Controls
      */
-    protected function renderControlsRadioCheckbox(ElementInterface $element, $help = null)
+    protected function renderControlsCheckbox(ElementInterface $element, $help = null)
     {
         $elementPlugin  = $this->getView()->plugin('sxb_form_element');
         $controlsPlugin = $this->getView()->plugin('sxb_form_controls');
@@ -121,21 +118,19 @@ class Row extends AbstractHelper
             'help' => $help,
         );
 
-        if ('checkbox' == $element->getAttribute('type')) {
-            $checkbox = new HtmlElement();
-            $checkbox->addClass('checkbox');
+        $checkbox = new HtmlElement();
+        $checkbox->addClass('checkbox');
 
-            $label = $this->renderLabel($element);
-            if ($element->getOption('label_position') == FormRow::LABEL_PREPEND) {
-                $label->getElement()->appendContent($controls['controls']);
-            } else {
-                $label->getElement()->prependContent($controls['controls']);
-            }
-
-            $checkbox->appendContent((string) $label);
-
-            $controls['controls'] = (string) $checkbox;
+        $label = $this->renderLabel($element);
+        if ($element->getOption('label_position') == FormRow::LABEL_PREPEND) {
+            $label->getElement()->appendContent($controls['controls']);
+        } else {
+            $label->getElement()->prependContent($controls['controls']);
         }
+
+        $checkbox->appendContent((string) $label);
+
+        $controls['controls'] = (string) $checkbox;
 
         return $controlsPlugin($controls, $element->getOption('wrapper-class'));
     }
