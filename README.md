@@ -1,9 +1,10 @@
 # SxBootstrap
 
-This version has revisited the Form implementation, and is now easier to use than ever!
-
 This module supplies view helpers to make it easy to work with twitter bootstrap.
 Optionally, this module also allows you to build, cache, modify and extend twitter bootstrap using the [AssetManager module](http://github.com/RWOverdijk/AssetManager).
+
+### Note:
+Support for bootstrap 3.0 is under active development. You can help and test by checking out the 3.0.0 branch.
 
 ## Installation ViewHelpers
 ### How?

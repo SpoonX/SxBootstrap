@@ -7,7 +7,6 @@ use SxCore\Html\HtmlElement;
 
 class Actions extends AbstractElementHelper
 {
-
     /**
      * @param null|string|array $action
      *
@@ -24,6 +23,7 @@ class Actions extends AbstractElementHelper
         }
 
         $this->addClass('form-group');
+        $this->getElement()->spawnChild()->addClass('col-sm-offset-2 col-sm-8');
 
         return clone $this;
     }
@@ -35,7 +35,12 @@ class Actions extends AbstractElementHelper
      */
     public function addContent($action)
     {
-        return $this->getElement()->appendContent($action . ' ');
+        $element  = $this->getElement();
+        $children = $element->getChildren();
+
+        $children[0]->appendContent($action . ' ');
+
+        return $element;
     }
 
     /**

@@ -161,4 +161,14 @@ class Form extends AbstractElementHelper
     {
         return $this->getView()->plugin('sxb_form_row');
     }
+
+    /**
+     * @return HtmlElement
+     */
+    public function getActionsElement()
+    {
+        $children = $this->getElement()->getChildren();
+
+        return end($children);
+    }
 }
