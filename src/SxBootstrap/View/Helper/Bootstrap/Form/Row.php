@@ -4,6 +4,7 @@ namespace SxBootstrap\View\Helper\Bootstrap\Form;
 
 use SxCore\Html\HtmlElement;
 use Zend\Form\ElementInterface;
+use Zend\Form\View\Helper\FormRow;
 use Zend\View\Helper\AbstractHelper;
 use SxBootstrap\Exception;
 
@@ -32,18 +33,24 @@ class Row extends AbstractHelper
         $rowPlugin   = $this->getView()->plugin('sxb_form_form_group');
         $rowPlugin   = $rowPlugin();
         $errors      = $this->renderError($element);
-        $label       = $this->renderLabel($element);
         $description = $this->renderDescription($element);
-        $controls    = $this->renderControls($element, null !== $errors ? $errors : $description);
 
         if (null !== $errors) {
             $rowPlugin->error();
         }
 
-        $rowPlugin->addContents(array(
-            $label,
-            $controls,
-        ));
+        if ('checkbox' != $element->getAttribute('type')) {
+            $label       = $this->renderLabel($element);
+            $controls    = $this->renderControls($element, null !== $errors ? $errors : $description);
+            $rowPlugin->addContents(array(
+                $label,
+                $controls,
+            ));
+        } else {
+            $rowPlugin->addContents(array(
+                $this->renderControlsCheckbox($element, null !== $errors ? $errors : $description)
+            ));
+        }
 
         return $rowPlugin;
     }
@@ -94,6 +101,38 @@ class Row extends AbstractHelper
         }
 
         return $label;
+    }
+
+    /**
+     * @param ElementInterface $element
+     * @param null|string      $help
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\Controls
+     */
+    protected function renderControlsCheckbox(ElementInterface $element, $help = null)
+    {
+        $elementPlugin  = $this->getView()->plugin('sxb_form_element');
+        $controlsPlugin = $this->getView()->plugin('sxb_form_controls');
+        $controls = array(
+            'controls' => (string) $elementPlugin($element),
+            'help' => $help,
+        );
+
+        $checkbox = new HtmlElement();
+        $checkbox->addClass('checkbox');
+
+        $label = $this->renderLabel($element);
+        if ($element->getOption('label_position') == FormRow::LABEL_PREPEND) {
+            $label->getElement()->appendContent($controls['controls']);
+        } else {
+            $label->getElement()->prependContent($controls['controls']);
+        }
+
+        $checkbox->appendContent((string) $label);
+
+        $controls['controls'] = (string) $checkbox;
+
+        return $controlsPlugin($controls, $element->getOption('wrapper-class'));
     }
 
     /**

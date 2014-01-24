@@ -141,7 +141,7 @@ class Element extends AbstractHelper
         }
 
         if ('multi_checkbox' === $type) {
-            $helper = $renderer->plugin('form_multi_checkbox');
+            $helper = $renderer->plugin('sxb_form_multi_checkbox');
 
             return $helper($element);
         }
@@ -159,7 +159,7 @@ class Element extends AbstractHelper
         }
 
         if ('radio' === $type) {
-            $helper = $renderer->plugin('form_radio');
+            $helper = $renderer->plugin('sxb_form_radio');
 
             return $helper($element);
         }

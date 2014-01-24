@@ -48,6 +48,8 @@ return array(
             'sxbFormInput'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Input',
             'sxbFormPassword'      => 'SxBootstrap\View\Helper\Bootstrap\Form\Password',
             'sxbFormSubmit'        => 'SxBootstrap\View\Helper\Bootstrap\Form\Submit',
+            'sxbFormMultiCheckbox' => 'SxBootstrap\View\Helper\Bootstrap\Form\MultiCheckbox',
+            'sxbFormRadio'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Radio',
             'sxbFormActions'       => 'SxBootstrap\View\Helper\Bootstrap\Form\Actions',
             'sxbFormButton'        => 'SxBootstrap\View\Helper\Bootstrap\Form\Button',
             'sxbFormColor'         => 'SxBootstrap\View\Helper\Bootstrap\Form\Color',
