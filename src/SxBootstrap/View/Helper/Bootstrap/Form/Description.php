@@ -31,20 +31,16 @@ class Description extends AbstractElementHelper
      */
     public function __invoke(ElementInterface $element, $block = false)
     {
-        $this->setElement(new HtmlElement('span'));
+        $this->setElement(new HtmlElement('p'));
 
         $message = null;
-
-        if (($message = $element->getOption('description-inline')) || ($message = $element->getOption('description'))) {
-            $this->addClass('help-inline');
-        } elseif (($message = $element->getOption('description-block'))) {
-            $this->addClass('help-block');
-        }
+        $message = $element->getOption('description');
 
         if (null === $message) {
             return '';
         }
 
+        $this->addClass('help-block');
         $this->setDescription($message);
 
         return $this->render();
