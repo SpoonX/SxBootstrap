@@ -36,13 +36,13 @@ class Alert extends AbstractElementHelper
     }
 
     /**
-     * Display an Error Alert
+     * Display a Danger Alert
      *
      * @return \SxBootstrap\View\Helper\Bootstrap\Alert
      */
-    public function error()
+    public function danger()
     {
-        return $this->addClass('alert-error');
+        return $this->addClass('alert-danger');
     }
 
     /**

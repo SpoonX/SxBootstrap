@@ -20,55 +20,6 @@ use SxCore\Html\HtmlElement;
  */
 class Badge extends AbstractElementHelper
 {
-    /**
-     * Display an Informational Badge
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
-     */
-    public function info()
-    {
-        return $this->addClass('badge-info');
-    }
-
-    /**
-     * Display an Important Badge
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
-     */
-    public function important()
-    {
-        return $this->addClass('badge-important');
-    }
-
-    /**
-     * Display an Inverse Badge
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
-     */
-    public function inverse()
-    {
-        return $this->addClass('badge-inverse');
-    }
-
-    /**
-     * Display a success Badge
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
-     */
-    public function success()
-    {
-        return $this->addClass('badge-success');
-    }
-
-    /**
-     * Display a Warning Badge
-     *
-     * @return \SxBootstrap\View\Helper\Bootstrap\Badge
-     */
-    public function warning()
-    {
-        return $this->addClass('badge-warning');
-    }
 
     /**
      * Invoke Badge

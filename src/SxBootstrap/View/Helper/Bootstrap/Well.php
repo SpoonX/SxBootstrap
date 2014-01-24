@@ -38,7 +38,7 @@ class Well extends AbstractElementHelper
      */
     public function small()
     {
-        $this->addClass('well-small');
+        $this->addClass('well-sm');
 
         return $this;
     }
@@ -50,7 +50,7 @@ class Well extends AbstractElementHelper
      */
     public function large()
     {
-        $this->addClass('well-large');
+        $this->addClass('well-lg');
 
         return $this;
     }
