@@ -124,6 +124,12 @@ class Form extends AbstractElementHelper
 
         $fieldsetElement->addAttribute('id', $id);
 
+        if (null !== $fieldset->getLabel()) {
+            $legend = new HtmlElement('legend');
+            $legend->setContent($fieldset->getLabel());
+            $fieldsetElement->addChild($legend);
+        }
+
         /**
          * This changes the scope of the current element,
          * so that the child elements (the ones that are about to be rendered),
