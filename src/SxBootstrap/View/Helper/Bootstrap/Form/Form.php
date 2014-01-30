@@ -124,10 +124,19 @@ class Form extends AbstractElementHelper
 
         $fieldsetElement->addAttribute('id', $id);
 
-        if (null !== $fieldset->getLabel()) {
+        $label = $fieldset->getLabel();
+        if (!empty($label)) {
             $legend = new HtmlElement('legend');
-            $legend->setContent($fieldset->getLabel());
+            $legend->setContent($label);
             $fieldsetElement->addChild($legend);
+        }
+
+        $template   = '';
+        if ($fieldset instanceof Element\Collection && $fieldset->shouldCreateTemplate()) {
+            $template = new HtmlElement('span');
+            $escapeHtmlHelper = $this->getView()->plugin('escapehtmlattr');
+            $dataTemplate = (string) $this->renderFieldset($fieldset->getTemplateElement(), $groupActions);
+            $template->addAttribute('data-template', $escapeHtmlHelper($dataTemplate));
         }
 
         /**
@@ -141,7 +150,16 @@ class Form extends AbstractElementHelper
             ->renderElements($fieldset, $groupActions)
             ->setElement($parent);
 
+        if (!empty($template)) {
+            $fieldsetElement->addChild($template);
+        }
+
         return $fieldsetElement;
+    }
+
+    public function renderTemplate()
+    {
+
     }
 
     /**
