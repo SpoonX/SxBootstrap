@@ -157,11 +157,6 @@ class Form extends AbstractElementHelper
         return $fieldsetElement;
     }
 
-    public function renderTemplate()
-    {
-
-    }
-
     /**
      * Render the form action elements, when needed.
      *
