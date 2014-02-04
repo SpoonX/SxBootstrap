@@ -131,11 +131,11 @@ class Form extends AbstractElementHelper
             $fieldsetElement->addChild($legend);
         }
 
-        $template   = '';
+        $template = null;
         if ($fieldset instanceof Element\Collection && $fieldset->shouldCreateTemplate()) {
-            $template = new HtmlElement('span');
+            $template         = new HtmlElement('span');
             $escapeHtmlHelper = $this->getView()->plugin('escapehtmlattr');
-            $dataTemplate = (string) $this->renderFieldset($fieldset->getTemplateElement(), $groupActions);
+            $dataTemplate     = (string) $this->renderFieldset($fieldset->getTemplateElement(), $groupActions);
             $template->addAttribute('data-template', $escapeHtmlHelper($dataTemplate));
         }
 
@@ -145,12 +145,11 @@ class Form extends AbstractElementHelper
          * will be set on the fieldset.
          * Then change it back again so that the fieldset will be added to the form.
          */
-        $this
-            ->setElement($fieldsetElement)
-            ->renderElements($fieldset, $groupActions)
-            ->setElement($parent);
+        $this->setElement($fieldsetElement)
+             ->renderElements($fieldset, $groupActions)
+             ->setElement($parent);
 
-        if (!empty($template)) {
+        if (null !== $template) {
             $fieldsetElement->addChild($template);
         }
 
