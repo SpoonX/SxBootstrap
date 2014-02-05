@@ -124,16 +124,34 @@ class Form extends AbstractElementHelper
 
         $fieldsetElement->addAttribute('id', $id);
 
+        $label = $fieldset->getLabel();
+        if (!empty($label)) {
+            $legend = new HtmlElement('legend');
+            $legend->setContent($label);
+            $fieldsetElement->addChild($legend);
+        }
+
+        $template = null;
+        if ($fieldset instanceof Element\Collection && $fieldset->shouldCreateTemplate()) {
+            $template         = new HtmlElement('span');
+            $escapeHtmlHelper = $this->getView()->plugin('escapehtmlattr');
+            $dataTemplate     = (string) $this->renderFieldset($fieldset->getTemplateElement(), $groupActions);
+            $template->addAttribute('data-template', $escapeHtmlHelper($dataTemplate));
+        }
+
         /**
          * This changes the scope of the current element,
          * so that the child elements (the ones that are about to be rendered),
          * will be set on the fieldset.
          * Then change it back again so that the fieldset will be added to the form.
          */
-        $this
-            ->setElement($fieldsetElement)
-            ->renderElements($fieldset, $groupActions)
-            ->setElement($parent);
+        $this->setElement($fieldsetElement)
+             ->renderElements($fieldset, $groupActions)
+             ->setElement($parent);
+
+        if (null !== $template) {
+            $fieldsetElement->addChild($template);
+        }
 
         return $fieldsetElement;
     }
