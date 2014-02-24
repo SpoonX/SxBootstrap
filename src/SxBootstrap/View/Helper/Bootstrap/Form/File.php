@@ -41,4 +41,14 @@ class File extends Input
 
         return $this;
     }
+
+    public function value($value)
+    {
+        if (is_array($value)) {
+            $value = $value['name'];
+        }
+        $this->addAttribute('value', (string) $value);
+
+        return $this;
+    }
 }
