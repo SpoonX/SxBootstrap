@@ -41,4 +41,19 @@ class File extends Input
 
         return $this;
     }
+
+    /**
+     * @param string $value
+     *
+     * @return \SxBootstrap\View\Helper\Bootstrap\Form\File
+     */
+    public function value($value)
+    {
+        if (is_array($value) && !empty($value['name'])) {
+            $value = $value['name'];
+        }
+        $this->addAttribute('value', (string) $value);
+
+        return $this;
+    }
 }
